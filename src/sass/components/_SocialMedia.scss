@@ -1,0 +1,13 @@
+.social-media{
+    &__btn-container{
+        width: 100%;
+        margin: 1rem auto;
+        text-align: center;
+    }
+
+    &__btn {
+        padding: .5rem;
+        font-size: 2rem;
+        width: 20%;
+    }
+}

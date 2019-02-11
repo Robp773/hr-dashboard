@@ -1,0 +1,57 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+
+  justify-content: center;
+  align-items: flex-start;
+  background: gray;
+}
+
+.component {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  height: 45vh;
+
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    font-size: 2.5rem;
+    // padding: .5rem 1rem;
+  }
+
+  &__h1 {
+    font-size: 5.5rem;
+  }
+
+  &__h2 {
+    font-size: 4.5rem;
+    background: rgba(255, 255, 255, .75);
+    padding: .5rem;
+    text-align: center;
+  }
+
+}
+
+.active{
+  background: white;
+  font-weight: bold;
+}

@@ -1,0 +1,17 @@
+.clock {
+    width: 20%;
+    background: darkgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 1rem;
+
+    & > h4 {
+        padding:0;
+        margin:0;
+    }
+
+}

@@ -1,0 +1,55 @@
+.regionInfo {
+    // transition: 1s;
+
+    // &:hover {
+    //     width: 85%;
+    // }
+
+    &__container {
+        display: flex;
+    }
+
+    &__btn-container {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 25%;
+        margin: auto;
+    }
+
+    &__btn {
+        padding: .5rem;
+        font-size: 2rem;
+    }
+
+    &__table {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        overflow-y: scroll;
+        background: white;
+        padding: 1rem;
+    }
+
+    &__name-th {
+        width: 50rem;
+        overflow: hidden;
+        
+    }
+
+    &__name{
+        white-space: nowrap;
+    }
+
+    &__social-media-th {
+        display: none;
+
+    }
+
+
+    &__social-media {
+        text-align: center;
+    }
+}

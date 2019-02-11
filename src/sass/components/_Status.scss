@@ -1,0 +1,16 @@
+.status {
+    width: 20%;
+    
+    &__alert {
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        font-size: 4rem;
+        height: 100%;
+        width: 100%;
+        background: black;
+        animation: pulse-alert 2s ease-in-out alternate infinite;
+    }
+    
+}
