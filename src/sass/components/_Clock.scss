@@ -1,6 +1,5 @@
 .clock {
     width: 20%;
-    background: darkgray;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,9 +8,9 @@
     font-size: 2.5rem;
     padding: 1rem;
 
-    & > h4 {
-        padding:0;
-        margin:0;
+    &>h4 {
+        padding: 0;
+        margin: 0;
+        border-bottom: 3px solid $color-secondary;
     }
-
 }

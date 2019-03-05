@@ -2,13 +2,13 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    background: darkgray;
-    font-size: 2.5rem;
+    font-size: 2rem;
+    color: whitesmoke;
+    max-height: 20vh;
 }
 
-// .infoBar{
-//     display: flex;
-//     justify-content: center;
-//     align-content: center;
-//     flex-direction: column;
-// }
+.infoBar{
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+}

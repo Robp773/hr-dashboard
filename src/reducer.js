@@ -1,11 +1,21 @@
 const initialState = {
+  activationName: 'Loading',
   activeState: 0,
-  activationName: '',
+  cities: [
+    []
+  ],
+  disasterType: 'Flooding',
+  eventData: {
+    headings: [{details: []}],
+    stateData: [ {name: '', data: ['loading']} ],
+  },
   level: 1,
-  regionalData: [{
- 
-  }],
-  status: 0,
+  // State spreadsheet data + timezone + lat/long + twitter list
+  regionalData: [ 
+    {name: 'alaska', stateGovt: [], cities: [], counties: [], utilities: [], airports: [], ports: [], news: [], colleges: []},
+    {},
+    {}
+  ],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -14,6 +24,14 @@ export const reducer = (state = initialState, action) => {
     return Object.assign({},
       state,
       action.state
+    );
+  }
+
+  if (action.type === "SELECT_STATE") {
+    return Object.assign({},
+      state, {
+        activeState: action.stateIndex
+      }
     );
   }
   return state;

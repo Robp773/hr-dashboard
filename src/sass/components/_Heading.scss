@@ -1,7 +1,62 @@
-.heading{
+.heading {
     width: 70%;
-    text-align: center; 
-    background: gray;
-    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
+    &__name {
+        font-size: 5rem;
+    }
+
+    &__headings-array {
+        display: flex;
+        margin: .5rem auto;
+        // border: 3px solid black;
+        color: $color-secondary;
+
+    }
+
+    &__type-val-parent {
+        padding: 0 1rem;
+        // background: whitesmoke;
+    }
+
+    &__h3 {
+        font-size: 4rem;
+        color: $color-white;
+        // border-bottom: 3px solid $color-secondary;
+        // margin-bottom: 0;
+        // padding-bottom: 0;
+        // text-decoration: underline;
+        // text-decoration-color: $color-secondary;
+        // text-decoration-style: solid
+    }
+    &__value{
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    &__state-select-btn {
+        width: 9vw;
+        padding: 1rem;
+        text-align: center;
+        font-size: 2.5rem;
+        background: $color-secondary;
+        border: 0;
+        box-shadow: 0 .25rem 1.5rem black;
+        margin: .5rem;
+        color: $color-white;
+        font-weight: bold;
+
+        &:hover{
+            background: $color-white;
+            color: black;
+        }
+
+        &:active{
+            box-shadow: none;
+        }
+    }
 }

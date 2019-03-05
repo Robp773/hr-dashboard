@@ -1,6 +1,6 @@
 @import './abstracts/variables';
 
-@import './components/Weather';
+@import './components/Event';
 @import './components/Status';
 @import './components/Clock';
 @import './components/Heading';
@@ -8,6 +8,12 @@
 @import './components/Facts';
 @import './components/RegionInfo';
 @import './components/SocialMedia';
+@import './components/Flooding';
+@import './components/WeatherAlert';
+@import './components/Tweet';
+@import './components/CitiesWeather';
+@import './components/TwitterWidget';
+
 
 @import './base/utilities';
 @import './base/animations';

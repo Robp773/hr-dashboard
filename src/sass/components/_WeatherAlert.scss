@@ -1,0 +1,67 @@
+.weather-alert {
+
+    &__alerts-parent {
+        flex-direction: column;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: .25rem;
+        background: whitesmoke;
+
+        &:hover {
+            background: white !important;
+        }
+
+        &:hover > * .weather-alert__time-parent{
+            background: rgba(243, 142, 32, .5);
+        }
+    }
+
+    &__time-locations-parent {
+        display: flex;
+    }
+
+    &__time-parent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 2.25rem;
+        width: 55%;
+        background: rgba(243, 142, 32, .75);
+    }
+
+    &__clock-item {
+        white-space: nowrap;
+
+    }
+
+    &__locations-parent {
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 .75rem;
+        width: 100%;
+        // background: whitesmoke;
+    }
+
+    &__desc {
+        font-size: 2rem;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: .75rem;
+    }
+}
+
+.open {
+    border-top: 0;
+}
+
+.close {
+    border: 0;
+
+    &>.weather-alert__desc {
+        display: none;
+    }
+}

@@ -7,17 +7,15 @@ render(){
         statusColor = {background: 'green'};
     }
     else if(this.props.status === 2){
-        statusColor = {background: 'yellow'};
+        statusColor = {color: 'yellow'};
     }
     else if(this.props.status === 3){
         statusColor = {background: 'red'};
     }
 
     return(
-        <div className='status u-flex-center' >  
-            <div style={statusColor} className='status__alert'>
-               Level {this.props.status}
-            </div>
+        <div  className='status' >  
+            <div className='status__alert' style={statusColor}>{this.props.status}</div>
         </div>
     )
 }

@@ -1,0 +1,39 @@
+.tweet {
+    border-bottom: 1px solid $color-primary;
+    font-size: 2rem;
+    padding: 1rem;
+    animation: new-tweet 1s ease-in forwards;
+    display: flex;
+
+    align-items: center;
+
+    &__info-parent {
+        display: flex;
+        flex-direction: column;
+        margin-left: .5rem;
+    }
+
+    &__profile-info {
+        display: flex;
+
+        &>div {
+            margin: auto .5rem;
+        }
+    }
+
+    &__text {
+        // background: red;
+        padding: .5rem;
+    }
+
+    &__hashtag-parent {
+        display: flex;
+    }
+
+    &__hashtag {
+        display: inline-block;
+        width: fit-content;
+        color: red;
+        margin: auto .5rem;
+    }
+}
