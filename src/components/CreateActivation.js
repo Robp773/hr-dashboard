@@ -48,6 +48,8 @@ export default class CreateActivation extends React.Component {
                 return;
             }
 
+            console.log(this.state.statesIncluded)
+
             fetch(`${API_BASE_URL}/activate`, {
                     method: this.props.reqType,
                     headers: {
@@ -67,7 +69,6 @@ export default class CreateActivation extends React.Component {
                     })
                 })
                 .then((res) => {
-                    console.log(res)
                     this.props.checkActivations().then(()=>{
                         this.props.toggleForm()
                     })
@@ -129,7 +130,6 @@ render(){
         label: 'Tornado'
     }, ]
 
-    console.log(this.state)
         let test = 'handleEditSubmit'
         return(
             <div className='createActivation'>
