@@ -1,0 +1,124 @@
+.createActivation {
+
+    margin: 1rem auto;
+
+    &__form {
+        background: $color-white;
+        width: 85%;
+        margin: auto;
+        text-align: center;
+        padding: 1rem;
+        position: relative;
+    }
+
+    &__heading {
+        font-size: 4.5rem;
+        border-bottom: 3px solid $color-secondary;
+        width: fit-content;
+        margin: auto;
+    }
+
+    &__exit-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 1rem;
+        padding: 1rem;
+        background: $color-secondary;
+        color: $color-white;
+        border: 1px solid transparent;
+        outline: none;
+        cursor: pointer;
+        box-shadow: 0 .5rem 2.5rem black;
+
+        &:hover {
+            background: $color-white;
+            color: black;
+            border: 1px solid black;
+        }
+    }
+
+    &__label-input-parent {
+        width: 85%;
+        margin: auto;
+        margin: 1rem auto;
+        font-size: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    &__label {
+        margin-right: 2rem;
+        width: 25%;
+        text-align: right;
+    }
+
+    &__input {
+        width: 35%;
+        font-size: 3rem;
+        padding: .5rem 1rem;
+        &--select {
+            text-align-last: center;
+        }
+    }
+
+    &__slider-parent {
+        width: 100%;
+        position: relative;
+    }
+
+    &__interval-count {
+        position: absolute;
+        right: 7%;
+        top: 0;
+    }
+
+    &__switch{
+        margin: auto 1rem;
+    }
+
+    &__submit-btn {
+        background: $color-secondary;
+        color: $color-white;
+        padding: .5rem 1.5rem;
+        border: 0;
+        outline: 0;
+        font-size: 3.5rem;
+        box-shadow: 0 .5rem 2.5rem black;
+        cursor: pointer;
+
+        &:hover {
+            background: $color-white;
+            color: black;
+        }
+
+    }
+    
+    &__delete-btn {
+        background: $color-secondary;
+        color: $color-white;
+        padding: .5rem 1.5rem;
+        border: 0;
+        outline: 0;
+        font-size: 3.5rem;
+        box-shadow: 0 .5rem 2rem black;
+        cursor: pointer;
+        // position: absolute;
+        // right: 0;
+        // bottom: 0;
+        margin: auto 1rem;
+
+        &:hover {
+            background: $color-white;
+            color: black;
+        }
+
+    }
+
+}
+
+.css-10nd86i {
+    width: 35%;
+}

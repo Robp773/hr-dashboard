@@ -19,7 +19,7 @@ export default class Tweet extends React.Component {
                         <div>{this.props.data.screenName}</div>
                         <div>{this.props.data.verified ? <img alt='Twitter verified symbol' src='images/checked.png' /> : null}</div>
                         <div>{this.props.data.followersCount}</div>
-                        <div>{moment(this.props.data.time).format("hh:mm A MMM DD")}</div>
+                        <div>{moment(Number(this.props.data.time)).format("hh:mm A MMM DD")}</div>
                     </div>
 
                     <div className='tweet__text'>{this.props.data.text}</div>

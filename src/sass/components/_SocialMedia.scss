@@ -1,14 +1,12 @@
 #parent {
-    // background: rgba(255, 255, 255, .95);
     height: 76vh;
-    // overflow-y: scroll; 
     background: linear-gradient(to bottom, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, .95) 100%), url('/images/hr-logo.jpg');
     overflow-y: scroll;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.social-media {
+.social-feed {
     width: 50vw;
     position: relative;
     overflow-y: scroll;
@@ -39,11 +37,10 @@
     }
 
     &__btn-container {
-        // text-align: center;
         height: 100%;
         width: 75%;
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
         margin-left: auto;
         color: $color-white;
@@ -58,38 +55,84 @@
         }
     }
 
-    &__chart-btn {
-        border: 0;
-        outline: none;
-        // box-shadow: 0 .25rem 1rem black;
-        background: transparent;
-        margin-left: 4rem;
-        background: transparent;
-        border-radius: 100%;
+    &__feed-toggle {
+        width: 75%;
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: .075s box-shadow, .5s transform;
-        padding: .5rem;
-        cursor: pointer;
+        font-size: 3rem;
+    }
+
+    &__label {
+        margin: auto .5rem;
+    }
+
+    &__chart-btn {
+        border: 0;
+        padding: .5rem 2rem;
+        border-right: 1px solid black;
+        font-size: 2.25rem;
+        background: #f38e20;
+        color: white;
+        box-shadow: 0 0.25rem 1.25rem black;
+        margin: auto .25rem;
+        outline: none;
+
+        &:hover {
+            color: black;
+            background: $color-white;
+        }
 
         &:active {
             box-shadow: none;
-            background: lightyellow;
         }
+    }
+
+    &__back-btn {
+        border: 0;
+        padding: .5rem 2rem;
+        border-right: 1px solid black;
+        font-size: 2.25rem;
+        background: $color-secondary;
+        color: white;
+        box-shadow: 0 0.25rem 1.25rem black;
+        margin: auto 5%;
+        outline: none;
 
         &:hover {
-            transform: rotate(360deg);
+            color: black;
+            background: $color-white;
+        }
+
+        &:active {
+            box-shadow: none;
         }
     }
 
     &__btn {
-        padding: .5rem;
-        font-size: 2rem;
+        border: 0;
+        padding: .5rem 2rem;
+        border-right: 1px solid black;
+        font-size: 2.25rem;
+        background: #f38e20;
+        color: white;
+        box-shadow: 0 0.25rem 1.25rem black;
+        margin: auto .25rem;
+        outline: none;
         width: 20%;
+
+        &:hover {
+            background: $color-white;
+            color: black;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
     }
 
     &__tweet {
         font-size: 2.5rem;
     }
+    
 }

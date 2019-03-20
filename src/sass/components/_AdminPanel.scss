@@ -1,0 +1,62 @@
+.admin-panel {
+
+    &__parent {
+        background: $color-white;
+        width: 85%;
+        margin: 1rem auto;
+        text-align: center;
+        padding: 1rem;
+        position: relative;
+    }
+
+    &__heading {
+        text-align: center;
+        font-size: 5.5rem;
+        border-bottom: 3px solid $color-secondary;
+        width: fit-content;
+        margin: auto;
+    }
+
+    &__create-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 1rem;
+        font-size: 3rem;
+        padding: 1rem 1.5rem;
+        background: $color-secondary;
+        color: $color-white;
+        border: 0;
+        box-shadow: 0 .5rem 2rem black;
+
+        &:active {
+
+            box-shadow: none;
+        }
+
+        &:hover {
+            background: $color-white;
+            color: black;
+        }
+    }
+
+    &__back-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 2rem 1rem;
+        font-size: 3rem;
+        padding: 1rem 1.5rem;
+        background: $color-secondary;
+        color: $color-white;
+        border: 0;
+        box-shadow: 0 .5rem 2rem black;
+        cursor: pointer;
+        &:hover {
+            background: $color-white;
+            color: black;
+        }
+    }
+
+
+}

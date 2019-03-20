@@ -1,0 +1,48 @@
+.followerCount {
+    width: 75%;
+    margin-left: auto;
+
+
+    &__label {
+        margin: auto .5rem;
+    }
+
+    &__table {
+        width: 100%;
+        max-height: 100%;
+        overflow-y: scroll;
+    }
+
+    &__th {
+        font-size: 3rem;
+        text-align: center;
+        width: 20%;
+
+        &--name {
+            width: 60%;
+        }
+    }
+
+    &__tr{
+        &:hover{
+        background: rgba(243, 142, 32, .75);
+        & a{
+                text-decoration: underline;
+                text-decoration-color: black;
+
+            }
+        }
+    }
+
+    &__td {
+        font-size: 2.25rem;
+        text-align: center;
+        & > a{
+            color: black;
+            &:hover{
+                color: $color-white;
+                text-decoration-color: $color-white;
+            }
+        }
+    }
+}

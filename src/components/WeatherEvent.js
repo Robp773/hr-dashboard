@@ -12,27 +12,37 @@ export default class WeatherEvent extends React.Component {
     handleClick(key){
         this.setState({tab: key})
     }
-    componentDidMount(){
-        let firstAlert = Object.keys(this.props.eventData.stateData[this.props.activeState].data)[0];
-        this.setState({tab: firstAlert})
-
-    }
-    componentDidUpdate(prev){
-        let firstAlert = Object.keys(this.props.eventData.stateData[this.props.activeState].data)[0];
-        console.log(firstAlert)
-        if(this.props.activeState !== prev.activeState){
-            // console.log(this.props.eventData.stateData[this.props.activeState])
-            this.setState({tab: firstAlert})
+    
+    componentDidMount() {
+        if ('data' in this.props.eventData[this.props.activeState]) {
+            let firstAlert = Object.keys(this.props.eventData[this.props.activeState].data)[0];
+            this.setState({
+                tab: firstAlert
+            })
         }
     }
 
-    render() {   
+    componentDidUpdate(prev) {
+        if ('data' in this.props.eventData[this.props.activeState]) {
+            let firstAlert = Object.keys(this.props.eventData[this.props.activeState].data)[0];
+            if (this.props.activeState !== prev.activeState) {
+                this.setState({
+                    tab: firstAlert
+                })
+            }
+        }
+    }
+
+    render() {
+        // console.log('-----------------------------------------')   
+        // console.log(`Active State: ${this.props.activeState}`)
+        // console.log(this.props.eventData[this.props.activeState])
 
         let buttons = [];
         let alertsArray = []
         let btnStatus;
-          if(this.props.eventData.stateData[this.props.activeState].data){
-            let alertsObj = this.props.eventData.stateData[this.props.activeState].data
+          if(this.props.eventData[this.props.activeState].data){
+            let alertsObj = this.props.eventData[this.props.activeState].data
 
             for (let key in alertsObj) {        
                 let active;

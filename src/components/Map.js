@@ -4,7 +4,6 @@ export default class Map extends React.Component {
 
         componentWillMount() {
             setTimeout(() => {
-                console.log('component will mount')
                 this.loadMapScenario();
             }, 500);
         }
@@ -43,7 +42,6 @@ export default class Map extends React.Component {
         
     }
 render(){
-    console.log(this.props.latLng)
         return(
             <div id='myMap' className={`active`}></div>
         )

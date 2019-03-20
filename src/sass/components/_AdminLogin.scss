@@ -1,0 +1,54 @@
+.adminLogin {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .5);
+    align-items: center;
+    justify-content: center;
+
+    &__heading {
+        border-bottom: 3px solid $color-secondary;
+        width: fit-content;
+        margin: auto;
+    }
+
+    &__form {
+        text-align: center;
+        padding: 2rem;
+
+        &>h2 {
+            text-align: center;
+        }
+
+        background: $color-white;
+        width: 50%;
+    }
+
+    &__code-input {
+        text-align: center;
+        font-size: 3rem;
+        width: 50%;
+        margin: 3rem auto;
+        border: 1px solid black;
+        padding: .5rem 1.5rem;
+    }
+
+    &__submit-btn{
+        background: $color-secondary;
+        color: $color-white;
+        border: 1px solid black;
+        outline: none;
+        font-size: 3rem;
+        margin: auto 1rem;
+        padding: .5rem 1.5rem;
+
+        &:hover{
+            background: $color-white;
+            color: black;
+        }
+    }
+}

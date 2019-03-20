@@ -99,7 +99,7 @@
         justify-content: center;
         align-items: center;
         font-size: 4rem;
-        background: lightgreen;
+        color: #228B22;
     }
 
     &__container {
@@ -115,6 +115,7 @@
         justify-content: flex-start;
         width: 25%;
         height: fit-content;
+        border-bottom: 2px solid black;
 
     }
 
@@ -123,7 +124,7 @@
         flex-direction: column;
         overflow-y: scroll;
         width: 75%;
-        height: fit-content;
+        height: 100%;
         margin-left: auto;
     }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-// import Skycons from 'react-skycons';
 import WeatherEvent from './WeatherEvent';
 import Earthquake from './Earthquake';
 import CitiesWeather from './CitiesWeather';
@@ -11,7 +10,7 @@ export default class Weather extends React.Component {
 
             super(props);
             this.state = {
-                activeTab: 'radar'
+                activeTab: 'alerts'
             }
         }
 
@@ -24,7 +23,6 @@ export default class Weather extends React.Component {
 render(){
     
     let headerPos;
-    let eventHeading;
     let activeComponent;
     let eventComponents = {
         Weather: <WeatherEvent activeState={this.props.activeState} eventData={this.props.eventData}/>,
