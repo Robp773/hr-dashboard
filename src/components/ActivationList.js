@@ -11,10 +11,12 @@ export default class ActivationList extends React.Component {
             super(props);
             this.state = {
                 results: [],
-                modalOpen: false,
+                modalOpen: true,
                 adminOpen: false
             }
             this.toggleAdmin = this.toggleAdmin.bind(this);
+            this.openModal = this.openModal.bind(this);
+
         }
 
         componentDidMount() {
@@ -67,7 +69,7 @@ export default class ActivationList extends React.Component {
         else{
 
         if(this.state.modalOpen){
-            modal = <AdminLogin toggleAdmin={this.toggleAdmin}/>
+            modal = <AdminLogin toggleModal={this.openModal} toggleAdmin={this.toggleAdmin}/>
         }
 
         let activationsArray = [];

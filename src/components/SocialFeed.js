@@ -20,49 +20,52 @@ export default class SocialFeed extends React.Component {
             };
 
             // need to add conditional for if tweetStream is enabled
-            let tweetStream = io(`${API_BASE_URL}/tweetStream`);
 
-            tweetStream.on("connect", () => {
-                console.log("Connected to tweetStream socket"); // false
+            if (this.props.streamEnabled) {
+                let tweetStream = io(`${API_BASE_URL}/tweetStream`);
 
-                Alert.success('Connected to Twitter Stream', {
-                    position: 'top-right',
-                    effect: 'slide',
-                    beep: '/sounds/notif.mp3',
-                    timeout: 3000,
-                    offset: 100
+                tweetStream.on("connect", () => {
+                    console.log("Connected to tweetStream socket"); // false
+
+                    Alert.success('Connected to Twitter Stream', {
+                        position: 'top-right',
+                        effect: 'slide',
+                        beep: '/sounds/notif.mp3',
+                        timeout: 3000,
+                        offset: 100
+                    });
                 });
-            });
-            
-            tweetStream.on("disconnect", () => {
-                console.log("Disconnected from tweetStream socket"); // false
-            });
 
-            tweetStream.on("newTweet", tweet => {
-                // console.log(tweet)
-                let copy = this.state.tweetData;
-                let tweetComp = < Tweet key = {
-                    `${tweet.screenName}-${tweet.time}-${new Date().getUTCMilliseconds()}`
-                }
-                data = {
-                    tweet
-                }
-                />
+                tweetStream.on("disconnect", () => {
+                    console.log("Disconnected from tweetStream socket"); // false
+                });
 
-                if (this.state.tweetData.length < 10) {
-                    copy.unshift(tweetComp)
-                    this.setState({
-                        tweetData: copy
-                    })
+                tweetStream.on("newTweet", tweet => {
+                    // console.log(tweet)
+                    let copy = this.state.tweetData;
+                    let tweetComp = < Tweet key = {
+                        `${tweet.screenName}-${tweet.time}-${new Date().getUTCMilliseconds()}`
+                    }
+                    data = {
+                        tweet
+                    }
+                    />
 
-                } else {
-                    copy.splice(-1, 1);
-                    copy.unshift(tweetComp)
-                    this.setState({
-                        tweetData: copy
-                    })
-                }
-            });
+                    if (this.state.tweetData.length < 10) {
+                        copy.unshift(tweetComp)
+                        this.setState({
+                            tweetData: copy
+                        })
+
+                    } else {
+                        copy.splice(-1, 1);
+                        copy.unshift(tweetComp)
+                        this.setState({
+                            tweetData: copy
+                        })
+                    }
+                });
+            }
         }
 
         onCheck() {
@@ -96,9 +99,11 @@ export default class SocialFeed extends React.Component {
             })
         }
 
-        changeAnalysisView(tab){
+        changeAnalysisView(tab) {
             console.log(`changing to ${tab}`)
-            this.setState({analysisView: tab})
+            this.setState({
+                analysisView: tab
+            })
         }
 
   render() {
@@ -159,7 +164,13 @@ export default class SocialFeed extends React.Component {
         activeFeed = <TwitterWidget twitterWidgets={this.props.twitterWidgets} />
     }
      else if(this.state.activeView === 'feed'){
-        activeFeed = this.state.tweetData;
+         if(!this.props.streamEnabled){
+             activeFeed = 
+                <h2 className='social-feed__stream-disabled'>Stream disabled for this dashboard.</h2>
+         }
+         else{
+            activeFeed = this.state.tweetData;
+         }
     }
   
     return (

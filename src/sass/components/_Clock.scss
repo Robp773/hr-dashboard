@@ -7,10 +7,35 @@
     text-align: center;
     font-size: 2.5rem;
     padding: 1rem;
+    // background: blue;
+    position: relative;
 
     &>h4 {
         padding: 0;
         margin: 0;
         border-bottom: 3px solid $color-secondary;
+    }
+
+    &__back-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 1rem;
+        background: $color-secondary;
+        color: $color-white;
+        border: 0;
+        outline: 0;
+        padding: .5rem;
+        font-size: 2.5rem;
+        box-shadow: 0 .5rem 1.5rem black;
+
+        &:hover {
+            background: $color-white;
+            color: black;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
     }
 }

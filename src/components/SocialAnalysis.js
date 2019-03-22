@@ -17,8 +17,6 @@ shouldComponentUpdate(nextProps, nextState) {
 
 render(){
     let analysisView;
-    // console.log(this.props.analysisView)
-    console.log('rendering analysis')
     if(this.props.analysisView === 'entities'){
         analysisView = <EntitiesAnalysis entities={this.props.socialAnalysis.entities}/>
     }

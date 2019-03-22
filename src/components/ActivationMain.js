@@ -70,10 +70,6 @@ class ActivationMain extends Component {
     
   };
 
-
-
-  
-
   render() {
     console.log(`------------------RENDERED STATE FROM APP.JS--------------------`)
     console.log(this.props.fullState)
@@ -104,7 +100,7 @@ class ActivationMain extends Component {
         </div>
 
         <div className='infoBar'>
-              <SocialFeed socialAnalysis={this.props.socialAnalysis} activationName={this.props.activationName} twitterWidgets={twitterWidgets} /> 
+              <SocialFeed streamEnabled={this.props.streamEnabled} socialAnalysis={this.props.socialAnalysis} activationName={this.props.activationName} twitterWidgets={twitterWidgets} /> 
             <div className='weather-region-container'>
               <Event cities={this.props.cities} activeState={this.props.activeState} eventData={this.props.eventData} disasterType={this.props.disasterType} latLng={this.props.regionalData.latLng}/>
               <RegionInfo regionalData={this.props.regionalData}/>
@@ -129,6 +125,7 @@ const mapStateToProps = state => ({
   activeState: state.activeState,
   statesData: state.regionalData,
   cities: state.cities[state.activeState],
+  streamEnabled: state.streamEnabled,
   socialAnalysis: state.socialAnalysis
 })
 

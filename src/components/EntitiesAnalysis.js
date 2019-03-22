@@ -49,7 +49,6 @@ export default class entitiesAnalysis extends React.Component {
                         </tr>
                 )  
                 }
-            
         }
     
             return(

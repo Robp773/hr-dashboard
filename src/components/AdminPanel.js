@@ -16,13 +16,13 @@ export default class AdminPanel extends React.Component {
                 createFormOpen: false,
                 editFormOpen: false
             }
-
             this.toggleCreateForm = this.toggleCreateForm.bind(this);
             this.toggleEditForm = this.toggleEditForm.bind(this);
             this.checkActivations = this.checkActivations.bind(this);
         }
 
         componentDidMount() {
+            console.log('COMPONENT DID MOUNT')
             fetch(`${API_BASE_URL}/activations/all`)
                 .then((res) => {
                     return res.json()
@@ -38,7 +38,7 @@ export default class AdminPanel extends React.Component {
         }
 
         reactivateActivation(activationName) {
-
+            console.log('reactivating')
             fetch(`${API_BASE_URL}/reactivate`, {
                 method: 'PUT',
                 headers: {
@@ -71,11 +71,12 @@ export default class AdminPanel extends React.Component {
         }
 
         async checkActivations() {
-            console.log('checking ')
             fetch(`${API_BASE_URL}/activations/all`)
                 .then((res) => {
                     return res.json()
                         .then((result) => {
+                            console.log('setting results')
+                            console.log(result)
                             this.setState({
                                 results: result
                             })
@@ -83,16 +84,19 @@ export default class AdminPanel extends React.Component {
                         })
                         .catch(error => {
                             console.log(error);
+                            return;
                         });
                 })
         }
 
         toggleCreateForm(){
+            console.log('toggling CREATE form')
             this.setState({createFormOpen: !this.state.createFormOpen, editFormOpen: false})
         }
 
         toggleEditForm(){
-            this.setState({editFormOpen: !this.state.editFormOpen, createFormOpen: false})
+            console.log('toggling EDIT form')
+            this.setState({editFormOpen: !this.state.editFormOpen, createFormOpen: false, editIndex: 0})
         }
 
         handleEdit(resultsIndex){
@@ -107,10 +111,12 @@ render(){
             disasterType: '',
             level: '',
             states: [],
+            stateNames: [],
             updateInterval: 300000,
             analysisInterval: 300000,
-            streamEnabled: false
+            streamEnabled: false,
         }
+
     if(this.state.createFormOpen){
         formModal = <CreateActivation reqType='POST' type='Create' defaultVals={defaultVals} checkActivations={this.checkActivations} toggleForm={this.toggleCreateForm}/>
     }
@@ -118,17 +124,20 @@ render(){
 
         let curActivation = this.state.results[this.state.editIndex];
         let statesArray = [];
+        let stateNames = [];
         for(let i = 0; i <curActivation.states.length; i++){
             statesArray.push(
                {value: curActivation.states[i], label: curActivation.states[i]}
             )
+            stateNames.push(curActivation.states[i])
         }
-
+    
         defaultVals = {
             activationName: curActivation.activationName,
             disasterType: curActivation.disasterType,
             level: curActivation.level,
             states: statesArray,
+            stateNames: stateNames,
             updateInterval: curActivation.updateInterval,
             analysisInterval: curActivation.analysisInterval,
             streamEnabled: curActivation.streamEnabled

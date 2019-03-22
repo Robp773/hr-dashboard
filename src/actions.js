@@ -22,3 +22,7 @@ export const updateAnalysis = (data) => ({
   type: 'UPDATE_ANALYSIS',
   data: data
 })
+
+export const returnToList = () => ({
+  type: 'RETURN_TO_LIST',
+})

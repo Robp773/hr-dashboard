@@ -42,6 +42,12 @@ export const reducer = (state = initialState, action) => {
     );
   }
 
+  if (action.type === "RETURN_TO_LIST") {
+    return Object.assign({},
+      state,{activationChosen: false}
+    );
+  }
+
   if (action.type === "SELECT_STATE") {
     return Object.assign({},
       state, {

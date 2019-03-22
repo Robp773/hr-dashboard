@@ -41,14 +41,13 @@ export default class CreateActivation extends React.Component {
         }
 
         handleSubmit(e, reqType) {
+            console.log('SUBMIT TRIGGERED')
             e.preventDefault();
 
             if (!this.state.activationName || !this.state.disasterType) {
                 alert('Missing form data')
                 return;
             }
-
-            console.log(this.state.statesIncluded)
 
             fetch(`${API_BASE_URL}/activate`, {
                     method: this.props.reqType,
@@ -62,7 +61,7 @@ export default class CreateActivation extends React.Component {
                         activationName: this.state.activationName,
                         disasterType: this.state.disasterType,
                         level: this.state.level,
-                        states: this.state.statesIncluded,
+                        states: this.state.statesIncluded || this.props.defaultVals.stateNames,
                         updateInterval: this.state.updateInterval * 60000,
                         analysisInterval: this.state.analysisInterval * 60000,
                         streamEnabled: this.state.streamEnabled
@@ -70,22 +69,17 @@ export default class CreateActivation extends React.Component {
                 })
                 .then((res) => {
                     this.props.checkActivations().then(()=>{
+                        console.log('SUBMIT - toggle form')
                         this.props.toggleForm()
                     })
                 
                 })
-
-        }
-
-        handleEditSubmit(){
-            alert('edit')
         }
 
         handleSelectChange(e) {
             let statesIncluded = []
             console.log(e)
             for (let i = 0; i < e.length; i++) {
-                console.log(`pushing ${e.value}`)
                 statesIncluded.push(e[i].value)
             }
             this.setState({
@@ -107,9 +101,9 @@ export default class CreateActivation extends React.Component {
             })
 
             .then((res) => {
-                console.log(res)
                 this.props.checkActivations().then(()=>{
-                this.props.toggleForm()
+                    console.log('DELETE - toggle form')
+                    this.props.toggleForm()
                 })
              
             })
@@ -207,7 +201,7 @@ render(){
                         </div>
                     </div>
                     <button className='createActivation__submit-btn' type='submit'>Submit</button>
-                    {this.props.type === 'Edit' ? <button className='createActivation__delete-btn' onClick={()=>{this.handleDelete(this.state.activationName)}}>Delete</button> : null}
+                    {this.props.type === 'Edit' ? <button className='createActivation__delete-btn' onClick={(e)=>{e.preventDefault(); this.handleDelete(this.state.activationName)}}>Delete</button> : null}
                   </form>
                 
                 </div>

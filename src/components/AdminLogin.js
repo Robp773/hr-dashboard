@@ -22,7 +22,6 @@ export default class AdminLogin extends React.Component {
                     body: JSON.stringify({code: this.state.formData})
                 })
                 .then((res)=>{
-                    console.log(res.statusText)
                     if(res.statusText === 'OK'){
                         this.props.toggleAdmin()
                     }
@@ -38,11 +37,12 @@ export default class AdminLogin extends React.Component {
 render(){        
   
         return(
-            <div className='adminLogin'>
-                <form onSubmit={(e)=>{this.onSubmit(e)}} className='adminLogin__form'>
+            <div onClick={(e)=>{e.stopPropagation(); this.props.toggleModal()}} className='adminLogin'>
+                <form onClick={(e)=>{e.stopPropagation();}} onSubmit={(e)=>{this.onSubmit(e)}} className='adminLogin__form'>
                     <h2 className='adminLogin__heading'>Admin Login</h2>
                     <input onChange={(e)=>this.handlePassChange(e)} className='adminLogin__code-input' type='password' placeholder='Code'/>
                     <button className='adminLogin__submit-btn' type='submit'>Submit</button>
+                    <button onClick={(e)=>{e.preventDefault(); this.props.toggleModal()}} className='adminLogin__back-btn'>X</button>
                 </form>
             </div>
         )
