@@ -3,7 +3,7 @@ if(process.env.NODE_ENV==='production') {
   API_BASE_URL= 'https://ancient-refuge-55954.herokuapp.com';
 } else {  
   API_BASE_URL='http://localhost:8080';
-} 
+}
 
 module.exports = {
   PORT: process.env.PORT || 8080,

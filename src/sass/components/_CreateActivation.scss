@@ -11,6 +11,10 @@
         position: relative;
     }
 
+    &__search-form {
+        width: 35%;
+    }
+
     &__heading {
         font-size: 4.5rem;
         border-bottom: 3px solid $color-secondary;
@@ -49,6 +53,10 @@
         position: relative;
     }
 
+    &__input-wrapper {
+        position: relative;
+    }
+
     &__label {
         margin-right: 2rem;
         width: 25%;
@@ -59,8 +67,35 @@
         width: 35%;
         font-size: 3rem;
         padding: .5rem 1rem;
+
         &--select {
             text-align-last: center;
+        }
+
+        &--search-form {
+            width: 100%;
+        }
+    }
+
+    &__add-search-btn {
+        position: absolute;
+        top: 50%;
+        right: -22.5%;
+        padding: 1rem 3rem;
+        color: $color-white;
+        font-weight: bold;
+        background: $color-secondary;
+        border: 0;
+        font-size: 1.5rem;
+        outline: 0;
+        transform: translateY(-50%);
+        border: 1px solid transparent;
+        cursor: pointer;
+
+        &:hover {
+            background: $color-white;
+            color: black;
+            border: 1px solid black;
         }
     }
 
@@ -75,7 +110,43 @@
         top: 0;
     }
 
-    &__switch{
+    &__search-params-totals {
+        background: $color-white;
+        width: 85%;
+        margin: auto;
+        text-align: center;
+        padding-bottom: 1rem;
+        min-height: 15vh;
+
+        &>h2 {
+            font-size: 3rem;
+        }
+
+        &>* h2 {
+            font-size: 2.5rem;
+        }
+
+    }
+
+    &__single-search-item {
+        display: inline-block;
+        margin: 1rem;
+        font-size: 2rem;
+        padding: 1rem;
+        background: $color-primary;
+        color: $color-white;
+        border: 1px solid transparent;
+        cursor: pointer;
+
+        &:hover {
+            background: $color-white;
+            color: black;
+            border: 1px solid black;
+        }
+
+    }
+
+    &__switch {
         margin: auto 1rem;
     }
 
@@ -95,7 +166,7 @@
         }
 
     }
-    
+
     &__delete-btn {
         background: $color-secondary;
         color: $color-white;

@@ -27,6 +27,7 @@ export default class AdminPanel extends React.Component {
                 .then((res) => {
                     return res.json()
                         .then((result) => {
+                            console.log(result)
                             this.setState({
                                 results: result
                             })
@@ -112,9 +113,17 @@ render(){
             level: '',
             states: [],
             stateNames: [],
-            updateInterval: 300000,
-            analysisInterval: 300000,
+            updateInterval: 600000,
+            analysisInterval: 600000,
             streamEnabled: false,
+            streamParams: {
+                users: [],
+                searchTerms: []
+            },
+            searchParams: {
+                searchTerms: [],
+                geocode: {}
+            }
         }
 
     if(this.state.createFormOpen){
@@ -140,7 +149,9 @@ render(){
             stateNames: stateNames,
             updateInterval: curActivation.updateInterval,
             analysisInterval: curActivation.analysisInterval,
-            streamEnabled: curActivation.streamEnabled
+            streamEnabled: curActivation.streamEnabled,
+            streamParams: curActivation.streamParams,
+            searchParams: curActivation.searchParams
         }
     
         formModal = <CreateActivation reqType='PUT' type='Edit' defaultVals={defaultVals} checkActivations={this.checkActivations} toggleForm={this.toggleEditForm}/>
@@ -188,6 +199,7 @@ render(){
             </tr>
         )
     }  
+
 
         return(
             <div className='adminPanel'>

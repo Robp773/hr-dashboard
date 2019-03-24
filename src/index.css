@@ -740,6 +740,8 @@
     text-align: center;
     padding: 1rem;
     position: relative; }
+  .createActivation__search-form {
+    width: 35%; }
   .createActivation__heading {
     font-size: 4.5rem;
     border-bottom: 3px solid #f38e20;
@@ -770,6 +772,8 @@
     justify-content: center;
     align-items: center;
     position: relative; }
+  .createActivation__input-wrapper {
+    position: relative; }
   .createActivation__label {
     margin-right: 2rem;
     width: 25%;
@@ -780,6 +784,26 @@
     padding: .5rem 1rem; }
     .createActivation__input--select {
       text-align-last: center; }
+    .createActivation__input--search-form {
+      width: 100%; }
+  .createActivation__add-search-btn {
+    position: absolute;
+    top: 50%;
+    right: -22.5%;
+    padding: 1rem 3rem;
+    color: white;
+    font-weight: bold;
+    background: #f38e20;
+    border: 0;
+    font-size: 1.5rem;
+    outline: 0;
+    transform: translateY(-50%);
+    border: 1px solid transparent;
+    cursor: pointer; }
+    .createActivation__add-search-btn:hover {
+      background: white;
+      color: black;
+      border: 1px solid black; }
   .createActivation__slider-parent {
     width: 100%;
     position: relative; }
@@ -787,6 +811,30 @@
     position: absolute;
     right: 7%;
     top: 0; }
+  .createActivation__search-params-totals {
+    background: white;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 1rem;
+    min-height: 15vh; }
+    .createActivation__search-params-totals > h2 {
+      font-size: 3rem; }
+    .createActivation__search-params-totals > * h2 {
+      font-size: 2.5rem; }
+  .createActivation__single-search-item {
+    display: inline-block;
+    margin: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+    background: #154360;
+    color: white;
+    border: 1px solid transparent;
+    cursor: pointer; }
+    .createActivation__single-search-item:hover {
+      background: white;
+      color: black;
+      border: 1px solid black; }
   .createActivation__switch {
     margin: auto 1rem; }
   .createActivation__submit-btn {
