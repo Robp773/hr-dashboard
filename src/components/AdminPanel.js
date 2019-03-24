@@ -112,8 +112,8 @@ render(){
             level: '',
             states: [],
             stateNames: [],
-            updateInterval: 300000,
-            analysisInterval: 300000,
+            updateInterval: 600000,
+            analysisInterval: 600000,
             streamEnabled: false,
         }
 
@@ -188,6 +188,7 @@ render(){
             </tr>
         )
     }  
+
 
         return(
             <div className='adminPanel'>

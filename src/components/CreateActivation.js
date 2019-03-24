@@ -17,7 +17,15 @@ export default class CreateActivation extends React.Component {
                 states: this.props.defaultVals.states,
                 updateInterval: this.props.defaultVals.updateInterval / 60000,
                 analysisInterval: this.props.defaultVals.analysisInterval / 60000,
-                streamEnabled: this.props.defaultVals.streamEnabled
+                streamEnabled: this.props.defaultVals.streamEnabled,
+                streamParams: {
+                    users: [],
+                    searchTerms: []
+                },
+                searchParams: {
+                    searchTerms: [],
+                    geocode: {}
+                }
             }
         }
 
@@ -64,21 +72,22 @@ export default class CreateActivation extends React.Component {
                         states: this.state.statesIncluded || this.props.defaultVals.stateNames,
                         updateInterval: this.state.updateInterval * 60000,
                         analysisInterval: this.state.analysisInterval * 60000,
-                        streamEnabled: this.state.streamEnabled
+                        streamEnabled: this.state.streamEnabled,
+                        streamParams: this.state.streamParams,
+                        searchParams: this.state.searchParams
                     })
                 })
                 .then((res) => {
-                    this.props.checkActivations().then(()=>{
+                    this.props.checkActivations().then(() => {
                         console.log('SUBMIT - toggle form')
                         this.props.toggleForm()
                     })
-                
+
                 })
         }
 
         handleSelectChange(e) {
             let statesIncluded = []
-            console.log(e)
             for (let i = 0; i < e.length; i++) {
                 statesIncluded.push(e[i].value)
             }
@@ -87,29 +96,159 @@ export default class CreateActivation extends React.Component {
             })
         }
 
-        handleDelete(activationName){
+        handleDelete(activationName) {
 
             fetch(`${API_BASE_URL}/activate`, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    activationName: this.state.activationName,        
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        activationName: this.state.activationName,
+                    })
                 })
-            })
 
-            .then((res) => {
-                this.props.checkActivations().then(()=>{
-                    console.log('DELETE - toggle form')
-                    this.props.toggleForm()
+                .then((res) => {
+                    this.props.checkActivations().then(() => {
+                        console.log('DELETE - toggle form')
+                        this.props.toggleForm()
+                    })
+
                 })
-             
-            })
+        }
+
+        handleSearchSubmit(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            let currentState = this.state.searchParams.searchTerms;
+
+            if (this.searchInput.value !== "") {
+                currentState.push(this.searchInput.value)
+                let state = Object.assign({}, this.state.searchParams, {
+                    searchTerms: currentState
+                })
+                this.setState({
+                    searchParams: state
+                })
+                this.searchInput.value = ''
+            }
+        }
+
+        handleStreamSubmit(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            let userVal = this.streamUserInput.value
+            let keywordVal = this.streamKeywordInput.value
+
+            let userList = this.state.streamParams.users;
+            let keywordList = this.state.streamParams.searchTerms;
+
+            if (keywordVal !== "") {
+                keywordList.push(keywordVal);
+            }
+
+            if (userVal !== "") {
+                userList.push(userVal);
+            }
+
+            this.setState({
+                streamParams: {
+                    users: userList,
+                    searchTerms: keywordList
+                }
+            });
+            this.streamUserInput.value = "";
+            this.streamKeywordInput.value = "";
+        }
+
+        onKeyPress(e) {
+            if (e.which === 13) {
+                this.handleStreamSubmit(e);
+            }
+        }
+
+        handleItemDelete(e, stateLocation, index) {
+            e.preventDefault();
+            e.stopPropagation();
+            let currentState;
+
+            if (stateLocation === 'stream-users') {
+                currentState = this.state.streamParams.users;
+                currentState.splice(index, 1)
+                let state = Object.assign({}, this.state.streamParams, {
+                    users: currentState
+                })
+                this.setState({
+                    streamParams: state
+                })
+            } 
+            
+            else if (stateLocation === 'stream-searchTerms') {
+                currentState = this.state.streamParams.searchTerms;
+                currentState.splice(index, 1)
+                let state = Object.assign({}, this.state.streamParams, {
+                    searchTerms: currentState
+                })
+                this.setState({
+                    streamParams: state
+                })
+            } 
+            
+            else if (stateLocation === 'search-params') {
+                currentState = this.state.searchParams.searchTerms;
+                currentState.splice(index, 1);
+                let state = Object.assign({}, this.state.searchParams, {
+                    searchTerms: currentState
+                })
+                this.setState({
+                    searchParams: state
+                })
+            }
+
         }
 
 render(){        
+    let searchResults;
+    if(this.state.streamEnabled){
+        let userList = [];
+        let searchTermList = [];
+
+        for(let i = 0; i < this.state.streamParams.users.length; i++){
+            userList.push(<button onClick={(e)=>{this.handleItemDelete(e, 'stream-users', i)}} className='createActivation__single-search-item'>{this.state.streamParams.users[i]}</button>)
+        }
+
+        for(let i = 0; i < this.state.streamParams.searchTerms.length; i++){
+            searchTermList.push(<button onClick={(e)=>{this.handleItemDelete(e, 'stream-searchTerms', i)}} className='createActivation__single-search-item'>{this.state.streamParams.searchTerms[i]}</button>)
+        }
+
+        searchResults = 
+        <div>
+            <div>
+                <h2>User Ids</h2>
+                <div className='createActivation__search-item-category'>{userList}</div>
+            </div>   
+            <div>
+                <h2>Search Terms</h2>
+                <div className='createActivation__search-item-category'>{searchTermList}</div>
+            </div>
+        </div>
+    }
+
+    else{
+        let searchTermList = [];
+        for(let i = 0; i < this.state.searchParams.searchTerms.length; i++){
+            searchTermList.push(<button onClick={(e)=>{this.handleItemDelete(e, 'search-params', i)}} className='createActivation__single-search-item'>{this.state.searchParams.searchTerms[i]}</button>)
+        }
+        searchResults =   
+        <div>
+            <div>
+                <h2>Search Terms</h2>
+                <div className='createActivation__search-item-category'>{searchTermList}</div>
+            </div>
+        </div>
+    }
     let disasterTypes = [{
         value: 'Flooding',
         label: 'Flooding'
@@ -123,8 +262,25 @@ render(){
         value: 'Tornado',
         label: 'Tornado'
     }, ]
+        
+    let searchParamsForm;
 
-        let test = 'handleEditSubmit'
+    if(this.state.streamEnabled){
+        searchParamsForm = 
+        <form onSubmit={(e)=>{ this.handleStreamSubmit(e)}} className='createActivation__search-form createActivation__search-form--stream'>
+                <input onKeyPress={(e)=>{this.onKeyPress(e)}} type="submit" ref={node => (this.streamUserInput = node)} className='createActivation__input createActivation__input--search-form' type='text' placeholder='User Id'/>
+                <input onKeyPress={(e)=>{this.onKeyPress(e)}} type="submit" ref={node => (this.streamKeywordInput = node)} className='createActivation__input createActivation__input--search-form'  type='text' placeholder='Keywords, phrases, hashtags'/>
+        </form>
+    }
+    else{
+        searchParamsForm = 
+        <form onSubmit={(e)=>{ this.handleSearchSubmit(e)}} className='createActivation__search-form createActivation__search-form--search'>
+            <div className='createActivation__input-wrapper'>
+                <input ref={node => (this.searchInput = node)} className='createActivation__input createActivation__input--search-form'  type='text' placeholder='Keywords, phrases, hashtags'/>
+                {/* <button type='submit' className='createActivation__add-search-btn'>Add</button> */}
+            </div>
+        </form>
+    }
         return(
             <div className='createActivation'>
 
@@ -151,11 +307,6 @@ render(){
                     
                     <div className='createActivation__label-input-parent'>
                         <label className='createActivation__label'>Activation Level: </label>
-                        {/* <select defaultValue={this.state.level} onChange={(e)=>{this.setState({level: e.currentTarget.value })}}className='createActivation__input createActivation__input--select' type='number'>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select> */}
                         <Select
                             defaultValue={this.state.level === '' ? null : {value: this.state.level, label: this.state.level}}
                             onChange={(e)=>{this.setState({level: e.value })}}
@@ -190,20 +341,35 @@ render(){
                     </div>
 
                     <div className='createActivation__label-input-parent'>
-                        <label className='createActivation__label'>Stream Enabled: </label>
+                        <label className='createActivation__label'>Data Retrieval: </label>
+                    
                         <div className='createActivation__input'>
-                            <span>Off</span>
+                            <span>Search</span>
                             <label class="switch createActivation__switch">
                                 <input checked = {this.state.streamEnabled ? true : false} onChange={()=>this.setState({streamEnabled: !this.state.streamEnabled})} type="checkbox"/>
                                 <span class="slider round"></span>
                             </label>
-                            <span>On</span>
+                            <span>Stream</span>
                         </div>
-                    </div>
+                    </div>      
+
+                    <div className='createActivation__label-input-parent'>
+                        <label className='createActivation__label'>Data Parameters: </label>
+                        {searchParamsForm}
+                    </div>          
+
+                    <div className='createActivation__search-params-totals'>
+                        {/* <h2>{this.state.streamEnabled ? 'Stream Parameters' : 'Search Parameters'}</h2> */}
+                        {searchResults}
+                    </div>    
+
                     <button className='createActivation__submit-btn' type='submit'>Submit</button>
                     {this.props.type === 'Edit' ? <button className='createActivation__delete-btn' onClick={(e)=>{e.preventDefault(); this.handleDelete(this.state.activationName)}}>Delete</button> : null}
                   </form>
-                
+
+                    
+                                
+                   
                 </div>
                 
             </div>
