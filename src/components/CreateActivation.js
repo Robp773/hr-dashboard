@@ -18,8 +18,15 @@ export default class CreateActivation extends React.Component {
                 updateInterval: this.props.defaultVals.updateInterval / 60000,
                 analysisInterval: this.props.defaultVals.analysisInterval / 60000,
                 streamEnabled: this.props.defaultVals.streamEnabled,
-                streamParams: this.props.defaultVals.streamParams,
-                searchParams: this.props.defaultVals.searchParams
+
+                streamParams: {
+                    users: [],
+                    searchTerms: []
+                },
+                searchParams: {
+                    searchTerms: [],
+                    geocode: {}
+                }
             }
         }
 
