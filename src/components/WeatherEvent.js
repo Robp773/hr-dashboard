@@ -41,38 +41,44 @@ export default class WeatherEvent extends React.Component {
         let buttons = [];
         let alertsArray = []
         let btnStatus;
-          if(this.props.eventData[this.props.activeState].data){
-            let alertsObj = this.props.eventData[this.props.activeState].data
+          if(this.props.eventData[this.props.activeState].data){   
 
-            for (let key in alertsObj) {        
-                let active;
+            if(Object.keys(this.props.eventData[this.props.activeState].data).length === 0){
+                alertsArray = <div className='weather-event__no-alerts' key='key-no-alerts'>{`No Alerts`}</div>
+            }
 
-                if(this.state.tab){
-                    if(this.state.tab === key){
-                      active = 'active'
+            else{
+                let alertsObj = this.props.eventData[this.props.activeState].data
+
+                for (let key in alertsObj) {        
+                    let active;
+                    if(this.state.tab){
+                        if(this.state.tab === key){
+                        active = 'active'
+                        }
+                    }    
+                
+                    buttons.push(
+                        <button onClick={()=>{this.handleClick(key)}} className={`weather-event__alerts-h2 ${active}`} key={`${key}${this.props.activeState}-header`}>{key} 
+                            <span className='weather-event__alerts-count'> ({alertsObj[key].length})</span>
+                        </button>
+                    )
+                }
+
+                if(alertsObj[this.state.tab]){
+                        for(let i =0; i < alertsObj[this.state.tab].length; i++){
+                        alertsArray.push(
+                        <WeatherAlert key={i} index={i} alertsObj={alertsObj[this.state.tab][i]}/>
+                        )
                     }
-                }    
-              
-                buttons.push(
-                    <button onClick={()=>{this.handleClick(key)}} className={`weather-event__alerts-h2 ${active}`} key={`${key}${this.props.activeState}-header`}>{key} 
-                        <span className='weather-event__alerts-count'> ({alertsObj[key].length})</span>
-                    </button>
-                )
-            }
+                }
 
-            if(alertsObj[this.state.tab]){
-                for(let i =0; i < alertsObj[this.state.tab].length; i++){
-                alertsArray.push(
-                   <WeatherAlert key={i} index={i} alertsObj={alertsObj[this.state.tab][i]}/>
-                )
             }
-        }
-        
         }
         else{
-            alertsArray = <div className='weather-event__no-alerts' key='key'>{`No Alerts`}</div>
-            btnStatus = 'hidden'
+            alertsArray = <div className='weather-event__no-alerts' key='key-no-alerts'>{`No Alerts`}</div>
         }
+
         return ( 
             <div className='weather-event' >
 
