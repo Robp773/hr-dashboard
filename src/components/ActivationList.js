@@ -11,7 +11,7 @@ export default class ActivationList extends React.Component {
             this.state = {
                 results: [],
                 modalOpen: false,
-                adminOpen: true
+                adminOpen: false
             }
             
             this.toggleAdmin = this.toggleAdmin.bind(this);
