@@ -60,7 +60,7 @@ render(){
                     </div>
                     <div className='createActivation__label-input-parent'>
                         <label className='createActivation__label'>Event Monitor Radius: </label>
-                        <input className='createActivation__input' onChange={(e)=>{this.setState({earthquakeRadius: e.currentTarget.value}); this.props.setEarthquakeRadius(e.currentTarget.value)}} type='range' defaultValue={this.props.earthquakeParams.radius} max={500}/>
+                        <input className='createActivation__input' onChange={(e)=>{this.setState({earthquakeRadius: e.currentTarget.value}); this.props.setEarthquakeRadius(e.currentTarget.value)}} type='range' defaultValue={this.props.earthquakeParams.radius} max={300}/>
                         <div className='createActivation__interval-count'>{this.props.earthquakeParams.radius} km</div>  
                     </div>
                 </div>
