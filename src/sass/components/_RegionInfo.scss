@@ -4,9 +4,9 @@
     flex-direction: column;
     width: 50vw;
     height: 41.5vh;
-    background: whitesmoke;
     border-left: 3px solid black;
     position: relative;
+    background: $color-white;
 
     &__container {
         display: flex;
@@ -93,11 +93,7 @@
         // background: rgba(243, 142, 32, .15);
 
         &:hover {
-            background: $color-white;
-        }
-
-        &:hover>* a {
-            // color: $color-white;
+            background: rgba(243, 142, 32, .25);
         }
     }
 

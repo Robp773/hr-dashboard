@@ -10,7 +10,7 @@ export default class Weather extends React.Component {
 
             super(props);
             this.state = {
-                activeTab: 'alerts'
+                activeTab: 'event'
             }
         }
 
@@ -26,13 +26,13 @@ render(){
     let activeComponent;
     let eventComponents = {
         Weather: <WeatherEvent activeState={this.props.activeState} eventData={this.props.eventData}/>,
-        Earthquake: <Earthquake />
+        Earthquake: <Earthquake earthquakeData={this.props.earthquakeData} />
     } 
     
     if (this.state.activeTab === 'alerts') {
-        if (this.props.disasterType === 'Flooding' || 'Typhoon') {
+        // if (this.props.disasterType === 'Flooding' || 'Typhoon') {
             activeComponent = eventComponents.Weather
-        }
+        // }
     }
 
     else if (this.state.activeTab === 'radar') {
@@ -43,6 +43,11 @@ render(){
     else if(this.state.activeTab === 'cities'){
         activeComponent = <CitiesWeather cities={this.props.cities}/>
     }   
+    else if(this.state.activeTab === 'event'){
+        if(this.props.disasterType === 'Earthquake'){
+            activeComponent = eventComponents.Earthquake
+        }
+    }
 
     return(
         <div className='facts component weather'>
@@ -52,6 +57,7 @@ render(){
                     <button onClick={()=>{this.changeTab('radar')}} className={`weather__btn ${this.state.activeTab === 'radar' ? 'active' : ''}`}>Radar</button>
                     <button onClick={()=>{this.changeTab('alerts')}} className={`weather__btn ${this.state.activeTab === 'alerts' ? 'active' : ''}`}>Alerts</button>
                     <button onClick={()=>{this.changeTab('cities')}} className={`weather__btn ${this.state.activeTab === 'cities' ? 'active' : ''}`}>Cities</button>
+                    {this.props.disasterType === 'Earthquake' ? <button onClick={()=>{this.changeTab('event')}} className={`weather__btn ${this.state.activeTab === 'event' ? 'active' : ''}`}>Event</button> : null}
                 </div>
             </div>
             

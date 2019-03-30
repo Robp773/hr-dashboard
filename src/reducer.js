@@ -31,6 +31,7 @@ const initialState = {
     {},
     {}
   ],
+  earthquakeData: {}
 };
 
 export const reducer = (state = initialState, action) => {
@@ -75,10 +76,17 @@ export const reducer = (state = initialState, action) => {
   }
 
   if (action.type === "UPDATE_ANALYSIS") {
-    console.log(action.data)
     return Object.assign({},
       state, {
         socialAnalysis: action.data
+      }
+    );
+  }
+
+  if (action.type === "UPDATE_EARTHQUAKE_DATA") {
+    return Object.assign({},
+      state, {
+        earthquakeData: action.data
       }
     );
   }

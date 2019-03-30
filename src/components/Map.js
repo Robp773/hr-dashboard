@@ -39,7 +39,6 @@ export default class Map extends React.Component {
                 frameRate: 500
             });
             map.layers.insert(animatedLayer);
-        
     }
 render(){
         return(

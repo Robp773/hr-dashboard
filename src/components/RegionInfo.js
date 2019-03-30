@@ -50,7 +50,7 @@ render(){
                 facebookIcon = <a target='#' href={this.state.activeData[i].Facebook}><img className='regionInfo__sm-icon' alt='Facebook' src='images/facebook.png'/></a>;
             }
             listData.push(
-                <tr className={`regionInfo__tr ${i % 2 === 0 ? 'regionInfo__odd-tr' : ''}`} key={i}>
+                <tr className={`regionInfo__tr ${i % 2 === 0 ? 'td-even' : ''}`} key={i}>
                     <td  className='regionInfo__name' ><a target='#' href={this.state.activeData[i].Website}>{this.state.activeData[i].Name}</a></td>
                     <td className='regionInfo__social-media'>
                     {twitterIcon}

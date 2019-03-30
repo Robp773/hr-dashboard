@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {connect} from 'react-redux'
 import {API_BASE_URL} from "./config";
-import {setState, selectState, updateCities, updateEventData, updateAnalysis} from './actions';
+import {setState} from './actions';
 
 import ActivationMain from './components/ActivationMain';
 import ActivationList from './components/ActivationList';
@@ -19,7 +19,6 @@ export class App extends React.Component {
         .then((res) => {
           return res.json()
             .then((result) => {
-              console.log(result)
               this.props.dispatch(setState(result));
             })
             .catch(error => {

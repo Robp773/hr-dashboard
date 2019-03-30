@@ -92,7 +92,6 @@ export default class SocialFeed extends React.Component {
         }
 
         returnFromAnalysis(prevView) {
-            console.log(`returning to ${prevView}`);
             this.setState({
                 activeView: prevView,
                 prevView: 'analysis'

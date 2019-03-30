@@ -15,6 +15,7 @@ export default class entitiesAnalysis extends React.Component {
         }
 
     render(){       
+        console.log('RENDERING ENTITIES')
         let nameArray;
         let activeMsg
         let activeData;

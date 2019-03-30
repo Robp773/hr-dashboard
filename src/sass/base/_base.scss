@@ -59,7 +59,8 @@ body {
 }
 
 .td-even {
-  background: rgba(21, 67, 96, .15);
+  // background: rgba(21, 67, 96, .15);
+  background: rgba(0, 0, 0, .05);
 }
 
 .inactive {
@@ -111,10 +112,11 @@ body {
   transition: .4s;
 }
 
-.sliderSecondary{
+.sliderSecondary {
   background: $color-secondary !important;
 }
-.sliderPrimary{
+
+.sliderPrimary {
   background: $color-primary !important;
 }
 
@@ -149,24 +151,30 @@ input:checked+.slider:before {
   display: none;
 }
 
-.green{
+.green {
   background: lightgreen !important;
 }
-.orange{
+
+.orange {
   background: orange;
 }
-.red{
+
+.yellow {
+  background: yellow;
+}
+
+.red {
   background: red;
 }
 
-.huge-text{
+.huge-text {
   font-size: 6rem;
   color: red;
 }
 
-.modal-bg{
+.modal-bg {
   position: absolute;
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, .5);
   width: 100%;
   height: 100%;
   z-index: 999;

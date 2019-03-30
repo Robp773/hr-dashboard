@@ -23,6 +23,11 @@ export const updateAnalysis = (data) => ({
   data: data
 })
 
+export const updateEarthquakeData = (data) => ({
+  type: 'UPDATE_EARTHQUAKE_DATA',
+  data: data
+})
+
 export const returnToList = () => ({
   type: 'RETURN_TO_LIST',
 })

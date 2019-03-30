@@ -1,7 +1,6 @@
 import React from 'react';
-import {
-    API_BASE_URL
-} from "../config";
+import {API_BASE_URL} from "../config";
+import io from "socket.io-client";
 import states from "us-state-codes";
 import AdminLogin from './AdminLogin';
 import AdminPanel from './AdminPanel';
@@ -12,11 +11,13 @@ export default class ActivationList extends React.Component {
             this.state = {
                 results: [],
                 modalOpen: false,
-                adminOpen: false
+                adminOpen: true
             }
+            
             this.toggleAdmin = this.toggleAdmin.bind(this);
             this.openModal = this.openModal.bind(this);
 
+     
         }
 
         componentDidMount() {
@@ -80,13 +81,13 @@ export default class ActivationList extends React.Component {
             let levelClass;
 
             if (this.state.results[i].level === 1) {
-                levelClass = 'green'
+                levelClass = 'green';
             }
             else if (this.state.results[i].level === 2) {
-                levelClass = 'yellow'
+                levelClass = 'yellow';
             }
             else if (this.state.results[i].level === 3) {
-                levelClass = 'red'
+                levelClass = 'red';
             }   
             let levelIndicator = <div className={`activationList__level-indicator activationList__level-indicator--${levelClass}`}></div>
 

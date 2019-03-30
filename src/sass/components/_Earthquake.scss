@@ -1,0 +1,90 @@
+.earthquake {
+    position: relative;
+    // background: red;
+
+    &__original-event {
+        display: flex;
+        flex-wrap: wrap;
+        height: 34.5vh;
+    }
+
+    &__top-row {
+        opacity: 0;
+    }
+
+    &__feed-item-parent {
+        &:hover {
+            background: rgba(243, 142, 32, .25);
+        }
+    }
+
+    &__td {
+        text-align: left;
+
+        &>a {
+            color: black;
+        }
+
+        &--name {
+            padding-left: 1rem;
+        }
+    }
+
+    &__feed-toggle {
+        z-index: 1;
+        position: absolute;
+        display: flex;
+        font-size: 2.25rem;
+        padding: .5rem;
+        background: rgba(21, 67, 96, .75);
+        color: $color-white;
+        font-weight: bold;
+        width: 25%;
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+        justify-content: center;
+    }
+
+    &__feed-h2 {
+        width: 75%;
+        position: absolute;
+        left: 25%;
+    }
+
+    &__type-box {
+        text-align: center;
+        font-size: 2.25rem;
+        width: 33.33%;
+        padding: 1rem;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        height: 33.33%;
+
+        &--title {
+            width: 66.66%;
+            font-weight: bold;
+
+        }
+
+        &--25 {
+            width: 25%;
+        }
+
+
+
+        &>h3 {
+            margin: auto auto .5rem auto;
+            font-size: 2.75rem;
+            border-bottom: 3px solid $color-secondary;
+            width: fit-content;
+        }
+    }
+
+    &__no-events {
+        font-size: 3rem;
+        position: absolute;
+        top: 300%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

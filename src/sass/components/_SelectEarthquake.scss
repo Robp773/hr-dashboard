@@ -1,0 +1,51 @@
+.selectEarthquake {
+    width: 75%;
+    margin: auto;
+    max-height: 40rem;
+    overflow: scroll;
+
+    &__h2 {
+        font-size: 3.5rem;
+    }
+
+    &__row{
+        cursor: pointer;
+        &:hover{
+            background: rgba(243, 142, 32, .25)
+        }
+    }
+
+    &__label {
+        margin-right: 2rem;
+        width: 25%;
+        text-align: right;
+    }
+
+    &__selected-title {
+        display: inline-block;
+        width: 35%;
+        font-size: 3rem;
+        padding: .5rem 1rem;
+    }
+
+    &__changeEarthquake{
+        padding: 1rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 5%;
+        background: $color-secondary;
+        border: 1px solid transparent;
+        outline: none;
+        color: $color-white;
+        font-weight: bold;
+        font-size: 2rem;
+        cursor: pointer;
+
+        &:hover{
+            background: $color-white;
+            color: black;
+            border: 1px solid black;
+        }
+    }
+}

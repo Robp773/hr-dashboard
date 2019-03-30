@@ -1,9 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import { DateTime } from "luxon";
-import {connect} from 'react-redux'
-import {returnToList} from '../actions'
-
+import {connect} from 'react-redux';
+import {returnToList} from '../actions';
 
 export class Clock extends React.Component {
     constructor(props) {
@@ -25,8 +24,9 @@ export class Clock extends React.Component {
         })
     }
 
-    returnToList(){
+    returnToList(){        
         this.props.dispatch(returnToList())
+        this.props.disconnectSocket();
     }
 
     componentDidMount() {

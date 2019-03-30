@@ -2,8 +2,6 @@ import React from 'react';
 
 export default class Citiescities extends React.Component{
 render(){    
-    console.log('rendering cities')
-    console.log(this.props.cities)
 let listData = []
     for (let i = 0; i < this.props.cities.length; i++) {
             if(this.props.cities[i].name){

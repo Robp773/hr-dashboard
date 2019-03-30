@@ -1,6 +1,6 @@
 .standard {
 
-    &__data-parent{
+    &__data-parent {
         width: 75%;
         margin-left: auto;
     }
@@ -10,6 +10,14 @@
         max-height: 100%;
         overflow-y: scroll;
         border-spacing: 0;
+
+        &--earthquake {
+            max-height: 50% !important;
+        }
+
+        &--earthquake-feed {
+            font-size: 2.25rem;
+               }
     }
 
     &__th {
@@ -22,6 +30,9 @@
 
         &--name {
             width: 75%;
+        }
+        &--earthquake{
+            height: 5vh;
         }
     }
 

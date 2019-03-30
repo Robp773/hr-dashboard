@@ -3,7 +3,7 @@ import {
     API_BASE_URL
 } from "../config";
 import Select from 'react-select';
-
+import SelectEarthquake from './SelectEarthquake';
 
 export default class CreateActivation extends React.Component {
 
@@ -12,6 +12,7 @@ export default class CreateActivation extends React.Component {
             this.state = {
                 results: [],
                 activationName: this.props.defaultVals.activationName,
+                // disasterType: this.props.defaultVals.disasterType,
                 disasterType: this.props.defaultVals.disasterType,
                 level: this.props.defaultVals.level,
                 states: this.props.defaultVals.states,
@@ -19,8 +20,12 @@ export default class CreateActivation extends React.Component {
                 analysisInterval: this.props.defaultVals.analysisInterval / 60000,
                 streamEnabled: this.props.defaultVals.streamEnabled,
                 streamParams: this.props.defaultVals.streamParams,
-                searchParams: this.props.defaultVals.searchParams
+                searchParams: this.props.defaultVals.searchParams,
+                earthquakeData: this.props.defaultVals.earthquakeData,
+                earthquakeParams: this.props.defaultVals.earthquakeParams
             }
+            this.setEarthquake = this.setEarthquake.bind(this);
+            this.setEarthquakeRadius = this.setEarthquakeRadius.bind(this);
         }
 
         componentDidMount() {
@@ -43,7 +48,6 @@ export default class CreateActivation extends React.Component {
         }
 
         handleSubmit(e, reqType) {
-            console.log('SUBMIT TRIGGERED')
             e.preventDefault();
 
             if (!this.state.activationName || !this.state.disasterType) {
@@ -68,15 +72,14 @@ export default class CreateActivation extends React.Component {
                         analysisInterval: this.state.analysisInterval * 60000,
                         streamEnabled: this.state.streamEnabled,
                         streamParams: this.state.streamParams,
-                        searchParams: this.state.searchParams
+                        searchParams: this.state.searchParams,
+                        earthquakeParams: this.state.earthquakeParams
                     })
                 })
                 .then((res) => {
                     this.props.checkActivations().then(() => {
-                        console.log('SUBMIT - toggle form')
                         this.props.toggleForm()
                     })
-
                 })
         }
 
@@ -90,7 +93,7 @@ export default class CreateActivation extends React.Component {
             })
         }
 
-        handleDelete(activationName) {
+        handleDelete() {
 
             fetch(`${API_BASE_URL}/activate`, {
                     method: 'DELETE',
@@ -105,7 +108,6 @@ export default class CreateActivation extends React.Component {
 
                 .then((res) => {
                     this.props.checkActivations().then(() => {
-                        console.log('DELETE - toggle form')
                         this.props.toggleForm()
                     })
 
@@ -203,8 +205,21 @@ export default class CreateActivation extends React.Component {
 
         }
 
-render(){        
+        setEarthquake(id, title){
+            if(id){
+                this.setState({earthquakeParams: {...this.state.earthquakeParams, id: id, title: title}})
+            }
+            // when "change" btn is clicked
+            else{
+                this.setState({earthquakeParams: {...this.state.earthquakeParams, id: null, title: null}})
+            }
+        }
 
+        setEarthquakeRadius(radius){
+            this.setState({earthquakeParams: {...this.state.earthquakeParams, radius: radius}})
+        }
+
+render(){        
     let searchResults;
     if(this.state.streamEnabled){
         let userList = [];
@@ -299,6 +314,12 @@ render(){
                             options={disasterTypes}
                         />
                     </div>  
+
+
+                {this.state.disasterType === 'Earthquake' ?   
+                    <SelectEarthquake earthquakeParams={this.state.earthquakeParams} setEarthquake={this.setEarthquake} setEarthquakeRadius={this.setEarthquakeRadius}/> 
+                : null }
+                 
                     
                     <div className='createActivation__label-input-parent'>
                         <label className='createActivation__label'>Activation Level: </label>
@@ -337,7 +358,6 @@ render(){
 
                     <div className='createActivation__label-input-parent'>
                         <label className='createActivation__label'>Data Retrieval: </label>
-                    
                         <div className='createActivation__input'>
                             <span>Search</span>
                             <label class="switch createActivation__switch">
@@ -354,17 +374,13 @@ render(){
                     </div>          
 
                     <div className='createActivation__search-params-totals'>
-                        {/* <h2>{this.state.streamEnabled ? 'Stream Parameters' : 'Search Parameters'}</h2> */}
                         {searchResults}
                     </div>    
 
                     <button className='createActivation__submit-btn' type='submit'>Submit</button>
-                    {this.props.type === 'Edit' ? <button className='createActivation__delete-btn' onClick={(e)=>{e.preventDefault(); this.handleDelete(this.state.activationName)}}>Delete</button> : null}
-                  </form>
-
+                    {this.props.type === 'Edit' ? <button className='createActivation__delete-btn' onClick={(e)=>{e.preventDefault(); this.handleDelete()}}>Delete</button> : null}
+                  </form>                
                     
-                                
-                   
                 </div>
                 
             </div>

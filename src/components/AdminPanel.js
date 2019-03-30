@@ -22,12 +22,11 @@ export default class AdminPanel extends React.Component {
         }
 
         componentDidMount() {
-            console.log('COMPONENT DID MOUNT')
             fetch(`${API_BASE_URL}/activations/all`)
                 .then((res) => {
                     return res.json()
                         .then((result) => {
-                            console.log(result)
+
                             this.setState({
                                 results: result
                             })
@@ -76,8 +75,6 @@ export default class AdminPanel extends React.Component {
                 .then((res) => {
                     return res.json()
                         .then((result) => {
-                            console.log('setting results')
-                            console.log(result)
                             this.setState({
                                 results: result
                             })
@@ -91,12 +88,10 @@ export default class AdminPanel extends React.Component {
         }
 
         toggleCreateForm(){
-            console.log('toggling CREATE form')
             this.setState({createFormOpen: !this.state.createFormOpen, editFormOpen: false})
         }
 
         toggleEditForm(){
-            console.log('toggling EDIT form')
             this.setState({editFormOpen: !this.state.editFormOpen, createFormOpen: false, editIndex: 0})
         }
 
@@ -107,7 +102,10 @@ export default class AdminPanel extends React.Component {
 render(){        
     let formModal;    
     
-    let defaultVals = {
+    let defaultVals; 
+
+    if(this.state.createFormOpen){
+        defaultVals = {
             activationName: '',
             disasterType: '',
             level: '',
@@ -123,14 +121,17 @@ render(){
             searchParams: {
                 searchTerms: [],
                 geocode: {}
+            },
+            earthquakeParams: {
+                id: null,
+                title: null,
+                radius: 0,
             }
         }
-
-    if(this.state.createFormOpen){
         formModal = <CreateActivation reqType='POST' type='Create' defaultVals={defaultVals} checkActivations={this.checkActivations} toggleForm={this.toggleCreateForm}/>
     }
-    else if(this.state.editFormOpen && this.state.results.length > 0){
 
+    else if(this.state.editFormOpen && this.state.results.length > 0){
         let curActivation = this.state.results[this.state.editIndex];
         let statesArray = [];
         let stateNames = [];
@@ -151,9 +152,9 @@ render(){
             analysisInterval: curActivation.analysisInterval,
             streamEnabled: curActivation.streamEnabled,
             streamParams: curActivation.streamParams,
-            searchParams: curActivation.searchParams
+            searchParams: curActivation.searchParams,
+            earthquakeParams: curActivation.earthquakeParams
         }
-    
         formModal = <CreateActivation reqType='PUT' type='Edit' defaultVals={defaultVals} checkActivations={this.checkActivations} toggleForm={this.toggleEditForm}/>
     }
     let activationsArray = [];
@@ -199,7 +200,6 @@ render(){
             </tr>
         )
     }  
-
 
         return(
             <div className='adminPanel'>
