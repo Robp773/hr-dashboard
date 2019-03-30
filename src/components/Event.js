@@ -10,7 +10,7 @@ export default class Weather extends React.Component {
 
             super(props);
             this.state = {
-                activeTab: 'event'
+                activeTab: 'radar'
             }
         }
 
