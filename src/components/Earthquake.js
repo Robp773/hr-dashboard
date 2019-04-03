@@ -77,7 +77,7 @@ render(){
                         </div>
                         <div className='earthquake__type-box'>
                             <h3>Coordinates</h3>
-                            <div className='earthquake__data-box'>{this.props.earthquakeData.originalEventData.geometry.coordinates[0]}, {this.props.earthquakeData.originalEventData.geometry.coordinates[1]}</div>
+                            <div className='earthquake__data-box'>{this.props.earthquakeData.originalEventData.geometry.coordinates[1]}, {this.props.earthquakeData.originalEventData.geometry.coordinates[0]}</div>
                         </div>
                         <div className='earthquake__type-box'>
                             <h3>Last Update</h3>
