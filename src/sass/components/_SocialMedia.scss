@@ -22,7 +22,36 @@
         height: 7vh;
     }
 
-    &__stream-disabled{
+    &__speed-btn-parent{
+        display: flex;
+        justify-content: center;
+    }
+
+    &__speed-btn {
+        z-index: 999;
+        position: absolute;
+        padding: .25rem .5rem;
+        top: 0;
+        right: 0;
+        margin-top: 7vh;
+        text-align: center;
+        background: rgba(21, 67, 96, .75);
+        font-size: 1.5rem;
+
+        & > h4{
+            font-size: 1.5rem;
+            margin: .25rem 0;
+        }
+
+        & > * input{
+            color: red;
+            background: red;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &__stream-disabled {
         width: 100%;
         height: 100%;
         display: flex;
@@ -143,5 +172,5 @@
     &__tweet {
         font-size: 2.5rem;
     }
-    
+
 }

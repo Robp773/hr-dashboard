@@ -59,7 +59,6 @@ body {
 }
 
 .td-even {
-  // background: rgba(21, 67, 96, .15);
   background: rgba(0, 0, 0, .05);
 }
 
@@ -77,6 +76,12 @@ body {
   display: inline-block;
   width: 60px;
   height: 34px;
+
+  &--speed-btn {
+    height: 24px;
+    width: 50px;
+
+  }
 }
 
 /* Hide default HTML checkbox */
@@ -141,6 +146,11 @@ input:checked+.slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+.slider.round--speed-btn:before{
+  // background: red;
+  height: 18px;
+  width: 18px;
 }
 
 #myMap {

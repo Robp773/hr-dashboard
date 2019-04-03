@@ -27,6 +27,7 @@ export class Clock extends React.Component {
     returnToList(){        
         this.props.dispatch(returnToList())
         this.props.disconnectSocket();
+        window.clearInterval('tweetInterval')
     }
 
     componentDidMount() {

@@ -16,16 +16,17 @@ export default class SocialFeed extends React.Component {
                 tweetData: [],
                 activeView: 'feed',
                 prevView: 'widget',
-                analysisView: 'entities'
+                analysisView: 'entities',
+                rateLimited: false
             };
 
-            // need to add conditional for if tweetStream is enabled
+            this.tweetList = [];
 
             if (this.props.streamEnabled) {
-                let tweetStream = io(`${API_BASE_URL}/tweetStream`);
+                this.tweetStream = io(`${API_BASE_URL}/tweetStream`);
 
-                tweetStream.on("connect", () => {
-                    console.log("Connected to tweetStream socket"); // false
+                this.tweetStream.on("connect", () => {
+                    console.log("Connected to tweetStream socket");
 
                     Alert.success('Connected to Twitter Stream', {
                         position: 'top-right',
@@ -36,35 +37,30 @@ export default class SocialFeed extends React.Component {
                     });
                 });
 
-                tweetStream.on("disconnect", () => {
-                    console.log("Disconnected from tweetStream socket"); // false
+                this.tweetStream.on("disconnect", () => {
+                    console.log("Disconnected from tweetStream socket");
                 });
 
-                tweetStream.on("newTweet", tweet => {
-                    // console.log(tweet)
-                    let copy = this.state.tweetData;
-                    let tweetComp = < Tweet key = {
-                        `${tweet.screenName}-${tweet.time}-${new Date().getUTCMilliseconds()}`
-                    }
+                this.tweetStream.on("newTweet", tweet => {
+                    let tweetComp = 
+                    <Tweet key = {`${tweet.screenName}-${tweet.time}-${new Date().getUTCMilliseconds()}`
+                        }
                     data = {
                         tweet
                     }
                     />
-
-                    if (this.state.tweetData.length < 10) {
-                        copy.unshift(tweetComp)
-                        this.setState({
-                            tweetData: copy
-                        })
-
+                    if (this.tweetList.length < 10) {
+                        this.tweetList.unshift(tweetComp)
                     } else {
-                        copy.splice(-1, 1);
-                        copy.unshift(tweetComp)
-                        this.setState({
-                            tweetData: copy
-                        })
+                        this.tweetList.splice(-1, 1);
+                        this.tweetList.unshift(tweetComp)
+                    }
+                    if (!this.state.rateLimited) {
+                        this.pushNewTweets()
                     }
                 });
+
+            
             }
         }
 
@@ -99,14 +95,47 @@ export default class SocialFeed extends React.Component {
         }
 
         changeAnalysisView(tab) {
-            console.log(`changing to ${tab}`)
             this.setState({
                 analysisView: tab
             })
         }
 
+        pushNewTweets(){
+            let copy = this.state.tweetData;
+                if (this.state.tweetData[0] !== this.tweetList[0]) {
+
+            if (this.state.tweetData.length < 10) {
+                    copy.unshift(this.tweetList[0])
+                    this.setState({
+                        tweetData: copy
+                    })
+
+                
+            } else {
+                    copy.splice(-1, 1);
+                    copy.unshift(this.tweetList[0])
+                    this.setState({
+                        tweetData: copy
+                    })
+                }
+            }
+        }
+
+        toggleRate(){
+            this.setState({rateLimited: !this.state.rateLimited})
+        }
+
+        componentDidUpdate(){
+            clearInterval(window.tweetInterval)
+            if (this.state.rateLimited) {
+               window.tweetInterval = setInterval(() => {
+                   this.pushNewTweets();
+               }, 1500);
+           }
+        }
+
   render() {
-    // console.log(`Feed - analysisView: ${this.state.analysisView}`)
+   
     let activeFeed;  
     let presetSlider;
 
@@ -120,7 +149,8 @@ export default class SocialFeed extends React.Component {
     let activeNavBtns =    
         <div className='social-feed__heading-parent'>
             <div className='social-feed__heading'>Social Data</div>
-                <div className="social-feed__btn-container">
+                <div className="social-feed__btn-container"> 
+
                     <div className='social-feed__feed-toggle'>    
                         <div className='social-feed__label'>Feed</div>
                         <label class="switch">
@@ -129,8 +159,20 @@ export default class SocialFeed extends React.Component {
                         </label>
                         <div className='social-feed__label'>List</div>
                     </div>
-
-                    <button onClick={()=>{this.showAnalysis()}} className='social-feed__chart-btn'>Analysis</button>
+                <button onClick={()=>{this.showAnalysis()}} className='social-feed__chart-btn'>Analysis</button>
+                {this.state.activeView === 'feed' ? 
+                <div className='social-feed__speed-btn'>
+                        <h4>Limit Speed</h4>
+                        <div className='social-feed__speed-btn-parent'>
+                            <div className='social-feed__label'>Off</div>
+                            <label class="switch switch--speed-btn">
+                                <input checked={this.state.rateLimited ? true : false} onChange={()=>{this.toggleRate()}} type="checkbox"/>  
+                                <span class="slider round round--speed-btn"></span>
+                            </label>
+                            <div className='social-feed__label'>On</div>
+                        </div>
+                </div> 
+                : null}
             </div>
         </div>
 
@@ -152,24 +194,26 @@ export default class SocialFeed extends React.Component {
                 <button className={`social-feed__btn ${this.state.analysisView === 'entities' ? 'active' : ''}`} onClick={()=>{this.changeAnalysisView('entities')}}>Entities</button>                
                 <button className={`social-feed__btn ${this.state.analysisView === 'trends' ? 'active' : ''}`} onClick={()=>{this.changeAnalysisView('trends')}}>Trends</button>                
                 <button className={`social-feed__btn ${this.state.analysisView === 'word-clouds' ? 'active' : ''}`} onClick={()=>{this.changeAnalysisView('word-clouds')}}>Other</button>                
-                
                 <button className='social-feed__back-btn' onClick={()=>this.returnFromAnalysis(this.state.prevView)}>Back</button>
 
             </div>
         </div>
     
     }
-     else if(this.state.widgetActive){
+
+    else if(this.state.widgetActive){
         activeFeed = <TwitterWidget twitterWidgets={this.props.twitterWidgets} />
     }
-     else if(this.state.activeView === 'feed'){
-         if(!this.props.streamEnabled){
+
+    else if(this.state.activeView === 'feed'){
+        if(!this.props.streamEnabled){
              activeFeed = 
                 <h2 className='social-feed__stream-disabled'>Stream disabled for this dashboard.</h2>
-         }
-         else{
+        }
+
+        else{
             activeFeed = this.state.tweetData;
-         }
+        }
     }
   
     return (
