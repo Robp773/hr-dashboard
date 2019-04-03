@@ -1,22 +1,22 @@
 import React from 'react';
 
-export default class Status extends React.Component{
-render(){
+export default function Status(props){  
+    
     let statusColor;
-    if(this.props.status === 1){
+    if(props.status === 1){
         statusColor = {background: 'green'};
     }
-    else if(this.props.status === 2){
+    else if(props.status === 2){
         statusColor = {color: 'yellow'};
     }
-    else if(this.props.status === 3){
+    else if(props.status === 3){
         statusColor = {background: 'red'};
     }
 
     return(
-        <div  className='status' >  
-            <div className='status__alert' style={statusColor}>{this.props.status}</div>
+        <div className='status' >  
+            <div className='status__alert' style={statusColor}>{props.status}</div>
         </div>
     )
-}
+
 }

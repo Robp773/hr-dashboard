@@ -24,9 +24,6 @@ export default class Earthquake extends React.Component{
                 </tr>
             )
             }
-            else{
-                console.log(item)
-            }
         })
     
         this.setState({earthquakeList: earthquakeList})

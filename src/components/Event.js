@@ -30,9 +30,7 @@ render(){
     } 
     
     if (this.state.activeTab === 'alerts') {
-        // if (this.props.disasterType === 'Flooding' || 'Typhoon') {
-            activeComponent = eventComponents.Weather
-        // }
+        activeComponent = eventComponents.Weather
     }
 
     else if (this.state.activeTab === 'radar') {
@@ -42,10 +40,11 @@ render(){
 
     else if(this.state.activeTab === 'cities'){
         activeComponent = <CitiesWeather cities={this.props.cities}/>
-    }   
+    }
+       
     else if(this.state.activeTab === 'event'){
         if(this.props.disasterType === 'Earthquake'){
-            activeComponent = eventComponents.Earthquake
+        activeComponent = eventComponents.Earthquake
         }
     }
 

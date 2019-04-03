@@ -9,12 +9,6 @@ export default class Locations extends React.Component {
             }
         }
 
-        // changeTab(tab) {
-        //     this.setState({
-        //         activeTab: tab
-        //     })
-        // }
-
         onCheck(){
             this.setState({tableActive: !this.state.tableActive})
         }

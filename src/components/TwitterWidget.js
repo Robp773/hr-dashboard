@@ -1,25 +1,24 @@
 import React from 'react';
 
 export default class twitterWidget extends React.Component {
-        constructor(props) {
-            super(props);
-            this.state = {};
-        }
-        componentDidMount() {       
-              window.twttr.widgets.load()
-        }
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
-        componentDidUpdate() {
-               
-            window.twttr.widgets.load()          
-        }
+    componentDidMount() {       
+        window.twttr.widgets.load()
+    }
 
-        render() {
+    componentDidUpdate() {
+        window.twttr.widgets.load()          
+    }
 
-     
-            return(
-                <div id='twitterWidgets-parent'>{this.props.twitterWidgets}</div>
-                   
-            )
+    render() {
+
+        return(
+            <div id='twitterWidgets-parent'>{this.props.twitterWidgets}</div>
+        )
+
     }
 }

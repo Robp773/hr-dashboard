@@ -3,7 +3,8 @@ import EntitiesAnalysis from './EntitiesAnalysis';
 import Trends from './Trends';
 
 export default class SocialAnalysis extends React.Component{
-shouldComponentUpdate(nextProps, nextState) {
+
+shouldComponentUpdate(nextProps) {
     if (this.props.socialAnalysis.entities.snapShotTime !== nextProps.socialAnalysis.entities.snapShotTime) {
         return true;
     } else if (this.props.socialAnalysis.trends.hashtags !== nextProps.socialAnalysis.trends.hashtags) {

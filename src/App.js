@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {connect} from 'react-redux'
 import {API_BASE_URL} from "./config";
@@ -8,9 +8,8 @@ import ActivationMain from './components/ActivationMain';
 import ActivationList from './components/ActivationList';
 
 export class App extends React.Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     this.chooseActivation = this.chooseActivation.bind(this);
   }
 

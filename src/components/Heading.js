@@ -1,16 +1,13 @@
 import React from 'react';
-// import moment from 'moment';
 
-export default class Heading extends React.Component{
-render(){        
-  
+export default function Heading(props){
+       
         return(
             <div className='heading'>
 
-                <h1 className='heading__name'>{this.props.headingInfo.type}</h1>
-                <div className='heading__states'>{this.props.impactedStates}</div>
+                <h1 className='heading__name'>{props.headingInfo.type}</h1>
+                <div className='heading__states'>{props.impactedStates}</div>
                 
             </div>
         )
-    }
 }

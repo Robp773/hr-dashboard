@@ -34,9 +34,6 @@ export default class WeatherEvent extends React.Component {
     }
 
     render() {
-        // console.log('-----------------------------------------')   
-        // console.log(`Active State: ${this.props.activeState}`)
-        // console.log(this.props.eventData[this.props.activeState])
 
         let buttons = [];
         let alertsArray = []
@@ -94,5 +91,4 @@ export default class WeatherEvent extends React.Component {
             </div>    
         )
     }
-
 }

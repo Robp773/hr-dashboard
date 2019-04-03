@@ -7,7 +7,7 @@ import RegionInfo from './RegionInfo';
 import {connect} from 'react-redux'
 import SocialFeed from './SocialFeed';
 import {API_BASE_URL} from "../config";
-import {setState, selectState, updateCities, updateEventData, updateAnalysis, updateEarthquakeData} from '../actions';
+import {selectState, updateCities, updateEventData, updateAnalysis, updateEarthquakeData} from '../actions';
 import io from "socket.io-client";
 import Alert from 'react-s-alert';
 
@@ -24,6 +24,7 @@ class ActivationMain extends Component {
         offset: 100
       });
     })
+
     this.dataStream.on("disconnect", (e) => {
       Alert.error(`Disconnected from ${this.props.activationName} Data Stream`, {
         position: 'top-right',
@@ -41,12 +42,10 @@ class ActivationMain extends Component {
         timeout: 3000,
         offset: 100
       });
-      console.log(msg)
       this.props.dispatch(updateCities(msg))
     })
 
     this.dataStream.on("newEventData", msg => {
-      console.log('new event data')
       Alert.success(`Updating weather alerts...`, {
         position: 'top-right',
         effect: 'slide',
@@ -104,6 +103,7 @@ class ActivationMain extends Component {
 
     return (
       <div>
+
         <div className='headerBar'>
           <Status status={this.props.status}/>
           <Heading impactedStates={impactedStates} headingInfo={this.props.headingInfo}/>

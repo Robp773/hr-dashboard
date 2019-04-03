@@ -1,23 +1,19 @@
 import React from 'react';
 import {API_BASE_URL} from "../config";
-import io from "socket.io-client";
 import states from "us-state-codes";
 import AdminLogin from './AdminLogin';
 import AdminPanel from './AdminPanel';
 
 export default class ActivationList extends React.Component {
-        constructor(props) {
-            super(props);
+        constructor() {
+            super();
             this.state = {
                 results: [],
                 modalOpen: false,
                 adminOpen: false
             }
-            
             this.toggleAdmin = this.toggleAdmin.bind(this);
             this.openModal = this.openModal.bind(this);
-
-     
         }
 
         componentDidMount() {
@@ -96,13 +92,13 @@ export default class ActivationList extends React.Component {
                 statesArray.push(<span>{states.getStateCodeByStateName(this.state.results[i].states[b])} </span>)
             }
             activationsArray.push(
-                <tr className='activationList__tr' onClick={()=>{this.props.chooseActivation(this.state.results[i].activationName)}} className={`activationList__tr`} key={`activation-${i}`}>
+                <tr className='activationList__tr' onClick={()=>{this.props.chooseActivation(this.state.results[i].activationName)}} key={`activation-${i}`}>
                     <td className='activationList__td'>{this.state.results[i].activationName}</td>
                     <td className='activationList__td'>{statesArray}</td>
                     <td className='activationList__td'>{this.state.results[i].disasterType}</td>
                     <td className='activationList__td'>{this.state.results[i].streamEnabled ? enabledIndicator: disabledIndicator}</td>
                     <td className={`activationList__td activationList__level`}>{levelIndicator}</td>
-                    <td className='activationList__td activationList__td--open'><img src='./images/login.png'/></td>
+                    <td className='activationList__td activationList__td--open'><img alt='open activation' src='./images/login.png'/></td>
                 </tr>
             )
         }
@@ -113,7 +109,7 @@ export default class ActivationList extends React.Component {
             {modal}
             <button className='activationList__admin-btn' onClick={()=>{this.openModal()}}>Admin Login</button>
                 {/* <h1 className='activationList__title'>Humanity Road Dashboard Activations</h1> */}
-                <img className='activationList__banner' src='../images/hr-logo-horizontal.png' />
+                <img className='activationList__banner' alt='Humanity Road logo' src='../images/hr-logo-horizontal.png' />
                 <table className='activationList__table'> 
                         <tbody>
                         <tr className='activationList__top-row'>

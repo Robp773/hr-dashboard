@@ -1,18 +1,17 @@
 import React from 'react';
 
-export default class Citiescities extends React.Component{
-render(){    
+export default function Citiescities(props){
 let listData = []
-    for (let i = 0; i < this.props.cities.length; i++) {
-            if(this.props.cities[i].name){
+    for (let i = 0; i < props.cities.length; i++) {
+            if(props.cities[i].name){
                 listData.push(
                 <tr className='cities__tr' key={`cities-${i}`}>
-                    <td className='cities__td cities__city'>{this.props.cities[i].name}</td>
-                    <td className='cities__td'>{this.props.cities[i].description}</td>
-                    <td className='cities__td'>{this.props.cities[i].temperature} &#8457;</td>
-                    <td className='cities__td'>{this.props.cities[i].windSpeed}</td>
-                    <td className='cities__td'>{this.props.cities[i].humidity}%</td>
-                    <td className='cities__td'>{this.props.cities[i].visibility} mi</td>
+                    <td className='cities__td cities__city'>{props.cities[i].name}</td>
+                    <td className='cities__td'>{props.cities[i].description}</td>
+                    <td className='cities__td'>{props.cities[i].temperature} &#8457;</td>
+                    <td className='cities__td'>{props.cities[i].windSpeed}</td>
+                    <td className='cities__td'>{props.cities[i].humidity}%</td>
+                    <td className='cities__td'>{props.cities[i].visibility} mi</td>
                 </tr>
                 )
             }
@@ -34,5 +33,4 @@ let listData = []
                     </table>
                 </div>
         )
-    }
 }

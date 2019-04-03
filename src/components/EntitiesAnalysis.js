@@ -43,7 +43,7 @@ export default class entitiesAnalysis extends React.Component {
                     colorClass = 'red'
                 }
                 activeData.push(
-                        <tr key={`entities-${i}`} className='entities__tr' className={i % 2 === 0 ? 'td-even' : 'td-odd'}>
+                        <tr key={`entities-${i}`} className={`entities__tr ${i % 2 === 0 ? 'td-even' : 'td-odd'}`}>
                             <td className='entities__td entities__td--entity-name'>{dataArray[i].normalized}</td>
                             <td className='entities__td'>{dataArray[i].count}</td> 
                             <td className={`entities__td ${colorClass}`}>{dataArray[i].confidence ? `${dataArray[i].confidence} %` : 'n/a'}</td>

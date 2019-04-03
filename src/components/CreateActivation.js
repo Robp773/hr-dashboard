@@ -12,7 +12,6 @@ export default class CreateActivation extends React.Component {
             this.state = {
                 results: [],
                 activationName: this.props.defaultVals.activationName,
-                // disasterType: this.props.defaultVals.disasterType,
                 disasterType: this.props.defaultVals.disasterType,
                 level: this.props.defaultVals.level,
                 states: this.props.defaultVals.states,
@@ -47,7 +46,7 @@ export default class CreateActivation extends React.Component {
                 })
         }
 
-        handleSubmit(e, reqType) {
+        handleSubmit(e) {
             e.preventDefault();
 
             if (!this.state.activationName || !this.state.disasterType) {
@@ -62,8 +61,6 @@ export default class CreateActivation extends React.Component {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        // search params
-                        // twitter list 
                         activationName: this.state.activationName,
                         disasterType: this.state.disasterType,
                         level: this.state.level,
@@ -76,7 +73,7 @@ export default class CreateActivation extends React.Component {
                         earthquakeParams: this.state.earthquakeParams
                     })
                 })
-                .then((res) => {
+                .then(() => {
                     this.props.checkActivations().then(() => {
                         this.props.toggleForm()
                     })
@@ -106,7 +103,7 @@ export default class CreateActivation extends React.Component {
                     })
                 })
 
-                .then((res) => {
+                .then(() => {
                     this.props.checkActivations().then(() => {
                         this.props.toggleForm()
                     })
@@ -287,7 +284,6 @@ render(){
         <form onSubmit={(e)=>{ this.handleSearchSubmit(e)}} className='createActivation__search-form createActivation__search-form--search'>
             <div className='createActivation__input-wrapper'>
                 <input ref={node => (this.searchInput = node)} className='createActivation__input createActivation__input--search-form'  type='text' placeholder='Keywords, phrases, hashtags'/>
-                {/* <button type='submit' className='createActivation__add-search-btn'>Add</button> */}
             </div>
         </form>
     }
@@ -320,7 +316,6 @@ render(){
                     <SelectEarthquake earthquakeParams={this.state.earthquakeParams} setEarthquake={this.setEarthquake} setEarthquakeRadius={this.setEarthquakeRadius}/> 
                 : null }
                  
-                    
                     <div className='createActivation__label-input-parent'>
                         <label className='createActivation__label'>Activation Level: </label>
                         <Select
