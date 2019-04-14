@@ -36,7 +36,7 @@ export default class MapTab extends React.Component {
             .then((res) => {
               res.text()
                 .then((result) => {
-
+                  console.log(`recd token: ${result}`)
                   esriId.registerToken({
                     server: 'https://www.arcgis.com/sharing',
                     token: result
