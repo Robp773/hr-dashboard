@@ -110,14 +110,17 @@ class ActivationMain extends Component {
           <Clock disconnectSocket={this.disconnectSocket} activationName={this.props.activationName} location={this.props.location} timeZone={this.props.timeZone}/>
         </div>
 
-        <div className='infoBar'>
-              <SocialFeed streamEnabled={this.props.streamEnabled} socialAnalysis={this.props.socialAnalysis} activationName={this.props.activationName} twitterWidgets={twitterWidgets} /> 
-            <div className='weather-region-container'>
-              <Event earthquakeData={this.props.earthquakeData} cities={this.props.cities} activeState={this.props.activeState} eventData={this.props.eventData} disasterType={this.props.disasterType} latLng={this.props.regionalData.latLng}/>
-              <RegionInfo regionalData={this.props.regionalData}/>
-            </div>
-        </div>
 
+            <div className='infoBar'>
+              <SocialFeed streamEnabled={this.props.streamEnabled} socialAnalysis={this.props.socialAnalysis} activationName={this.props.activationName} twitterWidgets={twitterWidgets} /> 
+              
+              <div className='weather-region-container'>
+                <Event mapLayers={this.props.mapLayers} earthquakeData={this.props.earthquakeData} cities={this.props.cities} activeState={this.props.activeState} eventData={this.props.eventData} disasterType={this.props.disasterType} latLng={this.props.regionalData.latLng}/>
+                <RegionInfo regionalData={this.props.regionalData}/>
+              </div>
+
+            </div>
+            
       </div>
     );
   }
@@ -138,7 +141,8 @@ const mapStateToProps = state => ({
   cities: state.cities[state.activeState],
   streamEnabled: state.streamEnabled,
   socialAnalysis: state.socialAnalysis,
-  earthquakeData: state.earthquakeData
+  earthquakeData: state.earthquakeData,
+  mapLayers: state.mapLayers
 })
 
 export default connect(mapStateToProps)(ActivationMain)
