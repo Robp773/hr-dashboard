@@ -176,9 +176,6 @@
         font-size: 3.5rem;
         box-shadow: 0 .5rem 2rem black;
         cursor: pointer;
-        // position: absolute;
-        // right: 0;
-        // bottom: 0;
         margin: auto 1rem;
 
         &:hover {
@@ -188,8 +185,22 @@
 
     }
 
+    &__layer-parent{
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+        & > input{
+            width: 100%;
+        }
+      
+    }
+
 }
 
 .css-10nd86i {
     width: 35%;
+}
+
+#select{
+    width: 100%;
 }

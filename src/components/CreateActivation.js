@@ -9,6 +9,7 @@ export default class CreateActivation extends React.Component {
 
         constructor(props) {
             super(props);
+
             this.state = {
                 results: [],
                 activationName: this.props.defaultVals.activationName,
@@ -21,8 +22,10 @@ export default class CreateActivation extends React.Component {
                 streamParams: this.props.defaultVals.streamParams,
                 searchParams: this.props.defaultVals.searchParams,
                 earthquakeData: this.props.defaultVals.earthquakeData,
-                earthquakeParams: this.props.defaultVals.earthquakeParams
+                earthquakeParams: this.props.defaultVals.earthquakeParams,
+                mapLayers: this.props.defaultVals.mapLayers
             }
+
             this.setEarthquake = this.setEarthquake.bind(this);
             this.setEarthquakeRadius = this.setEarthquakeRadius.bind(this);
         }
@@ -70,7 +73,8 @@ export default class CreateActivation extends React.Component {
                         streamEnabled: this.state.streamEnabled,
                         streamParams: this.state.streamParams,
                         searchParams: this.state.searchParams,
-                        earthquakeParams: this.state.earthquakeParams
+                        earthquakeParams: this.state.earthquakeParams,
+                        mapLayers: this.state.mapLayers
                     })
                 })
                 .then(() => {
@@ -152,6 +156,7 @@ export default class CreateActivation extends React.Component {
                     searchTerms: keywordList
                 }
             });
+
             this.streamUserInput.value = "";
             this.streamKeywordInput.value = "";
         }
@@ -160,6 +165,14 @@ export default class CreateActivation extends React.Component {
             if (e.which === 13) {
                 this.handleStreamSubmit(e);
             }
+        }
+
+        handleLayerDelete(e, index) {
+            e.preventDefault();
+            e.stopPropagation();
+            let currentLayers = this.state.mapLayers;
+            currentLayers.splice(index, 1);
+            this.setState({mapLayers: currentLayers});
         }
 
         handleItemDelete(e, stateLocation, index) {
@@ -216,6 +229,17 @@ export default class CreateActivation extends React.Component {
             this.setState({earthquakeParams: {...this.state.earthquakeParams, radius: radius}})
         }
 
+        handleLayerKeyPress(e){
+            if (e.which === 13) {    
+                e.preventDefault();
+                let currentLayers = this.state.mapLayers;
+                currentLayers.push({type: this.tempLayerType, url: this.layerInput.value});
+                this.setState({mapLayers: currentLayers});
+                this.layerInput.value = '';
+            }
+        }
+      
+
 render(){        
     let searchResults;
     if(this.state.streamEnabled){
@@ -266,9 +290,24 @@ render(){
         value: 'Hurricane',
         label: 'Hurricane'
     }, {
+        value: 'Winter Storm',
+        label: 'Winter Storm'
+    }, {
+        value: 'Drought',
+        label: 'Drought'
+    }, {
+        value: 'Extreme Heat',
+        label: 'Extreme Heat'
+    }, {
         value: 'Tornado',
         label: 'Tornado'
-    }, ]
+    }, {
+        value: 'Hurricane',
+        label: 'Hurricane'
+    }, {
+        value: 'Wildfire',
+        label: 'Wildfire'
+    }]
         
     let searchParamsForm;
 
@@ -350,6 +389,25 @@ render(){
                         <input className='createActivation__input' onChange={(e)=>{this.setState({analysisInterval: e.currentTarget.value})}} type='range' defaultValue={this.state.analysisInterval} min={10} max={180}/>
                         <div className='createActivation__interval-count'>{this.state.analysisInterval} mins</div>  
                     </div>
+
+                    <div className='createActivation__label-input-parent'>
+                        <label className='createActivation__label'>Add Layers: </label>
+                        <div className='createActivation__layer-parent'>
+                            <Select
+                                placeholder='Layer Type'
+                                onChange={(e)=>{this.tempLayerType = e.value}}
+                                id='select'
+                                options={[
+                                    {value: 'FeatureLayer', label: 'Feature Layer'},
+                                    {value: 'MapImageLayer', label: 'Map Image Layer'},
+                                    // {value: 'ImageryLayer', label: 'Imagery Layer'},
+                                    ]}>
+                            </Select>
+                            <input ref={node => (this.layerInput = node)} onKeyPress={(e)=>{this.handleLayerKeyPress(e)}} placeholder='Layer URL' className='createActivation__input createActivation__input--layer' type='text' />
+                        </div>
+                    </div>
+
+                    <div>{this.state.mapLayers.map((item, index)=>{return<button onClick={(e)=>{this.handleLayerDelete(e, index)}} className='createActivation__single-search-item'>{item.type} - {item.url}</button>})}</div>
 
                     <div className='createActivation__label-input-parent'>
                         <label className='createActivation__label'>Data Retrieval: </label>

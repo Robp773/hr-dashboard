@@ -31,21 +31,26 @@ const initialState = {
     {},
     {}
   ],
-  earthquakeData: {}
+  earthquakeData: {},
+  mapLayers: []
 };
 
 export const reducer = (state = initialState, action) => {
 
   if (action.type === "SET_STATE") {
     return Object.assign({},
-      state,{activationChosen: true},
+      state, {
+        activationChosen: true
+      },
       action.state
     );
   }
 
   if (action.type === "RETURN_TO_LIST") {
     return Object.assign({},
-      state,{activationChosen: false}
+      state, {
+        activationChosen: false
+      }
     );
   }
 
@@ -57,9 +62,7 @@ export const reducer = (state = initialState, action) => {
     );
   }
 
-
   if (action.type === "UPDATE_CITIES") {
-    console.log(action.data)
     return Object.assign({},
       state, {
         cities: action.data

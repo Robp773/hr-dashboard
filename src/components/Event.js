@@ -2,7 +2,7 @@ import React from 'react';
 import WeatherEvent from './WeatherEvent';
 import Earthquake from './Earthquake';
 import CitiesWeather from './CitiesWeather';
-import Map from './Map';
+import MapTab from './MapTab';
 
 export default class Weather extends React.Component {
 
@@ -35,7 +35,7 @@ render(){
 
     else if (this.state.activeTab === 'radar') {
         headerPos = 'weather__heading--absolute';
-        activeComponent = <Map latLng={this.props.latLng}/>
+        activeComponent = <MapTab mapLayers={this.props.mapLayers} disasterType={this.props.disasterType} latLng={this.props.latLng}/>
     }
 
     else if(this.state.activeTab === 'cities'){

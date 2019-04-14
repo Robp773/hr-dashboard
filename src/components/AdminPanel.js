@@ -126,13 +126,15 @@ render(){
                 id: null,
                 title: null,
                 radius: 0,
-            }
+            },
+            mapLayers: []
         }
         formModal = <CreateActivation reqType='POST' type='Create' defaultVals={defaultVals} checkActivations={this.checkActivations} toggleForm={this.toggleCreateForm}/>
     }
 
     else if(this.state.editFormOpen && this.state.results.length > 0){
         let curActivation = this.state.results[this.state.editIndex];
+        console.log(curActivation)
         let statesArray = [];
         let stateNames = [];
         for(let i = 0; i <curActivation.states.length; i++){
@@ -153,7 +155,8 @@ render(){
             streamEnabled: curActivation.streamEnabled,
             streamParams: curActivation.streamParams,
             searchParams: curActivation.searchParams,
-            earthquakeParams: curActivation.earthquakeParams
+            earthquakeParams: curActivation.earthquakeParams,
+            mapLayers: curActivation.mapLayers
         }
         formModal = <CreateActivation reqType='PUT' type='Edit' defaultVals={defaultVals} checkActivations={this.checkActivations} toggleForm={this.toggleEditForm}/>
     }
