@@ -17,6 +17,7 @@ export default class ActivationList extends React.Component {
         }
 
         componentDidMount() {
+         
             fetch(`${API_BASE_URL}/activations/active`)
                 .then((res) => {
                     return res.json()

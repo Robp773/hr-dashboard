@@ -31,6 +31,7 @@ export class App extends React.Component {
     if(this.props.activationChosen){
       activeComponent = <ActivationMain/>
     }
+    
     else{
       activeComponent = <ActivationList chooseActivation={this.chooseActivation}/>
     }

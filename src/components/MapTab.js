@@ -36,19 +36,12 @@ export default class MapTab extends React.Component {
             .then((res) => {
               res.text()
                 .then((result) => {
-             
-          // var oAuthInfo = new OAuthInfo({
-          //   appId: "lF2AMBgDIqJvwjWe",
-          //   popup: false
-          // })
 
-          // esriId.registerOAuthInfos([oAuthInfo]);
-
-          esriId.registerToken({
-            server: 'https://www.arcgis.com',
-            token: result
-          });
-                  
+                  esriId.registerToken({
+                    server: 'https://www.arcgis.com',
+                    token: result
+                  });
+                          
                   // need to add extreme heat, tornado, and drought layers
                   let disasterCategory;
 
