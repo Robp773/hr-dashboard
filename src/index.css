@@ -1,5 +1,5 @@
 .weather {
-  height: 41.5vh;
+  height: 41vh;
   margin: auto;
   text-align: center;
   position: relative;
@@ -14,8 +14,7 @@
     justify-content: center;
     align-items: center;
     border-top: 3px solid black;
-    border-bottom: 3px solid black;
-    background: rgba(21, 67, 96, 0.75); }
+    background: rgba(21, 67, 96, 0); }
     .weather__heading--absolute {
       position: absolute;
       width: 100%;
@@ -42,7 +41,8 @@
     align-items: center;
     color: white;
     font-size: 3.25rem;
-    border-right: 3px solid black; }
+    border-right: 3px solid black;
+    border-bottom: 3px solid black; }
   .weather__btn-parent {
     width: fit-content;
     margin: auto;
@@ -51,7 +51,7 @@
     justify-content: center;
     align-items: center; }
   .weather__btn {
-    border: 0;
+    border: 1px solid black;
     padding: .5rem 2rem;
     border-right: 1px solid black;
     font-size: 2.25rem;
@@ -112,6 +112,10 @@
       cursor: pointer;
       background: white;
       color: black; }
+
+.esri-view {
+  height: 100%;
+  width: 100%; }
 
 .status {
   width: 20%;
@@ -207,7 +211,8 @@
   align-content: center;
   font-size: 2rem;
   color: whitesmoke;
-  max-height: 20vh; }
+  max-height: 20vh;
+  margin: auto; }
 
 .infoBar {
   display: flex;
@@ -314,21 +319,12 @@
     display: flex;
     justify-content: center; }
   .social-feed__speed-btn {
-    z-index: 999;
-    position: absolute;
-    padding: .25rem .5rem;
-    top: 0;
-    right: 0;
-    margin-top: 7vh;
     text-align: center;
-    background: rgba(21, 67, 96, 0.75);
     font-size: 1.5rem; }
     .social-feed__speed-btn > h4 {
       font-size: 1.5rem;
       margin: .25rem 0; }
     .social-feed__speed-btn > * input {
-      color: red;
-      background: red;
       margin: 0;
       padding: 0; }
   .social-feed__stream-disabled {
@@ -357,16 +353,13 @@
     justify-content: space-evenly;
     align-items: center;
     margin-left: auto;
-    color: white;
-    border-bottom: 3px solid black;
-    background: rgba(21, 67, 96, 0.75);
+    background: white;
     padding: 0 .5rem;
     border-top: 3px solid black; }
     .social-feed__btn-container > span {
       margin: auto .5rem;
       font-size: 3.5rem; }
   .social-feed__feed-toggle {
-    width: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -883,9 +876,18 @@
     .createActivation__delete-btn:hover {
       background: white;
       color: black; }
+  .createActivation__layer-parent {
+    display: flex;
+    flex-direction: column;
+    width: 35%; }
+    .createActivation__layer-parent > input {
+      width: 100%; }
 
 .css-10nd86i {
   width: 35%; }
+
+#select {
+  width: 100%; }
 
 .earthquake {
   position: relative; }
