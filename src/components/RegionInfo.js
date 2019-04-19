@@ -29,21 +29,21 @@ render(){
         for(let i = 0; i <this.state.activeData.length; i++){
             let twitterIcon;
 
-            if(this.state.activeData[i].Twitter === '' || this.state.activeData[i].Twitter.length <= 2){
+            if(this.state.activeData[i].Twitter.length <= 2){
                 twitterIcon = <div><img className='regionInfo__sm-icon' alt='Unknown Twitter account' src='images/question-icon.png'/></div>
             }
-            else if(this.state.activeData[i].Twitter === 'none'){
+            else if(this.state.activeData[i].Twitter.toLowerCase() === 'none'){
                 twitterIcon = <div className='regionInfo__no-pointer'><img className='regionInfo__sm-icon' alt='No Twitter account' src='images/blocked.png'/></div>
             }
             else {
-                twitterIcon = <a target='#' href={`https://twitter.com/${this.state.activeData[i].Twitter}`}><img className='regionInfo__sm-icon' alt='Twitter' src='images/twitter.png'/></a>;
+                twitterIcon = <a target='#' href={`${this.state.activeData[i].Twitter}`}><img className='regionInfo__sm-icon' alt='Twitter' src='images/twitter.png'/></a>;
             }
 
             let facebookIcon;
-            if(this.state.activeData[i].Facebook === '' || this.state.activeData[i].Facebook.length <= 2){
+            if(this.state.activeData[i].Facebook.length <= 2){
                 facebookIcon = <div><img className='regionInfo__sm-icon' alt='Unknown Facebook account' src='images/question-icon.png'/></div>
             }
-            else if(this.state.activeData[i].Facebook === 'none'){
+            else if(this.state.activeData[i].Facebook.toLowerCase() === 'none'){
                 facebookIcon = <div className='regionInfo__no-pointer'><img className='regionInfo__sm-icon' alt='No Facebook account' src='images/blocked.png'/></div>
             }
             else {
