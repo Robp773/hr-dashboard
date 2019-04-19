@@ -17,6 +17,29 @@
         margin: auto;
     }
 
+    &__state-btn {
+        background: red;
+        position: absolute;
+        top: 0;
+        right: 15%;
+        margin: 1rem;
+        font-size: 3rem;
+        padding: 1rem 1.5rem;
+        background: $color-secondary;
+        color: $color-white;
+        border: 0;
+        box-shadow: 0 .5rem 2rem black;
+
+        &:active {
+            box-shadow: none;
+        }
+
+        &:hover {
+            background: $color-white;
+            color: black;
+        }
+    }
+
     &__create-btn {
         position: absolute;
         top: 0;
@@ -52,6 +75,7 @@
         border: 0;
         box-shadow: 0 .5rem 2rem black;
         cursor: pointer;
+
         &:hover {
             background: $color-white;
             color: black;

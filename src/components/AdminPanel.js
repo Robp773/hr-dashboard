@@ -4,6 +4,7 @@ import {
 } from "../config";
 import states from "us-state-codes";
 import CreateActivation from './CreateActivation';
+import StateForm from './StateForm';
 
 
 export default class AdminPanel extends React.Component {
@@ -14,11 +15,13 @@ export default class AdminPanel extends React.Component {
                 results: [],
                 editIndex: 0,
                 createFormOpen: false,
-                editFormOpen: false
+                editFormOpen: false,
+                stateFormOpen: false,
             }
             this.toggleCreateForm = this.toggleCreateForm.bind(this);
             this.toggleEditForm = this.toggleEditForm.bind(this);
             this.checkActivations = this.checkActivations.bind(this);
+            this.toggleStateForm = this.toggleStateForm.bind(this);
         }
 
         componentDidMount() {
@@ -90,6 +93,9 @@ export default class AdminPanel extends React.Component {
         toggleCreateForm(){
             this.setState({createFormOpen: !this.state.createFormOpen, editFormOpen: false})
         }
+        toggleStateForm(){
+            this.setState({stateFormOpen: !this.state.stateFormOpen})
+        }
 
         toggleEditForm(){
             this.setState({editFormOpen: !this.state.editFormOpen, createFormOpen: false, editIndex: 0})
@@ -100,11 +106,12 @@ export default class AdminPanel extends React.Component {
         }
 
 render(){        
-    let formModal;    
-    
+    let formModal;
     let defaultVals; 
-
-    if(this.state.createFormOpen){
+    if(this.state.stateFormOpen){
+        formModal = <StateForm toggleForm={this.toggleStateForm}/>
+    }
+    else if(this.state.createFormOpen){
         defaultVals = {
             activationName: '',
             disasterType: '',
@@ -134,7 +141,6 @@ render(){
 
     else if(this.state.editFormOpen && this.state.results.length > 0){
         let curActivation = this.state.results[this.state.editIndex];
-        console.log(curActivation)
         let statesArray = [];
         let stateNames = [];
         for(let i = 0; i <curActivation.states.length; i++){
@@ -160,6 +166,7 @@ render(){
         }
         formModal = <CreateActivation reqType='PUT' type='Edit' defaultVals={defaultVals} checkActivations={this.checkActivations} toggleForm={this.toggleEditForm}/>
     }
+
     let activationsArray = [];
     for(let i =0; i < this.state.results.length; i++){   
         let enabledIndicator = <div className='activationList__stream-indicator activationList__stream-indicator--enabled'></div>
@@ -212,6 +219,7 @@ render(){
                 <div className='admin-panel__parent'>
                     <h1 className='admin-panel__heading'>Admin Panel</h1>
 
+                    <button onClick={()=>{this.toggleStateForm()}} className='admin-panel__state-btn'>Upload State Data</button>
                     <button onClick={()=>{this.toggleCreateForm()}} className='admin-panel__create-btn'>New Activation</button>
                 
                     <table className='activationList__table activationList__table--admin-panel'> 
