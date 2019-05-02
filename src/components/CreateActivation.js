@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-    API_BASE_URL
+    API_BASE_URL,
+    STATES_DB
 } from "../config";
 import Select from 'react-select';
 import SelectEarthquake from './SelectEarthquake';
@@ -31,7 +32,7 @@ export default class CreateActivation extends React.Component {
         }
 
         componentDidMount() {
-            fetch(`${API_BASE_URL}/states`)
+            fetch(`${STATES_DB}/state-list`)
                 .then((res) => {
                     return res.json()
                         .then((result) => {

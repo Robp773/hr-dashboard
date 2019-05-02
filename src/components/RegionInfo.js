@@ -29,29 +29,29 @@ render(){
         for(let i = 0; i <this.state.activeData.length; i++){
             let twitterIcon;
 
-            if(this.state.activeData[i].Twitter.length <= 2){
-                twitterIcon = <div><img className='regionInfo__sm-icon' alt='Unknown Twitter account' src='images/question-icon.png'/></div>
+            if(this.state.activeData[i].twitter.length <= 2){
+                twitterIcon = <div><img className='regionInfo__sm-icon' alt='Unknown twitter account' src='images/question-icon.png'/></div>
             }
-            else if(this.state.activeData[i].Twitter.toLowerCase() === 'none'){
-                twitterIcon = <div className='regionInfo__no-pointer'><img className='regionInfo__sm-icon' alt='No Twitter account' src='images/blocked.png'/></div>
+            else if(this.state.activeData[i].twitter.toLowerCase() === 'none'){
+                twitterIcon = <div className='regionInfo__no-pointer'><img className='regionInfo__sm-icon' alt='No twitter account' src='images/blocked.png'/></div>
             }
             else {
-                twitterIcon = <a target='#' href={`${this.state.activeData[i].Twitter}`}><img className='regionInfo__sm-icon' alt='Twitter' src='images/twitter.png'/></a>;
+                twitterIcon = <a target='#' href={`${this.state.activeData[i].twitter}`}><img className='regionInfo__sm-icon' alt='twitter' src='images/twitter.png'/></a>;
             }
 
             let facebookIcon;
-            if(this.state.activeData[i].Facebook.length <= 2){
-                facebookIcon = <div><img className='regionInfo__sm-icon' alt='Unknown Facebook account' src='images/question-icon.png'/></div>
+            if(this.state.activeData[i].facebook.length <= 2){
+                facebookIcon = <div><img className='regionInfo__sm-icon' alt='Unknown facebook account' src='images/question-icon.png'/></div>
             }
-            else if(this.state.activeData[i].Facebook.toLowerCase() === 'none'){
-                facebookIcon = <div className='regionInfo__no-pointer'><img className='regionInfo__sm-icon' alt='No Facebook account' src='images/blocked.png'/></div>
+            else if(this.state.activeData[i].facebook.toLowerCase() === 'none'){
+                facebookIcon = <div className='regionInfo__no-pointer'><img className='regionInfo__sm-icon' alt='No facebook account' src='images/blocked.png'/></div>
             }
             else {
-                facebookIcon = <a target='#' href={this.state.activeData[i].Facebook}><img className='regionInfo__sm-icon' alt='Facebook' src='images/facebook.png'/></a>;
+                facebookIcon = <a target='#' href={this.state.activeData[i].facebook}><img className='regionInfo__sm-icon' alt='facebook' src='images/facebook.png'/></a>;
             }
             listData.push(
                 <tr className={`regionInfo__tr ${i % 2 === 0 ? 'td-even' : ''}`} key={i}>
-                    <td  className='regionInfo__name' ><a target='#' href={this.state.activeData[i].Website}>{this.state.activeData[i].Name}</a></td>
+                    <td  className='regionInfo__name' ><a target='#' href={this.state.activeData[i].website}>{this.state.activeData[i].name}</a></td>
                     <td className='regionInfo__social-media'>
                     {twitterIcon}
                     </td>
@@ -82,8 +82,8 @@ render(){
                         <tbody>
                         <tr className='regionInfo__top-row'>
                             <th className='regionInfo__name-th'>Name</th>
-                            <th className='regionInfo__social-media-th'><img className='' alt='Twitter' src='images/twitter.png'/></th>
-                            <th className='regionInfo__social-media-th'><img className='' alt='Facebook' src='images/facebook.png'/></th>
+                            <th className='regionInfo__social-media-th'><img className='' alt='twitter' src='images/twitter.png'/></th>
+                            <th className='regionInfo__social-media-th'><img className='' alt='facebook' src='images/facebook.png'/></th>
                         </tr>
                        {listData}
                        </tbody>

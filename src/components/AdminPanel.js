@@ -2,9 +2,7 @@ import React from 'react';
 import {
     API_BASE_URL
 } from "../config";
-import states from "us-state-codes";
 import CreateActivation from './CreateActivation';
-import StateForm from './StateForm';
 
 
 export default class AdminPanel extends React.Component {
@@ -21,7 +19,6 @@ export default class AdminPanel extends React.Component {
             this.toggleCreateForm = this.toggleCreateForm.bind(this);
             this.toggleEditForm = this.toggleEditForm.bind(this);
             this.checkActivations = this.checkActivations.bind(this);
-            this.toggleStateForm = this.toggleStateForm.bind(this);
         }
 
         componentDidMount() {
@@ -29,7 +26,6 @@ export default class AdminPanel extends React.Component {
                 .then((res) => {
                     return res.json()
                         .then((result) => {
-
                             this.setState({
                                 results: result
                             })
@@ -93,9 +89,6 @@ export default class AdminPanel extends React.Component {
         toggleCreateForm(){
             this.setState({createFormOpen: !this.state.createFormOpen, editFormOpen: false})
         }
-        toggleStateForm(){
-            this.setState({stateFormOpen: !this.state.stateFormOpen})
-        }
 
         toggleEditForm(){
             this.setState({editFormOpen: !this.state.editFormOpen, createFormOpen: false, editIndex: 0})
@@ -108,10 +101,8 @@ export default class AdminPanel extends React.Component {
 render(){        
     let formModal;
     let defaultVals; 
-    if(this.state.stateFormOpen){
-        formModal = <StateForm toggleForm={this.toggleStateForm}/>
-    }
-    else if(this.state.createFormOpen){
+
+     if(this.state.createFormOpen){
         defaultVals = {
             activationName: '',
             disasterType: '',
@@ -195,7 +186,7 @@ render(){
 
         let statesArray = []
         for(let b =0; b <this.state.results[i].states.length; b++){
-            statesArray.push(<span key={`state-${b}`}>{states.getStateCodeByStateName(this.state.results[i].states[b])} </span>)
+            statesArray.push(<span key={`state-${b}`}>{this.state.results[i].states[b]} </span>)
         }
         activationsArray.push(
             <tr className={`activationList__tr`} key={`all-activation-${i}`}>
@@ -219,7 +210,6 @@ render(){
                 <div className='admin-panel__parent'>
                     <h1 className='admin-panel__heading'>Admin Panel</h1>
 
-                    <button onClick={()=>{this.toggleStateForm()}} className='admin-panel__state-btn'>Upload State Data</button>
                     <button onClick={()=>{this.toggleCreateForm()}} className='admin-panel__create-btn'>New Activation</button>
                 
                     <table className='activationList__table activationList__table--admin-panel'> 

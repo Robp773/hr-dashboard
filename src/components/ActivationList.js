@@ -90,7 +90,7 @@ export default class ActivationList extends React.Component {
 
             let statesArray = []
             for(let b =0; b <this.state.results[i].states.length; b++){
-                statesArray.push(<span>{states.getStateCodeByStateName(this.state.results[i].states[b])} </span>)
+                statesArray.push(<span>{this.state.results[i].states[b]} </span>)
             }
             activationsArray.push(
                 <tr className='activationList__tr' onClick={()=>{this.props.chooseActivation(this.state.results[i].activationName)}} key={`activation-${i}`}>
