@@ -36,7 +36,7 @@ render(){
                 twitterIcon = <div className='regionInfo__no-pointer'><img className='regionInfo__sm-icon' alt='No twitter account' src='images/blocked.png'/></div>
             }
             else {
-                twitterIcon = <a target='#' href={`${this.state.activeData[i].twitter}`}><img className='regionInfo__sm-icon' alt='twitter' src='images/twitter.png'/></a>;
+                twitterIcon = <a target='#' href={this.state.activeData[i].twitter.trim().length > 2 ? this.state.activeData[i].twitter.trim(): null}><img className='regionInfo__sm-icon' alt='twitter' src='images/twitter.png'/></a>;
             }
 
             let facebookIcon;
@@ -47,11 +47,11 @@ render(){
                 facebookIcon = <div className='regionInfo__no-pointer'><img className='regionInfo__sm-icon' alt='No facebook account' src='images/blocked.png'/></div>
             }
             else {
-                facebookIcon = <a target='#' href={this.state.activeData[i].facebook}><img className='regionInfo__sm-icon' alt='facebook' src='images/facebook.png'/></a>;
+            facebookIcon = <a target='#' href={this.state.activeData[i].facebook.trim().length > 2 ? this.state.activeData[i].facebook.trim(): null}><img className='regionInfo__sm-icon' alt='facebook' src='images/facebook.png'/></a>;
             }
             listData.push(
                 <tr className={`regionInfo__tr ${i % 2 === 0 ? 'td-even' : ''}`} key={i}>
-                    <td  className='regionInfo__name' ><a target='#' href={this.state.activeData[i].website}>{this.state.activeData[i].name}</a></td>
+                    <td  className='regionInfo__name' ><a target='#' href={this.state.activeData[i].website.trim().length > 2 ? this.state.activeData[i].website.trim(): null}>{this.state.activeData[i].name}</a></td>
                     <td className='regionInfo__social-media'>
                     {twitterIcon}
                     </td>
