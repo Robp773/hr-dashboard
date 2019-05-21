@@ -3,6 +3,7 @@ import {
     API_BASE_URL
 } from "../config";
 import CreateActivation from './CreateActivation';
+import Spinner from './Spinner'
 
 
 export default class AdminPanel extends React.Component {
@@ -10,6 +11,7 @@ export default class AdminPanel extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
+                loading: false,
                 results: [],
                 editIndex: 0,
                 createFormOpen: false,
@@ -38,6 +40,8 @@ export default class AdminPanel extends React.Component {
 
         reactivateActivation(activationName) {
             console.log('reactivating')
+            this.setState({loadingList: activationName})
+
             fetch(`${API_BASE_URL}/reactivate`, {
                 method: 'PUT',
                 headers: {
@@ -49,11 +53,13 @@ export default class AdminPanel extends React.Component {
                 })
             })
             .then(()=>{
+                this.setState({loadingList: null})
                 this.checkActivations()
             })
         }
 
         deactivateActivation(activationName) {
+            this.setState({loadingList: activationName})
             fetch(`${API_BASE_URL}/deactivate`, {
                 method: 'PUT',
                 headers: {
@@ -65,6 +71,7 @@ export default class AdminPanel extends React.Component {
                 })
             })
             .then(()=>{
+                this.setState({loadingList: null})
                 this.checkActivations()
             })
         }
@@ -165,11 +172,11 @@ render(){
         let activationStatus;
         let activationBtn;
         if(this.state.results[i].status){
-            activationBtn = <td className='activationList__td activationList__td--deactivate'><button onClick={()=>{this.deactivateActivation(this.state.results[i].activationName)}}>Deactivate</button></td>
+            activationBtn = <td className='activationList__td activationList__td--deactivate'><button onClick={()=>{this.deactivateActivation(this.state.results[i].activationName)}}>{this.state.loadingList === this.state.results[i].activationName ? <Spinner/> : "Deactivate"}</button></td>
             activationStatus = 'activationList__td--active';
         } 
         else{
-            activationBtn = <td className='activationList__td activationList__td--activate'><button onClick={()=>{this.reactivateActivation(this.state.results[i].activationName)}}>Activate</button></td>
+            activationBtn = <td className='activationList__td activationList__td--activate'><button onClick={()=>{this.reactivateActivation(this.state.results[i].activationName)}}>{this.state.loadingList === this.state.results[i].activationName ? <Spinner/> : "Activate"}</button></td>
             activationStatus = 'activationList__td--inactive'
         }
         let levelClass;

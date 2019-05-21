@@ -17,6 +17,7 @@
     "react-chartjs-2": "^2.7.4",
     "react-d3-cloud": "^0.7.0",
     "react-dom": "^16.8.6",
+    "react-loader-spinner": "^2.3.0",
     "react-redux": "^6.0.0",
     "react-s-alert": "^1.4.1",
     "react-scripts": "2.1.3",

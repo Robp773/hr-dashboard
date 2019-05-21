@@ -5,6 +5,7 @@ import {
 } from "../config";
 import Select from 'react-select';
 import SelectEarthquake from './SelectEarthquake';
+import Spinner from './Spinner';
 
 export default class CreateActivation extends React.Component {
 
@@ -12,6 +13,7 @@ export default class CreateActivation extends React.Component {
             super(props);
 
             this.state = {
+                loading: false,
                 results: [],
                 activationName: this.props.defaultVals.activationName,
                 disasterType: this.props.defaultVals.disasterType,
@@ -57,6 +59,8 @@ export default class CreateActivation extends React.Component {
                 alert('Missing form data')
                 return;
             }
+
+            this.setState({loading: true})
 
             fetch(`${API_BASE_URL}/activate`, {
                     method: this.props.reqType,
@@ -110,9 +114,9 @@ export default class CreateActivation extends React.Component {
 
                 .then(() => {
                     this.props.checkActivations().then(() => {
+                        this.setState({loading: false})
                         this.props.toggleForm()
                     })
-
                 })
         }
 
@@ -431,7 +435,7 @@ render(){
                         {searchResults}
                     </div>    
 
-                    <button className='createActivation__submit-btn' type='submit'>Submit</button>
+                    <button className='createActivation__submit-btn' type='submit'>{this.state.loading ? <Spinner/> : 'Submit'}</button>
                     {this.props.type === 'Edit' ? <button className='createActivation__delete-btn' onClick={(e)=>{e.preventDefault(); this.handleDelete()}}>Delete</button> : null}
                   </form>                
                     
