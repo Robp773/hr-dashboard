@@ -84,6 +84,7 @@ class ActivationMain extends Component {
   }
 
   render() {
+
     let impactedStates = [];
     let twitterWidgets = []
     for (let i = 0; i < this.props.statesData.length; i++) {

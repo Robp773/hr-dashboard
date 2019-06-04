@@ -572,6 +572,8 @@
     font-size: 3rem;
     border: 0 !important;
     padding: 0 3rem; }
+    .activationList__td > button {
+      margin: auto; }
     .activationList__td--open {
       cursor: pointer;
       display: flex;
