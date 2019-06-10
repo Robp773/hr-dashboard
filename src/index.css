@@ -557,10 +557,10 @@
     border-radius: 100px;
     margin: auto; }
     .activationList__stream-indicator--enabled {
-      background: #228B22;
-      animation: fade-in .5s alternate infinite; }
+      background: #228b22;
+      animation: fade-in 0.5s alternate infinite; }
     .activationList__stream-indicator--disabled {
-      background: #DC143C; }
+      background: #dc143c; }
   .activationList__th {
     font-size: 3.5rem; }
   .activationList__tr {
@@ -588,41 +588,41 @@
       font-weight: bold;
       animation: active 1s alternate infinite; }
     .activationList__td--inactive {
-      color: #DC143C; }
+      color: #dc143c; }
     .activationList__td--edit > button {
       font-size: 3rem;
-      padding: .5rem 1.5rem;
+      padding: 0.5rem 1.5rem;
       background: #f38e20;
       color: white;
       border: 0;
       outline: none;
-      box-shadow: 0 .5rem 1rem black;
+      box-shadow: 0 0.5rem 1rem black;
       cursor: pointer; }
       .activationList__td--edit > button:hover {
         background: white;
         color: black; }
     .activationList__td--activate > button {
       font-size: 3rem;
-      padding: .5rem 1.5rem;
+      padding: 0.5rem 1.5rem;
       width: 100%;
-      background: #228B22;
+      background: #228b22;
       color: white;
       border: 0;
       outline: none;
-      box-shadow: 0 .5rem 1rem black;
+      box-shadow: 0 0.5rem 1rem black;
       cursor: pointer; }
       .activationList__td--activate > button:hover {
         background: white;
         color: black; }
     .activationList__td--deactivate > button {
       font-size: 3rem;
-      padding: .5rem 1.5rem;
+      padding: 0.5rem 1.5rem;
       width: 100%;
-      background: #DC143C;
+      background: #dc143c;
       color: white;
       border: 0;
       outline: none;
-      box-shadow: 0 .5rem 1rem black; }
+      box-shadow: 0 0.5rem 1rem black; }
       .activationList__td--deactivate > button:hover {
         background: white;
         color: black; }
@@ -636,11 +636,11 @@
     align-items: center;
     font-weight: bold; }
     .activationList__level-indicator--green {
-      background: #228B22; }
+      background: #228b22; }
     .activationList__level-indicator--yellow {
       background: yellow; }
     .activationList__level-indicator--red {
-      background: #DC143C; }
+      background: #dc143c; }
 
 .adminLogin {
   display: flex;
@@ -792,7 +792,7 @@
     border: 1px solid transparent;
     outline: none;
     cursor: pointer;
-    box-shadow: 0 .5rem 2.5rem black; }
+    box-shadow: 0 0.5rem 2.5rem black; }
     .createActivation__exit-btn:hover {
       background: white;
       color: black;
@@ -815,7 +815,7 @@
   .createActivation__input {
     width: 35%;
     font-size: 3rem;
-    padding: .5rem 1rem; }
+    padding: 0.5rem 1rem; }
     .createActivation__input--select {
       text-align-last: center; }
     .createActivation__input--search-form {
@@ -846,7 +846,7 @@
     right: 7%;
     top: 0; }
   .createActivation__search-params-totals {
-    background: white;
+    background: whitesmoke;
     width: 85%;
     margin: auto;
     text-align: center;
@@ -874,11 +874,11 @@
   .createActivation__submit-btn {
     background: #f38e20;
     color: white;
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     border: 0;
     outline: 0;
     font-size: 3.5rem;
-    box-shadow: 0 .5rem 2.5rem black;
+    box-shadow: 0 0.5rem 2.5rem black;
     cursor: pointer; }
     .createActivation__submit-btn:hover {
       background: white;
@@ -886,11 +886,11 @@
   .createActivation__delete-btn {
     background: #f38e20;
     color: white;
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     border: 0;
     outline: 0;
     font-size: 3.5rem;
-    box-shadow: 0 .5rem 2rem black;
+    box-shadow: 0 0.5rem 2rem black;
     cursor: pointer;
     margin: auto 1rem; }
     .createActivation__delete-btn:hover {
@@ -902,6 +902,10 @@
     width: 35%; }
     .createActivation__layer-parent > input {
       width: 100%; }
+  .createActivation__error-list {
+    margin: 3rem auto;
+    font-size: 3rem;
+    color: red; }
 
 .css-10nd86i {
   width: 35%; }

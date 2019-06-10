@@ -1,206 +1,205 @@
 .createActivation {
+  margin: 1rem auto;
 
+  &__form {
+    background: $color-white;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+  }
+
+  &__search-form {
+    width: 35%;
+  }
+
+  &__heading {
+    font-size: 4.5rem;
+    border-bottom: 3px solid $color-secondary;
+    width: fit-content;
+    margin: auto;
+  }
+
+  &__exit-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    padding: 1rem;
+    background: $color-secondary;
+    color: $color-white;
+    border: 1px solid transparent;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 0.5rem 2.5rem black;
+
+    &:hover {
+      background: $color-white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+
+  &__label-input-parent {
+    width: 85%;
+    margin: auto;
     margin: 1rem auto;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 
-    &__form {
-        background: $color-white;
-        width: 85%;
-        margin: auto;
-        text-align: center;
-        padding: 1rem;
-        position: relative;
+  &__input-wrapper {
+    position: relative;
+  }
+
+  &__label {
+    margin-right: 2rem;
+    width: 25%;
+    text-align: right;
+  }
+
+  &__input {
+    width: 35%;
+    font-size: 3rem;
+    padding: 0.5rem 1rem;
+
+    &--select {
+      text-align-last: center;
     }
 
-    &__search-form {
-        width: 35%;
+    &--search-form {
+      width: 100%;
+    }
+  }
+
+  &__add-search-btn {
+    position: absolute;
+    top: 50%;
+    right: -22.5%;
+    padding: 1rem 3rem;
+    color: $color-white;
+    font-weight: bold;
+    background: $color-secondary;
+    border: 0;
+    font-size: 1.5rem;
+    outline: 0;
+    transform: translateY(-50%);
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+      background: $color-white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+
+  &__slider-parent {
+    width: 100%;
+    position: relative;
+  }
+
+  &__interval-count {
+    position: absolute;
+    right: 7%;
+    top: 0;
+  }
+
+  &__search-params-totals {
+    background: whitesmoke;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 1rem;
+    min-height: 15vh;
+
+    & > h2 {
+      font-size: 3rem;
     }
 
-    &__heading {
-        font-size: 4.5rem;
-        border-bottom: 3px solid $color-secondary;
-        width: fit-content;
-        margin: auto;
+    & > * h2 {
+      font-size: 2.5rem;
     }
+  }
 
-    &__exit-btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 1rem;
-        padding: 1rem;
-        background: $color-secondary;
-        color: $color-white;
-        border: 1px solid transparent;
-        outline: none;
-        cursor: pointer;
-        box-shadow: 0 .5rem 2.5rem black;
+  &__single-search-item {
+    display: inline-block;
+    margin: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+    background: $color-primary;
+    color: $color-white;
+    border: 1px solid transparent;
+    cursor: pointer;
 
-        &:hover {
-            background: $color-white;
-            color: black;
-            border: 1px solid black;
-        }
+    &:hover {
+      background: $color-white;
+      color: black;
+      border: 1px solid black;
     }
+  }
 
-    &__label-input-parent {
-        width: 85%;
-        margin: auto;
-        margin: 1rem auto;
-        font-size: 3rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
+  &__switch {
+    margin: auto 1rem;
+  }
+
+  &__submit-btn {
+    background: $color-secondary;
+    color: $color-white;
+    padding: 0.5rem 1.5rem;
+    border: 0;
+    outline: 0;
+    font-size: 3.5rem;
+    box-shadow: 0 0.5rem 2.5rem black;
+    cursor: pointer;
+
+    &:hover {
+      background: $color-white;
+      color: black;
     }
+  }
 
-    &__input-wrapper {
-        position: relative;
+  &__delete-btn {
+    background: $color-secondary;
+    color: $color-white;
+    padding: 0.5rem 1.5rem;
+    border: 0;
+    outline: 0;
+    font-size: 3.5rem;
+    box-shadow: 0 0.5rem 2rem black;
+    cursor: pointer;
+    margin: auto 1rem;
+
+    &:hover {
+      background: $color-white;
+      color: black;
     }
+  }
 
-    &__label {
-        margin-right: 2rem;
-        width: 25%;
-        text-align: right;
+  &__layer-parent {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    & > input {
+      width: 100%;
     }
+  }
 
-    &__input {
-        width: 35%;
-        font-size: 3rem;
-        padding: .5rem 1rem;
-
-        &--select {
-            text-align-last: center;
-        }
-
-        &--search-form {
-            width: 100%;
-        }
-    }
-
-    &__add-search-btn {
-        position: absolute;
-        top: 50%;
-        right: -22.5%;
-        padding: 1rem 3rem;
-        color: $color-white;
-        font-weight: bold;
-        background: $color-secondary;
-        border: 0;
-        font-size: 1.5rem;
-        outline: 0;
-        transform: translateY(-50%);
-        border: 1px solid transparent;
-        cursor: pointer;
-
-        &:hover {
-            background: $color-white;
-            color: black;
-            border: 1px solid black;
-        }
-    }
-
-    &__slider-parent {
-        width: 100%;
-        position: relative;
-    }
-
-    &__interval-count {
-        position: absolute;
-        right: 7%;
-        top: 0;
-    }
-
-    &__search-params-totals {
-        background: $color-white;
-        width: 85%;
-        margin: auto;
-        text-align: center;
-        padding-bottom: 1rem;
-        min-height: 15vh;
-
-        &>h2 {
-            font-size: 3rem;
-        }
-
-        &>* h2 {
-            font-size: 2.5rem;
-        }
-
-    }
-
-    &__single-search-item {
-        display: inline-block;
-        margin: 1rem;
-        font-size: 2rem;
-        padding: 1rem;
-        background: $color-primary;
-        color: $color-white;
-        border: 1px solid transparent;
-        cursor: pointer;
-
-        &:hover {
-            background: $color-white;
-            color: black;
-            border: 1px solid black;
-        }
-
-    }
-
-    &__switch {
-        margin: auto 1rem;
-    }
-
-    &__submit-btn {
-        background: $color-secondary;
-        color: $color-white;
-        padding: .5rem 1.5rem;
-        border: 0;
-        outline: 0;
-        font-size: 3.5rem;
-        box-shadow: 0 .5rem 2.5rem black;
-        cursor: pointer;
-
-        &:hover {
-            background: $color-white;
-            color: black;
-        }
-
-    }
-
-    &__delete-btn {
-        background: $color-secondary;
-        color: $color-white;
-        padding: .5rem 1.5rem;
-        border: 0;
-        outline: 0;
-        font-size: 3.5rem;
-        box-shadow: 0 .5rem 2rem black;
-        cursor: pointer;
-        margin: auto 1rem;
-
-        &:hover {
-            background: $color-white;
-            color: black;
-        }
-
-    }
-
-    &__layer-parent{
-        display: flex;
-        flex-direction: column;
-        width: 35%;
-        & > input{
-            width: 100%;
-        }
-      
-    }
-
+  &__error-list {
+    margin: 3rem auto;
+    font-size: 3rem;
+    color: red;
+  }
 }
 
 .css-10nd86i {
-    width: 35%;
+  width: 35%;
 }
 
-#select{
-    width: 100%;
+#select {
+  width: 100%;
 }
