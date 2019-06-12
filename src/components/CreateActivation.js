@@ -13,7 +13,7 @@ export default class CreateActivation extends React.Component {
       errorsList: [],
       loading: false,
       results: [],
-      statesIncluded: [],
+      statesIncluded: this.props.defaultVals.states,
       activationName: this.props.defaultVals.activationName,
       disasterType: this.props.defaultVals.disasterType,
       level: this.props.defaultVals.level,

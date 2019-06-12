@@ -1,6 +1,5 @@
 import React from "react";
 import { API_BASE_URL } from "../config";
-import states from "us-state-codes";
 import AdminLogin from "./AdminLogin";
 import AdminPanel from "./AdminPanel";
 

@@ -1,173 +1,177 @@
 #parent {
-    height: 76vh;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, .95) 100%), url('/images/hr-logo.jpg');
-    overflow-y: scroll;
-    background-size: contain;
-    background-repeat: no-repeat;
+  height: 76vh;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%),
+    url("/images/hr-logo.jpg");
+  overflow-y: scroll;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .social-feed {
-    width: 50vw;
-    position: relative;
-    overflow-y: scroll;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, .95) 100%), url('/images/hr-logo.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 83vh;
+  width: 50vw;
+  position: relative;
+  overflow-y: scroll;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%),
+    url("/images/hr-logo.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 83vh;
 
-    &__heading-parent {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 7vh;
+  &__heading-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+  }
+
+  &__speed-btn-parent {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__tab-h2 {
+    font-size: 4rem;
+    padding: 0;
+    margin: 0 auto;
+    border-bottom: 3px solid $color-secondary;
+  }
+
+  &__speed-btn {
+    text-align: center;
+    font-size: 1.5rem;
+
+    & > h4 {
+      font-size: 1.5rem;
+      margin: 0.25rem 0;
     }
 
-    &__speed-btn-parent{
-        display: flex;
-        justify-content: center;
+    & > * input {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__stream-disabled {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+  }
+
+  &__heading {
+    background: $color-secondary;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.25rem;
+    color: $color-white;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    border-top: 3px solid black;
+  }
+
+  &__btn-container {
+    height: 100%;
+    width: 75%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: auto;
+    // color: $color-white;
+    // border-bottom: 3px solid black;
+    background: $color-white;
+    padding: 0 0.5rem;
+    border-top: 3px solid black;
+
+    & > span {
+      margin: auto 0.5rem;
+      font-size: 3.5rem;
+    }
+  }
+
+  &__feed-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+  }
+
+  &__label {
+    margin: auto 0.5rem;
+  }
+
+  &__chart-btn {
+    border-radius: 100px;
+    cursor: pointer;
+    border: 0;
+    padding: 0.5rem 2rem;
+    font-size: 2rem;
+    background: #f38e20;
+    color: white;
+    box-shadow: 0 0.25rem 1.25rem black;
+    margin: auto 0.25rem;
+    outline: none;
+
+    &:hover {
+      color: black;
+      background: $color-white;
     }
 
-    &__speed-btn {
-        // z-index: 999;
-        // position: absolute;
-        // padding: .25rem .5rem;
-        // top: 0;
-        // right: 0;
-        // margin-top: 7vh;
-        text-align: center;
-        // background: rgba(21, 67, 96, .75);
-        font-size: 1.5rem;
+    &:active {
+      box-shadow: none;
+    }
+  }
 
-        & > h4{
-            font-size: 1.5rem;
-            margin: .25rem 0;
-        }
+  &__back-btn {
+    cursor: pointer;
+    right: 0;
+    position: absolute;
+    border: 0;
+    padding: 0.5rem 2rem;
+    font-size: 2.25rem;
+    background: $color-secondary;
+    color: white;
+    box-shadow: 0 0.25rem 1.25rem black;
+    margin: auto 1rem;
+    outline: none;
 
-        & > * input{
-            margin: 0;
-            padding: 0;
-        }
+    &:hover {
+      color: black;
+      background: $color-white;
     }
 
-    &__stream-disabled {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 4rem;
+    &:active {
+      box-shadow: none;
+    }
+  }
+
+  &__btn {
+    border: 0;
+    padding: 0.5rem 2rem;
+    border-right: 1px solid black;
+    font-size: 2.25rem;
+    background: #f38e20;
+    color: white;
+    box-shadow: 0 0.25rem 1.25rem black;
+    margin: auto 0.25rem;
+    outline: none;
+    width: 20%;
+
+    &:hover {
+      background: $color-white;
+      color: black;
     }
 
-    &__heading {
-        background: $color-secondary;
-        height: 100%;
-        width: 25%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3.25rem;
-        color: $color-white;
-        border-right: 3px solid black;
-        border-bottom: 3px solid black;
-        border-top: 3px solid black;
+    &:active {
+      box-shadow: none;
     }
+  }
 
-    &__btn-container {
-        height: 100%;
-        width: 75%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        margin-left: auto;
-        // color: $color-white;
-        // border-bottom: 3px solid black;
-        background: $color-white;
-        padding: 0 .5rem;
-        border-top: 3px solid black;
-
-        &>span {
-            margin: auto .5rem;
-            font-size: 3.5rem;
-        }
-    }
-
-    &__feed-toggle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3rem;
-    }
-
-    &__label {
-        margin: auto .5rem;
-    }
-
-    &__chart-btn {
-        border: 0;
-        padding: .5rem 2rem;
-        border-right: 1px solid black;
-        font-size: 2.25rem;
-        background: #f38e20;
-        color: white;
-        box-shadow: 0 0.25rem 1.25rem black;
-        margin: auto .25rem;
-        outline: none;
-
-        &:hover {
-            color: black;
-            background: $color-white;
-        }
-
-        &:active {
-            box-shadow: none;
-        }
-    }
-
-    &__back-btn {
-        border: 0;
-        padding: .5rem 2rem;
-        border-right: 1px solid black;
-        font-size: 2.25rem;
-        background: $color-secondary;
-        color: white;
-        box-shadow: 0 0.25rem 1.25rem black;
-        margin: auto 5%;
-        outline: none;
-
-        &:hover {
-            color: black;
-            background: $color-white;
-        }
-
-        &:active {
-            box-shadow: none;
-        }
-    }
-
-    &__btn {
-        border: 0;
-        padding: .5rem 2rem;
-        border-right: 1px solid black;
-        font-size: 2.25rem;
-        background: #f38e20;
-        color: white;
-        box-shadow: 0 0.25rem 1.25rem black;
-        margin: auto .25rem;
-        outline: none;
-        width: 20%;
-
-        &:hover {
-            background: $color-white;
-            color: black;
-        }
-
-        &:active {
-            box-shadow: none;
-        }
-    }
-
-    &__tweet {
-        font-size: 2.5rem;
-    }
-
+  &__tweet {
+    font-size: 2.5rem;
+  }
 }

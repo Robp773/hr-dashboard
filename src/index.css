@@ -318,12 +318,17 @@
   .social-feed__speed-btn-parent {
     display: flex;
     justify-content: center; }
+  .social-feed__tab-h2 {
+    font-size: 4rem;
+    padding: 0;
+    margin: 0 auto;
+    border-bottom: 3px solid #f38e20; }
   .social-feed__speed-btn {
     text-align: center;
     font-size: 1.5rem; }
     .social-feed__speed-btn > h4 {
       font-size: 1.5rem;
-      margin: .25rem 0; }
+      margin: 0.25rem 0; }
     .social-feed__speed-btn > * input {
       margin: 0;
       padding: 0; }
@@ -354,10 +359,10 @@
     align-items: center;
     margin-left: auto;
     background: white;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     border-top: 3px solid black; }
     .social-feed__btn-container > span {
-      margin: auto .5rem;
+      margin: auto 0.5rem;
       font-size: 3.5rem; }
   .social-feed__feed-toggle {
     display: flex;
@@ -365,16 +370,17 @@
     align-items: center;
     font-size: 3rem; }
   .social-feed__label {
-    margin: auto .5rem; }
+    margin: auto 0.5rem; }
   .social-feed__chart-btn {
+    border-radius: 100px;
+    cursor: pointer;
     border: 0;
-    padding: .5rem 2rem;
-    border-right: 1px solid black;
-    font-size: 2.25rem;
+    padding: 0.5rem 2rem;
+    font-size: 2rem;
     background: #f38e20;
     color: white;
     box-shadow: 0 0.25rem 1.25rem black;
-    margin: auto .25rem;
+    margin: auto 0.25rem;
     outline: none; }
     .social-feed__chart-btn:hover {
       color: black;
@@ -382,14 +388,16 @@
     .social-feed__chart-btn:active {
       box-shadow: none; }
   .social-feed__back-btn {
+    cursor: pointer;
+    right: 0;
+    position: absolute;
     border: 0;
-    padding: .5rem 2rem;
-    border-right: 1px solid black;
+    padding: 0.5rem 2rem;
     font-size: 2.25rem;
     background: #f38e20;
     color: white;
     box-shadow: 0 0.25rem 1.25rem black;
-    margin: auto 5%;
+    margin: auto 1rem;
     outline: none; }
     .social-feed__back-btn:hover {
       color: black;
@@ -398,13 +406,13 @@
       box-shadow: none; }
   .social-feed__btn {
     border: 0;
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     border-right: 1px solid black;
     font-size: 2.25rem;
     background: #f38e20;
     color: white;
     box-shadow: 0 0.25rem 1.25rem black;
-    margin: auto .25rem;
+    margin: auto 0.25rem;
     outline: none;
     width: 20%; }
     .social-feed__btn:hover {
