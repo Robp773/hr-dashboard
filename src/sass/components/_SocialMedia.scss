@@ -65,9 +65,11 @@
     width: 100%;
     height: 100%;
     display: flex;
+    margin-top: 10rem;
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
+    font-size: 3rem;
+    text-decoration: underline $color-secondary;
   }
 
   &__heading {
