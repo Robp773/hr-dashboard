@@ -1,5 +1,7 @@
 @import './abstracts/variables';
 
+@import './base/mixins';
+
 @import './components/Event';
 @import './components/Status';
 @import './components/Clock';

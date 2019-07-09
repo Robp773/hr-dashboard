@@ -1,86 +1,64 @@
 .admin-panel {
+  &__parent {
+    background: $color-white;
+    margin: 1rem auto;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 75%;
 
-    &__parent {
-        background: $color-white;
-        width: 85%;
-        margin: 1rem auto;
-        text-align: center;
-        padding: 1rem;
-        position: relative;
+    @include respond(tab-land) {
+      width: 100%;
+    }
+  }
+
+  &__heading {
+    text-align: center;
+    font-size: 3.5rem;
+    border-bottom: 3px solid $color-secondary;
+    width: fit-content;
+    margin: auto;
+  }
+
+  &__btn-parent {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__create-btn {
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+    background: $color-secondary;
+    color: $color-white;
+    border: 0;
+    box-shadow: 0 0.5rem 2rem black;
+
+    &:active {
+      box-shadow: none;
     }
 
-    &__heading {
-        text-align: center;
-        font-size: 5.5rem;
-        border-bottom: 3px solid $color-secondary;
-        width: fit-content;
-        margin: auto;
+    &:hover {
+      background: $color-white;
+      color: black;
     }
+  }
 
-    &__state-btn {
-        background: red;
-        position: absolute;
-        top: 0;
-        right: 15%;
-        margin: 1rem;
-        font-size: 3rem;
-        padding: 1rem 1.5rem;
-        background: $color-secondary;
-        color: $color-white;
-        border: 0;
-        box-shadow: 0 .5rem 2rem black;
+  &__back-btn {
+    font-size: 2rem;
 
-        &:active {
-            box-shadow: none;
-        }
+    margin: 2rem 1rem;
+    padding: 1rem 1.5rem;
+    background: $color-secondary;
+    color: $color-white;
+    border: 0;
+    box-shadow: 0 0.5rem 2rem black;
+    cursor: pointer;
 
-        &:hover {
-            background: $color-white;
-            color: black;
-        }
+    &:hover {
+      background: $color-white;
+      color: black;
     }
-
-    &__create-btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 1rem;
-        font-size: 3rem;
-        padding: 1rem 1.5rem;
-        background: $color-secondary;
-        color: $color-white;
-        border: 0;
-        box-shadow: 0 .5rem 2rem black;
-
-        &:active {
-
-            box-shadow: none;
-        }
-
-        &:hover {
-            background: $color-white;
-            color: black;
-        }
-    }
-
-    &__back-btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 2rem 1rem;
-        font-size: 3rem;
-        padding: 1rem 1.5rem;
-        background: $color-secondary;
-        color: $color-white;
-        border: 0;
-        box-shadow: 0 .5rem 2rem black;
-        cursor: pointer;
-
-        &:hover {
-            background: $color-white;
-            color: black;
-        }
-    }
-
-
+  }
 }

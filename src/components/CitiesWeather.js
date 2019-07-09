@@ -5,7 +5,7 @@ let listData = []
     for (let i = 0; i < props.cities.length; i++) {
             if(props.cities[i].name){
                 listData.push(
-                <tr className='cities__tr' key={`cities-${i}`}>
+                <tr className={`cities__tr ${i % 2 === 0 ? 'td-even' : null}`} key={`cities-${i}`}>
                     <td className='cities__td cities__city'>{props.cities[i].name}</td>
                     <td className='cities__td'>{props.cities[i].description}</td>
                     <td className='cities__td'>{props.cities[i].temperature} &#8457;</td>

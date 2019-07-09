@@ -1,16 +1,21 @@
-.headerBar{
-    display: flex;
-    // width: 50%;
-    justify-content: center;
-    align-content: center;
-    font-size: 2rem;
-    color: whitesmoke;
-    max-height: 20vh;
-    margin: auto;
+.headerBar {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  align-content: center;
+  font-size: 2rem;
+  color: whitesmoke;
+  max-height: 20vh;
+  margin-right: auto;
+  background: $color-primary;
+  position: relative;
+  border-top: 2px solid black;
+
 }
 
-.infoBar{
-    display: flex;
-    justify-content: center;
-    align-content: flex-start;
+.infoBar {
+  height: 80vh;
+  @include respond(big-desktop){
+      height: 86vh;
+  }
 }

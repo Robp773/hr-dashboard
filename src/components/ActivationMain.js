@@ -7,15 +7,26 @@ import RegionInfo from "./RegionInfo";
 import { connect } from "react-redux";
 import SocialFeed from "./SocialFeed";
 import { API_BASE_URL } from "../config";
-import { selectState, updateCities, updateEventData, updateAnalysis, updateEarthquakeData } from "../actions";
+import {
+  selectState,
+  updateCities,
+  updateEventData,
+  updateAnalysis,
+  updateEarthquakeData,
+  returnToList
+} from "../actions";
+
 import io from "socket.io-client";
 import Alert from "react-s-alert";
+import states from 'us-state-codes'
 
 class ActivationMain extends Component {
   constructor(props) {
     super(props);
 
-    this.dataStream = io(`${API_BASE_URL}/${this.props.activationName.replace(/\s+/g, "")}`);
+    this.dataStream = io(
+      `${API_BASE_URL}/${this.props.activationName.replace(/\s+/g, "")}`
+    );
     this.dataStream.on("connect", () => {
       Alert.success(`Connected to ${this.props.activationName} Data Stream`, {
         position: "top-right",
@@ -26,12 +37,15 @@ class ActivationMain extends Component {
     });
 
     this.dataStream.on("disconnect", e => {
-      Alert.error(`Disconnected from ${this.props.activationName} Data Stream`, {
-        position: "top-right",
-        effect: "slide",
-        timeout: 3000,
-        offset: 100
-      });
+      Alert.error(
+        `Disconnected from ${this.props.activationName} Data Stream`,
+        {
+          position: "top-right",
+          effect: "slide",
+          timeout: 3000,
+          offset: 100
+        }
+      );
     });
 
     this.dataStream.on("newCityData", msg => {
@@ -82,6 +96,12 @@ class ActivationMain extends Component {
     this.dataStream.disconnect();
   }
 
+  returnToList() {
+    this.props.dispatch(returnToList());
+    this.disconnectSocket();
+    window.clearInterval("tweetInterval");
+  }
+
   render() {
     let impactedStates = [];
     let twitterWidgets = [];
@@ -89,14 +109,18 @@ class ActivationMain extends Component {
       twitterWidgets.push(
         <div
           key={`widget-${i}`}
-          className={this.props.activeState === i ? "widgetActive" : "widgetInactive"}
+          className={
+            this.props.activeState === i ? "widgetActive" : "widgetInactive"
+          }
           id="t"
         >
           <a
             id="twitterWidget"
-            class="twitter-timeline"
+            className="twitter-timeline"
             data-chrome="noscrollbar noheader transparent"
-            href={`https://twitter.com/DAFNReady/lists/${this.props.statesData[i].name}`}
+            href={`https://twitter.com/DAFNReady/lists/${
+              this.props.statesData[i].name
+            }`}
           />
         </div>
       );
@@ -104,14 +128,16 @@ class ActivationMain extends Component {
       impactedStates.push(
         <button
           className={`heading__state-select-btn ${
-            this.props.fullState.activeState === i ? "heading__active-state active" : ""
+            this.props.fullState.activeState === i
+              ? "heading__active-state active"
+              : ""
           }`}
           onClick={() => {
             this.props.dispatch(selectState(i));
           }}
           key={i}
         >
-          {this.props.statesData[i].name}
+          {states.getStateCodeByStateName(this.props.statesData[i].name)}
         </button>
       );
     }
@@ -120,13 +146,22 @@ class ActivationMain extends Component {
       <div>
         <div className="headerBar">
           <Status status={this.props.status} />
-          <Heading impactedStates={impactedStates} headingInfo={this.props.headingInfo} />
+          <Heading
+            impactedStates={impactedStates}
+            headingInfo={this.props.headingInfo}
+          />
           <Clock
             disconnectSocket={this.disconnectSocket}
             activationName={this.props.activationName}
             location={this.props.location}
             timeZone={this.props.timeZone}
           />
+          <button
+            onClick={() => this.returnToList()}
+            className="clock__back-btn"
+          >
+            Back
+          </button>
         </div>
 
         <div className="infoBar">
@@ -137,7 +172,7 @@ class ActivationMain extends Component {
             twitterWidgets={twitterWidgets}
           />
 
-          <div className="weather-region-container">
+          <div className="weather__region-container">
             <Event
               mapLayers={this.props.mapLayers}
               earthquakeData={this.props.earthquakeData}

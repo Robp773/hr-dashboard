@@ -1,20 +1,15 @@
 .hashtags {
-    // background: red;
-    // width: 75%;
     height: 100%;
-    // margin-left: auto;
 
     &__toggle-btn-parent {
         display: flex;
         width: 100%;
         background: white;
-        padding: .5rem 0;
+        padding-bottom: .5rem;
         justify-content: center;
         align-items: center;
-        font-size: 2.75rem;
-        // color: $color-white;
-        border-bottom: 3px solid black;
-
+        font-size: 1.75rem;
+        border-bottom: 2px solid black;
     }
 
     &__label {

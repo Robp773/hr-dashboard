@@ -9,7 +9,7 @@ export default function Trends(props){
     for (let i = 0; i < props.dataArray.length; i++) {
         data.push({
             text: props.dataArray[i].name,
-            value: props.dataArray[i].count
+            value: props.dataArray[i].count * .5
         })
     }
         return(
@@ -19,7 +19,8 @@ export default function Trends(props){
                         data={data}
                         fontSizeMapper={fontSizeMapper}
                         // rotate={rotate}
-                        // width={1500}
+                        width={500}
+                        height={500}
                     />
                 </div>
             </div>

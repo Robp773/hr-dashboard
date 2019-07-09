@@ -1,41 +1,46 @@
 .clock {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 2.5rem;
-    padding: 1rem;
-    // background: blue;
-    position: relative;
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  position: relative;
 
-    &>h4 {
-        padding: 0;
-        margin: 0;
-        border-bottom: 3px solid $color-secondary;
+  & > h4 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.75rem;
+    border-bottom: 2px solid $color-secondary;
+    @include respond(big-desktop) {
+      font-size: 2rem;
+    }
+  }
+
+  &__back-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.25rem;
+    background: $color-secondary;
+    color: $color-white;
+    border: 0;
+    outline: 0;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    box-shadow: 0 0.5rem 1.5rem black;
+    @include respond(big-desktop) {
+      font-size: 1.75rem;
+    }
+    &:hover {
+      background: $color-white;
+      color: black;
     }
 
-    &__back-btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 1rem;
-        background: $color-secondary;
-        color: $color-white;
-        border: 0;
-        outline: 0;
-        padding: .5rem;
-        font-size: 2.5rem;
-        box-shadow: 0 .5rem 1.5rem black;
-
-        &:hover {
-            background: $color-white;
-            color: black;
-        }
-
-        &:active {
-            box-shadow: none;
-        }
+    &:active {
+      box-shadow: none;
     }
+  }
 }

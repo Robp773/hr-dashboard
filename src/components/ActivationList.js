@@ -95,7 +95,9 @@ export default class ActivationList extends React.Component {
 
         let statesArray = [];
         for (let b = 0; b < this.state.results[i].states.length; b++) {
-          statesArray.push(<span>{this.state.results[i].states[b]} </span>);
+          statesArray.push(
+            <span key={i}>{this.state.results[i].states[b]} </span>
+          );
         }
         activationsArray.push(
           <tr
@@ -129,8 +131,6 @@ export default class ActivationList extends React.Component {
 
       activeComponent = (
         <div className="activationList">
-
-     
           {modal}
           <button
             className="activationList__admin-btn"

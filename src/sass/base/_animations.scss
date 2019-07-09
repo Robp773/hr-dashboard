@@ -1,36 +1,35 @@
 @keyframes pulse-alert {
-    0% {
-        color: rgba(255, 255, 255, .05);
-    }
+  0% {
+    color: rgba(255, 255, 255, 0.05);
+  }
 }
 
 @keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
-
 @keyframes new-tweet {
-    0% {
-        background: lightyellow;
-    }
+  0% {
+    background: lightgreen;
+  }
 
-    100% {
-        background: rgba(255, 255, 255, .0);
-    }
+  100% {
+    background: rgba(255, 255, 255, 0);
+  }
 }
 
 @keyframes active {
-    0% {
-        color: lightgreen;
-    }
+  0% {
+    color: lightgreen;
+  }
 
-    100% {
-        color: green;
-    }
+  100% {
+    color: green;
+  }
 }

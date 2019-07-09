@@ -5,7 +5,7 @@
     overflow: scroll;
 
     &__h2 {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
     }
 
     &__row{
@@ -24,7 +24,7 @@
     &__selected-title {
         display: inline-block;
         width: 35%;
-        font-size: 3rem;
+        font-size: 1.75rem;
         padding: .5rem 1rem;
     }
 
@@ -39,7 +39,7 @@
         outline: none;
         color: $color-white;
         font-weight: bold;
-        font-size: 2rem;
+        font-size: 1.75rem;
         cursor: pointer;
 
         &:hover{

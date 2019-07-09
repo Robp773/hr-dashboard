@@ -1,117 +1,118 @@
 .regionInfo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50vw;
+  height: 40%;
+  border-left: 2px solid black;
+  position: relative;
+  background: $color-white;
+
+  &__container {
     display: flex;
-    align-items: center;
+  }
+
+  &__btn-container {
+    text-align: center;
+    height: fit-content;
+    border-bottom: 2px solid black;
     flex-direction: column;
-    width: 50vw;
-    height: 41.5vh;
-    border-left: 3px solid black;
-    position: relative;
-    background: $color-white;
+    justify-content: flex-start;
+    width: 25%;
+    border-right: 2px solid black;
+    overflow-y: scroll;
+    max-height: 100%;
 
-    &__container {
-        display: flex;
+    & > div {
+      font-size: 2.5rem;
+      width: 100%;
+      background: $color-secondary;
+      border-bottom: 2px solid black;
+      color: $color-white;
+      height: 8vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      @include respond(big-desktop) {
+        height: 7vh;
+        font-size: 2.75rem;
+      }
+    }
+  }
+
+  &__btn {
+    cursor: pointer;
+    border: 0;
+    font-size: 1.75rem;
+    background: $color-primary;
+    color: $color-white;
+    font-weight: bold;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid black;
+    width: 100%;
+    @include respond(big-desktop) {
+      font-size: 2rem;
     }
 
-    &__btn-container {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 25%;
-        border-right: 3px solid black;
-        position: absolute;
-        top: 0;
-        left: 0;
-        overflow-y: scroll;
-        max-height: 100%;
+    &:hover {
+      background: $color-white;
+      color: black;
+    }
+  }
 
-        &>div {
-            font-size: 3.25rem;
-            width: 100%;
-            background: $color-secondary;
-            border-bottom: 3px solid black;
-            color: $color-white;
-            height: 7vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  &__table {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+    font-size: 1.5rem;
+    margin-left: auto;
+    @include respond(big-desktop) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__name-th {
+    display: none;
+  }
+
+  &__social-media-th {
+    display: none;
+  }
+
+  &__name {
+    padding: 0 0.5rem;
+    width: 100rem;
+    overflow: hidden;
+
+    &:hover {
+      text-decoration: underline;
     }
 
-    &__btn {
-        cursor: pointer;
-        border: 0;
-        font-size: 2.25rem;
-        background: $color-primary;
-        color: $color-white;
-        font-weight: bold;
-        padding: .75rem 0;
-        border-bottom: 1px solid black;
-
-        &:hover {
-            background: $color-white;
-            color: black;
-        }
+    & > a {
+      color: black;
+      text-decoration: none;
     }
+  }
 
-    &__table {
-        width: 75%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        overflow-y: scroll;
-        font-size: 2rem;
-        margin-left: auto;
+  &__tr {
+    &:hover {
+      background: rgba(243, 142, 32, 0.25);
     }
+  }
 
-    &__name-th {
-        display: none;
-    }
+  &__social-media {
+    padding: 0.5rem;
+    margin: 0;
+  }
 
-    &__social-media-th {
-        display: none;
-    }
+  &__sm-icon {
+    display: flex;
+  }
 
-    &__name {
-        padding: 0 .5rem;
-        width: 100rem;
-        overflow: hidden;
-
-        &:hover {
-            text-decoration: underline;
-        }
-
-        &>a {
-            color: black;
-            text-decoration: none;
-        }
-    }
-
-    &__tr {
-        // background: rgba(21, 67, 96, .05);
-
-        // background: rgba(243, 142, 32, .15);
-
-        &:hover {
-            background: rgba(243, 142, 32, .25);
-        }
-    }
-
-    &__social-media {
-        padding: .5rem;
-        margin: 0;
-    }
-
-    &__odd-tr {}
-
-    &__sm-icon {
-        // cursor: pointer;
-
-        display: flex;
-    }
-
-    &__no-pointer {
-        cursor: not-allowed;
-    }
-
+  &__no-pointer {
+    cursor: not-allowed;
+  }
 }

@@ -1,41 +1,39 @@
 .trends {
-    // background: red;
+  // background: red;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: flex-start;
+
+  &__btn-parent {
+    text-align: center;
     display: flex;
-    justify-content: center;
-    height: 100%;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 25%;
+    height: fit-content;
+    position: absolute;
+    left: 0;
+    border-bottom: 2px solid black;
+  }
 
-    &__btn-parent {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 25%;
-        height: fit-content;
-        position: absolute;
-        left: 0;
-        border-bottom: 2px solid black;
+  &__btn {
+    font-size: 1.75rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    display: block;
+    outline: none;
+    border: 0;
+    border-right: 3px solid black;
+    border-bottom: 1px solid black;
+    color: $color-white;
+    background: $color-primary;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background: $color-white;
+      color: black;
     }
-
-    &__btn {
-        font-size: 2.25rem;
-        padding: .5rem 0;
-        text-align: center;
-        display: block;
-        outline: none;
-        border: 0;
-        border-right: 3px solid black;
-        border-bottom: 1px solid black;
-        color: $color-white;
-        background: $color-primary;
-        font-weight: bold;
-
-        &:hover {
-            cursor: pointer;
-            background: $color-white;
-            color: black;
-        }
-    }
-
-
+  }
 }

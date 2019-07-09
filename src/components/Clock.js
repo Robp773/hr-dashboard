@@ -1,10 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import { DateTime } from "luxon";
-import {connect} from 'react-redux';
-import {returnToList} from '../actions';
 
-export class Clock extends React.Component {
+export default class Clock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,11 +22,7 @@ export class Clock extends React.Component {
         })
     }
 
-    returnToList(){        
-        this.props.dispatch(returnToList())
-        this.props.disconnectSocket();
-        window.clearInterval('tweetInterval')
-    }
+
 
     componentDidMount() {
         this.clockInterval = setInterval(() => this.clockTracker(), 1000);
@@ -46,10 +40,8 @@ export class Clock extends React.Component {
                     <h4>{this.props.location}</h4>
                     <div>{this.state.disasterTime}</div>
 
-                    <button onClick={()=>this.returnToList()} className='clock__back-btn'>Back</button>
             </div>
         )
     }
 }
 
-export default connect()(Clock)

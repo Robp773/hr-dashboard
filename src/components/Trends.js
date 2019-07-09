@@ -24,7 +24,7 @@ export default class Trends extends React.Component {
     } else if (this.state.activeTab === "followerCount") {
       activeComponent = <FollowerCount followerCount={this.props.trends.followerCount} />;
     } else if (this.state.activeTab === "locations") {
-      activeComponent = <Locations locations={this.props.trends.locations} />;
+      activeComponent = <Locations multiplier={1} locations={this.props.trends.locations} />;
     }
 
     return (

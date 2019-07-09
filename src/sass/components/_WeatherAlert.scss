@@ -1,67 +1,69 @@
 .weather-alert {
+  &__alerts-parent {
+    flex-direction: column;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 0.25rem;
+    background: whitesmoke;
 
-    &__alerts-parent {
-        flex-direction: column;
-        cursor: pointer;
-        width: 100%;
-        margin-bottom: .25rem;
-        background: whitesmoke;
-
-        &:hover {
-            background: white !important;
-        }
-
-        &:hover > * .weather-alert__time-parent{
-            background: rgba(243, 142, 32, .5);
-        }
+    &:hover {
+      background: white !important;
     }
 
-    &__time-locations-parent {
-        display: flex;
+    &:hover > * .weather-alert__time-parent {
+      background: rgba(243, 142, 32, 0.5);
     }
+  }
 
-    &__time-parent {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        font-size: 2.25rem;
-        width: 55%;
-        background: rgba(243, 142, 32, .75);
+  &__time-locations-parent {
+    display: flex;
+    font-size: 1.75rem;
+    @include respond(big-desktop) {
+      font-size: 2rem;
     }
+  }
 
-    &__clock-item {
-        white-space: nowrap;
+  &__time-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 55%;
+    background: rgba(243, 142, 32, 0.75);
+  }
 
+  &__clock-item {
+    white-space: nowrap;
+  }
+
+  &__locations-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.75rem;
+    width: 100%;
+  }
+
+  &__desc {
+    font-size: 1.5rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    @include respond(big-desktop) {
+      font-size: 1.75rem;
     }
-
-    &__locations-parent {
-        font-size: 2rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 .75rem;
-        width: 100%;
-        // background: whitesmoke;
-    }
-
-    &__desc {
-        font-size: 2rem;
-        text-align: left;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: .75rem;
-    }
+  }
 }
 
 .open {
-    border-top: 0;
+  border-top: 0;
 }
 
 .close {
-    border: 0;
+  border: 0;
 
-    &>.weather-alert__desc {
-        display: none;
-    }
+  & > .weather-alert__desc {
+    display: none;
+  }
 }

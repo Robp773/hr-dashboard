@@ -15,7 +15,7 @@
   }
 
   &__heading {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     border-bottom: 3px solid $color-secondary;
     width: fit-content;
     margin: auto;
@@ -26,9 +26,10 @@
     top: 0;
     right: 0;
     margin: 1rem;
-    padding: 1rem;
+    padding: .75rem;
     background: $color-secondary;
     color: $color-white;
+    font-weight: bold;
     border: 1px solid transparent;
     outline: none;
     cursor: pointer;
@@ -45,7 +46,7 @@
     width: 85%;
     margin: auto;
     margin: 1rem auto;
-    font-size: 3rem;
+    font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,14 +58,14 @@
   }
 
   &__label {
-    margin-right: 2rem;
+    margin-right: 1.75rem;
     width: 25%;
     text-align: right;
   }
 
   &__input {
     width: 35%;
-    font-size: 3rem;
+    font-size: 1.75rem;
     padding: 0.5rem 1rem;
 
     &--select {
@@ -129,7 +130,7 @@
   &__single-search-item {
     display: inline-block;
     margin: 1rem;
-    font-size: 2rem;
+    font-size: 1.75rem;
     padding: 1rem;
     background: $color-primary;
     color: $color-white;
@@ -153,7 +154,7 @@
     padding: 0.5rem 1.5rem;
     border: 0;
     outline: 0;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     box-shadow: 0 0.5rem 2.5rem black;
     cursor: pointer;
 
@@ -169,7 +170,7 @@
     padding: 0.5rem 1.5rem;
     border: 0;
     outline: 0;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     box-shadow: 0 0.5rem 2rem black;
     cursor: pointer;
     margin: auto 1rem;
@@ -191,7 +192,7 @@
 
   &__error-list {
     margin: 3rem auto;
-    font-size: 3rem;
+    font-size: 2rem;
     color: red;
   }
 }

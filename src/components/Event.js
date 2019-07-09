@@ -10,7 +10,7 @@ export default class Weather extends React.Component {
 
             super(props);
             this.state = {
-                activeTab: 'radar'
+                activeTab: 'map'
             }
         }
 
@@ -33,7 +33,7 @@ render(){
         activeComponent = eventComponents.Weather
     }
 
-    else if (this.state.activeTab === 'radar') {
+    else if (this.state.activeTab === 'map') {
         headerPos = 'weather__heading--absolute';
         activeComponent = <MapTab mapLayers={this.props.mapLayers} disasterType={this.props.disasterType} latLng={this.props.latLng}/>
     }
@@ -53,7 +53,7 @@ render(){
             <div className={`weather__heading ${headerPos}`}> 
                 <div className='weather__event-heading'>Event Data</div>
                 <div className='weather__btn-parent'>
-                    <button onClick={()=>{this.changeTab('radar')}} className={`weather__btn ${this.state.activeTab === 'radar' ? 'active' : ''}`}>Radar</button>
+                    <button onClick={()=>{this.changeTab('map')}} className={`weather__btn ${this.state.activeTab === 'map' ? 'active' : ''}`}>Map</button>
                     <button onClick={()=>{this.changeTab('alerts')}} className={`weather__btn ${this.state.activeTab === 'alerts' ? 'active' : ''}`}>Alerts</button>
                     <button onClick={()=>{this.changeTab('cities')}} className={`weather__btn ${this.state.activeTab === 'cities' ? 'active' : ''}`}>Cities</button>
                     {this.props.disasterType === 'Earthquake' ? <button onClick={()=>{this.changeTab('event')}} className={`weather__btn ${this.state.activeTab === 'event' ? 'active' : ''}`}>Event</button> : null}

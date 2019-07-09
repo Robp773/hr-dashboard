@@ -3,9 +3,12 @@
   flex-direction: column;
   justify-content: flex-start;
   align-content: center;
-  font-size: 3rem;
   height: 100vh;
-  background: linear-gradient(to bottom, rgba(21, 67, 96, 0.95) 0%, rgba(21, 67, 96, 0.95) 100%),
+  background: linear-gradient(
+      to bottom,
+      rgba(21, 67, 96, 0.95) 0%,
+      rgba(21, 67, 96, 0.95) 100%
+    ),
     url("/images/hr-logo.jpg");
   background-size: cover;
   background-position: center;
@@ -19,7 +22,7 @@
     background: $color-secondary;
     border: 0;
     color: $color-white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     outline: none;
     box-shadow: 0 1rem 2rem black;
@@ -42,10 +45,14 @@
   &__table {
     background: rgba(255, 255, 255, 1);
     border-radius: 25px;
-    padding: 3rem;
-    width: 70%;
+    padding: 3rem 0;
     margin-left: auto;
     margin-right: auto;
+    width: 75%;
+
+    @include respond(tab-port) {
+      padding: 1rem;
+    }
 
     &--admin-panel {
       width: 100%;
@@ -57,6 +64,10 @@
     height: 5rem;
     border-radius: 100px;
     margin: auto;
+    @include respond(tab-land) {
+      width: 4.5rem;
+      height: 4.5rem;
+    }
 
     &--enabled {
       background: #228b22;
@@ -64,12 +75,18 @@
     }
 
     &--disabled {
-      background: #dc143c;
+      background: gray;
     }
   }
 
   &__th {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    &--hidden {
+      visibility: hidden;
+    }
+    @include respond(tab-land) {
+      font-size: 2.5rem;
+    }
   }
 
   &__tr {
@@ -81,11 +98,15 @@
   }
 
   &__td {
+    &--admin-panel {
+      width: 7.5%;
+    }
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
     border: 0 !important;
-    padding: 0 3rem;
-
+    @include respond(tab-land) {
+      font-size: 2rem;
+    }
     & > button {
       margin: auto;
     }
@@ -104,18 +125,18 @@
     }
 
     &--active {
-      color: green;
+      color: lightgreen;
       font-weight: bold;
       animation: active 1s alternate infinite;
     }
 
     &--inactive {
-      color: #dc143c;
+      color: $color-red;
     }
 
     &--edit {
       & > button {
-        font-size: 3rem;
+        font-size: 2.5rem;
         padding: 0.5rem 1.5rem;
         background: $color-secondary;
         color: $color-white;
@@ -123,6 +144,9 @@
         outline: none;
         box-shadow: 0 0.5rem 1rem black;
         cursor: pointer;
+        @include respond(tab-land) {
+          font-size: 2rem;
+        }
 
         &:hover {
           background: $color-white;
@@ -133,7 +157,7 @@
 
     &--activate {
       & > button {
-        font-size: 3rem;
+        font-size: 2.5rem;
         padding: 0.5rem 1.5rem;
         width: 100%;
         background: #228b22;
@@ -142,6 +166,9 @@
         outline: none;
         box-shadow: 0 0.5rem 1rem black;
         cursor: pointer;
+        @include respond(tab-land) {
+          font-size: 2rem;
+        }
 
         &:hover {
           background: $color-white;
@@ -152,14 +179,16 @@
 
     &--deactivate {
       & > button {
-        font-size: 3rem;
+        font-size: 2.5rem;
         padding: 0.5rem 1.5rem;
-        width: 100%;
         background: #dc143c;
         color: $color-white;
         border: 0;
         outline: none;
         box-shadow: 0 0.5rem 1rem black;
+        @include respond(tab-land) {
+          font-size: 2rem;
+        }
 
         &:hover {
           background: $color-white;
@@ -178,6 +207,10 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    @include respond(tab-land) {
+      width: 4.5rem;
+      height: 4.5rem;
+    }
     &--green {
       background: #228b22;
     }

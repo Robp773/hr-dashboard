@@ -1,7 +1,8 @@
-.wordcloud{
-
-    &__parent {
-        width: 75%;
-        height: 100%;
-    }
+.wordcloud {
+  &__parent {
+    margin-top: 1rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
