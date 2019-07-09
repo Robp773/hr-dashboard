@@ -699,7 +699,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
     .activationList__td--activate > button {
       font-size: 2.5rem;
       padding: 0.5rem 1.5rem;
-      width: 100%;
       background: #228b22;
       color: white;
       border: 0;
