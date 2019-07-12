@@ -19,7 +19,8 @@ export default class MapTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: "loading"
+      status: "loading",
+      layerWidgetVis: false
     };
 
     loadModules([
@@ -32,7 +33,8 @@ export default class MapTab extends React.Component {
       "esri/layers/MapImageLayer",
       "esri/layers/FeatureLayer",
       "esri/widgets/Compass",
-      "esri/widgets/LayerList"
+      "esri/widgets/LayerList",
+      "esri/widgets/Expand"
     ]).then(
       ([
         OAuthInfo,
@@ -44,7 +46,8 @@ export default class MapTab extends React.Component {
         MapImageLayer,
         FeatureLayer,
         Compass,
-        LayerList
+        LayerList,
+        Expand
       ]) => {
         fetch(`${API_BASE_URL}/token`)
           .then(res => {
@@ -294,13 +297,14 @@ export default class MapTab extends React.Component {
 
               view.ui.remove("zoom");
 
-              var layerList = new LayerList({
-                view: view
+              const legend = new Expand({
+                content: new LayerList({
+                  view: view
+                }),
+                view: view,
+                expanded: false
               });
-
-              view.ui.add(layerList, {
-                position: "bottom-left"
-              });
+              view.ui.add(legend, "bottom-left");
 
               var compass = new Compass({
                 view: view
@@ -313,6 +317,7 @@ export default class MapTab extends React.Component {
               let fullscreen = new Fullscreen({
                 view: view
               });
+
               view.ui.add(fullscreen, "bottom-right");
 
               view.when(() => {
@@ -337,8 +342,13 @@ export default class MapTab extends React.Component {
     }
 
     return (
-      <div id="parent" style={styles.container}>
-        <div id="viewDiv" style={styles.mapDiv} />
+      <div
+        id={`parent .mapTab__parent ${
+          !this.state.layerWidgetVis ? "mapTab__widgetHidden" : ""
+        }`}
+        style={styles.container}
+      >
+        <div id={`viewDiv`} style={styles.mapDiv} />
       </div>
     );
   }
