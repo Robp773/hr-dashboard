@@ -35,25 +35,6 @@
     }
   }
 
-  // &__alerts-heading {
-  //   position: absolute;
-  //   left: 0px;
-  //   top: 0;
-  //   background: $color-secondary;
-  //   font-size: 1rem;
-  //   width: 25%;
-  //   color: $color-white;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   border-bottom: 1px solid black;
-  //   border-right: 1px solid black;
-  //   color: red;
-  //   @include respond(big-desktop) {
-  //     font-size: 3.5rem;
-  //   }
-  // }
-
   &__event-heading {
     background: $color-secondary;
     width: 25%;
@@ -66,9 +47,8 @@
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     @include respond(big-desktop) {
-     font-size: 2.75rem;
+      font-size: 2.75rem;
     }
-    
   }
 
   &__btn-parent {
