@@ -18,7 +18,7 @@ import {
 
 import io from "socket.io-client";
 import Alert from "react-s-alert";
-import states from 'us-state-codes'
+import states from "us-state-codes";
 
 class ActivationMain extends Component {
   constructor(props) {
@@ -118,9 +118,9 @@ class ActivationMain extends Component {
             id="twitterWidget"
             className="twitter-timeline"
             data-chrome="noscrollbar noheader transparent"
-            href={`https://twitter.com/DAFNReady/lists/${
-              this.props.statesData[i].name
-            }`}
+            href={`https://twitter.com/DAFNReady/lists/${this.props.statesData[
+              i
+            ].name.replace(/\s/g, "")}`}
           />
         </div>
       );
