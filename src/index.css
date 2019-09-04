@@ -583,7 +583,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-weight: bold; }
 
 #twitterWidgets-parent {
-  background: red;
   width: 100%;
   height: fit-content; }
 

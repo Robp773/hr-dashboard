@@ -104,27 +104,7 @@ class ActivationMain extends Component {
 
   render() {
     let impactedStates = [];
-    let twitterWidgets = [];
     for (let i = 0; i < this.props.statesData.length; i++) {
-      twitterWidgets.push(
-        <div
-          key={`widget-${i}`}
-          className={
-            this.props.activeState === i ? "widgetActive" : "widgetInactive"
-          }
-          id="t"
-        >
-          <a
-            id="twitterWidget"
-            className="twitter-timeline"
-            data-chrome="noscrollbar noheader transparent"
-            href={`https://twitter.com/DAFNReady/lists/${this.props.statesData[
-              i
-            ].name.replace(/\s/g, "")}`}
-          />
-        </div>
-      );
-
       impactedStates.push(
         <button
           className={`heading__state-select-btn ${
@@ -169,7 +149,9 @@ class ActivationMain extends Component {
             streamEnabled={this.props.streamEnabled}
             socialAnalysis={this.props.socialAnalysis}
             activationName={this.props.activationName}
-            twitterWidgets={twitterWidgets}
+            twitterList={this.props.statesData[
+              this.props.activeState
+            ].name.replace(/\s/g, "")}
           />
 
           <div className="weather__region-container">

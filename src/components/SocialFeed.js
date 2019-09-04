@@ -222,7 +222,7 @@ export default class SocialFeed extends React.Component {
         </div>
       );
     } else if (this.state.widgetActive) {
-      activeFeed = <TwitterWidget twitterWidgets={this.props.twitterWidgets} />;
+      activeFeed = <TwitterWidget twitterList={this.props.twitterList} />;
     } else if (this.state.activeView === "feed") {
       if (!this.props.streamEnabled) {
         activeFeed = (
