@@ -267,7 +267,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   align-items: center;
   flex-direction: column;
   width: 50vw;
-  height: 40%;
+  height: 40vh;
   border-left: 2px solid black;
   position: relative;
   background: white; }
@@ -315,7 +315,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       color: black; }
   .regionInfo__table {
     width: 75%;
-    height: 100%;
+    height: 40vh;
     display: flex;
     justify-content: center;
     overflow-y: scroll;
