@@ -8,7 +8,6 @@ import ReactTooltip from "react-tooltip";
 export default class CreateActivation extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       errorsList: [],
       loading: false,
@@ -18,14 +17,10 @@ export default class CreateActivation extends React.Component {
       disasterType: this.props.defaultVals.disasterType,
       level: this.props.defaultVals.level,
       states: this.props.defaultVals.states,
-      updateInterval: this.props.defaultVals.updateInterval / 60000,
-      analysisInterval: this.props.defaultVals.analysisInterval / 60000,
-      streamEnabled: this.props.defaultVals.streamEnabled,
-      streamParams: this.props.defaultVals.streamParams,
       searchParams: this.props.defaultVals.searchParams,
       earthquakeData: this.props.defaultVals.earthquakeData,
-      earthquakeParams: this.props.defaultVals.earthquakeParams,
-      mapLayers: this.props.defaultVals.mapLayers
+      mapLayers: this.props.defaultVals.mapLayers,
+      entitiesTracking: this.props.defaultVals.entitiesTracking
     };
 
     this.setEarthquake = this.setEarthquake.bind(this);
@@ -64,7 +59,6 @@ export default class CreateActivation extends React.Component {
       errorsList.push("Please choose an activation level");
     }
     if (errorsList.length > 0) {
-      console.log(errorsList.length);
       this.setState({ errorsList });
       return false;
     } else {
@@ -74,7 +68,6 @@ export default class CreateActivation extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     if (!this.checkFormValues()) {
       console.log("CHECK FAILED");
       return;
@@ -93,13 +86,10 @@ export default class CreateActivation extends React.Component {
         disasterType: this.state.disasterType,
         level: this.state.level,
         states: this.state.statesIncluded || this.props.defaultVals.stateNames,
-        updateInterval: this.state.updateInterval * 60000,
-        analysisInterval: this.state.analysisInterval * 60000,
-        streamEnabled: this.state.streamEnabled,
-        streamParams: this.state.streamParams,
         searchParams: this.state.searchParams,
-        earthquakeParams: this.state.earthquakeParams,
-        mapLayers: this.state.mapLayers
+        earthquakeData: this.state.earthquakeData,
+        mapLayers: this.state.mapLayers,
+        entitiesTracking: this.state.entitiesTracking
       })
     }).then(() => {
       this.props.checkActivations().then(() => {
@@ -139,51 +129,14 @@ export default class CreateActivation extends React.Component {
   handleSearchSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
-    let currentState = this.state.searchParams.searchTerms;
+    let currentState = this.state.searchParams;
 
     if (this.searchInput.value !== "") {
-      currentState.push(this.searchInput.value);
-      let state = Object.assign({}, this.state.searchParams, {
-        searchTerms: currentState
-      });
+      currentState.push(this.searchInput.value.toLowerCase());
       this.setState({
-        searchParams: state
+        searchParams: currentState
       });
       this.searchInput.value = "";
-    }
-  }
-
-  handleStreamSubmit(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    let userVal = this.streamUserInput.value;
-    let keywordVal = this.streamKeywordInput.value;
-
-    let userList = this.state.streamParams.users;
-    let keywordList = this.state.streamParams.searchTerms;
-
-    if (keywordVal !== "") {
-      keywordList.push(keywordVal);
-    }
-
-    if (userVal !== "") {
-      userList.push(userVal);
-    }
-
-    this.setState({
-      streamParams: {
-        users: userList,
-        searchTerms: keywordList
-      }
-    });
-    this.streamUserInput.value = "";
-    this.streamKeywordInput.value = "";
-  }
-
-  onKeyPress(e) {
-    if (e.which === 13) {
-      this.handleStreamSubmit(e);
     }
   }
 
@@ -200,127 +153,72 @@ export default class CreateActivation extends React.Component {
     e.stopPropagation();
     let currentState;
 
-    if (stateLocation === "stream-users") {
-      currentState = this.state.streamParams.users;
+    if (stateLocation === "search-params") {
+      currentState = this.state.searchParams;
       currentState.splice(index, 1);
-      let state = Object.assign({}, this.state.streamParams, {
-        users: currentState
-      });
       this.setState({
-        streamParams: state
-      });
-    } else if (stateLocation === "stream-searchTerms") {
-      currentState = this.state.streamParams.searchTerms;
-      currentState.splice(index, 1);
-      let state = Object.assign({}, this.state.streamParams, {
-        searchTerms: currentState
-      });
-      this.setState({
-        streamParams: state
-      });
-    } else if (stateLocation === "search-params") {
-      currentState = this.state.searchParams.searchTerms;
-      currentState.splice(index, 1);
-      let state = Object.assign({}, this.state.searchParams, {
-        searchTerms: currentState
-      });
-      this.setState({
-        searchParams: state
+        searchParams: currentState
       });
     }
   }
 
   setEarthquake(id, title) {
     if (id) {
-      this.setState({ earthquakeParams: { ...this.state.earthquakeParams, id: id, title: title } });
+      this.setState({
+        earthquakeData: {
+          ...this.state.earthquakeData,
+          params: { ...this.state.earthquakeData.params, id, title }
+        }
+      });
     }
     // when "change" btn is clicked
     else {
-      this.setState({ earthquakeParams: { ...this.state.earthquakeParams, id: null, title: null } });
+      this.setState({
+        earthquakeData: {
+          ...this.state.earthquakeData,
+          params: { id: null, title: null, radius: 150 }
+        }
+      });
     }
   }
 
   setEarthquakeRadius(radius) {
-    this.setState({ earthquakeParams: { ...this.state.earthquakeParams, radius: radius } });
+    this.setState({
+      earthquakeData: {
+        ...this.state.earthquakeData,
+        params: { ...this.state.earthquakeData.params, radius: Number(radius) }
+      }
+    });
   }
 
   handleLayerKeyPress(e) {
     if (e.which === 13) {
       e.preventDefault();
       let currentLayers = this.state.mapLayers;
-      currentLayers.push({ type: this.tempLayerType, url: this.layerInput.value });
+      currentLayers.push({
+        type: this.tempLayerType,
+        url: this.layerInput.value
+      });
       this.setState({ mapLayers: currentLayers });
       this.layerInput.value = "";
     }
   }
 
   render() {
-    let searchResults;
-    if (this.state.streamEnabled) {
-      let userList = [];
-      let searchTermList = [];
-
-      for (let i = 0; i < this.state.streamParams.users.length; i++) {
-        userList.push(
-          <button
-            onClick={e => {
-              this.handleItemDelete(e, "stream-users", i);
-            }}
-            className="createActivation__single-search-item"
-          >
-            {this.state.streamParams.users[i]}
-          </button>
-        );
-      }
-
-      for (let i = 0; i < this.state.streamParams.searchTerms.length; i++) {
-        searchTermList.push(
-          <button
-            onClick={e => {
-              this.handleItemDelete(e, "stream-searchTerms", i);
-            }}
-            className="createActivation__single-search-item"
-          >
-            {this.state.streamParams.searchTerms[i]}
-          </button>
-        );
-      }
-
-      searchResults = (
-        <div>
-          <div>
-            <h2>User Ids</h2>
-            <div className="createActivation__search-item-category">{userList}</div>
-          </div>
-          <div>
-            <h2>Search Terms</h2>
-            <div className="createActivation__search-item-category">{searchTermList}</div>
-          </div>
-        </div>
-      );
-    } else {
-      let searchTermList = [];
-      for (let i = 0; i < this.state.searchParams.searchTerms.length; i++) {
-        searchTermList.push(
-          <button
-            onClick={e => {
-              this.handleItemDelete(e, "search-params", i);
-            }}
-            className="createActivation__single-search-item"
-          >
-            {this.state.searchParams.searchTerms[i]}
-          </button>
-        );
-      }
-      searchResults = (
-        <div>
-          <div>
-            <h2>Search Terms</h2>
-            <div className="createActivation__search-item-category">{searchTermList}</div>
-          </div>
-        </div>
+    let searchTermList = [];
+    for (let i = 0; i < this.state.searchParams.length; i++) {
+      searchTermList.push(
+        <button
+          onClick={e => {
+            this.handleItemDelete(e, "search-params", i);
+          }}
+          className="createActivation__single-search-item"
+        >
+          {this.state.searchParams[i]}
+        </button>
       );
     }
+
     let disasterTypes = [
       {
         value: "Flooding",
@@ -360,57 +258,6 @@ export default class CreateActivation extends React.Component {
       }
     ];
 
-    let searchParamsForm;
-
-    if (this.state.streamEnabled) {
-      searchParamsForm = (
-        <form
-          onSubmit={e => {
-            this.handleStreamSubmit(e);
-          }}
-          className="createActivation__search-form createActivation__search-form--stream"
-        >
-          <input
-            onKeyPress={e => {
-              this.onKeyPress(e);
-            }}
-            type="submit"
-            ref={node => (this.streamUserInput = node)}
-            className="createActivation__input createActivation__input--search-form"
-            type="text"
-            placeholder="User Id"
-          />
-          <input
-            onKeyPress={e => {
-              this.onKeyPress(e);
-            }}
-            type="submit"
-            ref={node => (this.streamKeywordInput = node)}
-            className="createActivation__input createActivation__input--search-form"
-            type="text"
-            placeholder="Keywords, phrases, hashtags"
-          />
-        </form>
-      );
-    } else {
-      searchParamsForm = (
-        <form
-          onSubmit={e => {
-            this.handleSearchSubmit(e);
-          }}
-          className="createActivation__search-form createActivation__search-form--search"
-        >
-          <div className="createActivation__input-wrapper">
-            <input
-              ref={node => (this.searchInput = node)}
-              className="createActivation__input createActivation__input--search-form"
-              type="text"
-              placeholder="Keywords, phrases, hashtags"
-            />
-          </div>
-        </form>
-      );
-    }
     return (
       <div className="createActivation">
         <div
@@ -439,10 +286,15 @@ export default class CreateActivation extends React.Component {
             </button>
             <ReactTooltip classNam="createActivation__label" multiline />
 
-            <h2 className="createActivation__heading">{this.props.type} Activation</h2>
+            <h2 className="createActivation__heading">
+              {this.props.type} Activation
+            </h2>
 
             <div className="createActivation__label-input-parent">
-              <label data-tip="The name for this activation" className="createActivation__label">
+              <label
+                data-tip="The name for this activation"
+                className="createActivation__label"
+              >
                 Activation Name:
               </label>
 
@@ -467,7 +319,10 @@ export default class CreateActivation extends React.Component {
                 defaultValue={
                   this.state.disasterType === ""
                     ? null
-                    : { value: this.state.disasterType, label: this.props.defaultVals.disasterType }
+                    : {
+                        value: this.state.disasterType,
+                        label: this.props.defaultVals.disasterType
+                      }
                 }
                 onChange={e => {
                   this.setState({ disasterType: e.value });
@@ -478,24 +333,33 @@ export default class CreateActivation extends React.Component {
 
             {this.state.disasterType === "Earthquake" ? (
               <SelectEarthquake
-                earthquakeParams={this.state.earthquakeParams}
+                earthquakeParams={this.state.earthquakeData.params}
                 setEarthquake={this.setEarthquake}
                 setEarthquakeRadius={this.setEarthquakeRadius}
               />
             ) : null}
 
             <div className="createActivation__label-input-parent">
-              <label data-tip="Humanity Road activation level" className="createActivation__label">
+              <label
+                data-tip="Humanity Road activation level"
+                className="createActivation__label"
+              >
                 Activation Level:
               </label>
               <Select
                 defaultValue={
-                  this.state.level === "" ? null : { value: this.state.level, label: this.state.level }
+                  this.state.level === ""
+                    ? null
+                    : { value: this.state.level, label: this.state.level }
                 }
                 onChange={e => {
                   this.setState({ level: e.value });
                 }}
-                options={[{ value: 1, label: 1 }, { value: 2, label: 2 }, { value: 3, label: 3 }]}
+                options={[
+                  { value: 1, label: 1 },
+                  { value: 2, label: 2 },
+                  { value: 3, label: 3 }
+                ]}
               />
             </div>
 
@@ -512,46 +376,6 @@ export default class CreateActivation extends React.Component {
                 onChange={e => this.handleSelectChange(e)}
                 options={this.state.results}
               />
-            </div>
-
-            <div className="createActivation__label-input-parent">
-              <label
-                data-tip="How often weather alerts, city weather data, and earthquake related data (if the disaster type is earthquake) is updated."
-                className="createActivation__label"
-              >
-                Update Interval:{" "}
-              </label>
-              <input
-                className="createActivation__input"
-                onChange={e => {
-                  this.setState({ updateInterval: e.currentTarget.value });
-                }}
-                type="range"
-                defaultValue={this.state.updateInterval}
-                min={10}
-                max={180}
-              />
-              <div className="createActivation__interval-count">{this.state.updateInterval} mins</div>
-            </div>
-
-            <div className="createActivation__label-input-parent">
-              <label
-                data-tip="How often social media analysis is run on collected tweets. Currently only works if Data Retrieval is set to stream."
-                className="createActivation__label"
-              >
-                Analysis Interval:{" "}
-              </label>
-              <input
-                className="createActivation__input"
-                onChange={e => {
-                  this.setState({ analysisInterval: e.currentTarget.value });
-                }}
-                type="range"
-                defaultValue={this.state.analysisInterval}
-                min={10}
-                max={180}
-              />
-              <div className="createActivation__interval-count">{this.state.analysisInterval} mins</div>
             </div>
 
             <div className="createActivation__label-input-parent">
@@ -603,49 +427,79 @@ export default class CreateActivation extends React.Component {
 
             <div className="createActivation__label-input-parent">
               <label
-                data-tip="Social media data collection method <br> Search: not yet implemented - a less powerful / not as thorough way to gather Twitter data. Can be used with multiple dashboards simultaneously. <br>
-              Stream: high powered search method that brings in tweets in real time. Can only run one stream at a time."
+                data-tip="Search terms for data collection. <br> Press enter after typing to add to list. Commas between words are equivalent to AND operator. <br>
+               Up to 500 characters allowed."
                 className="createActivation__label"
               >
-                Data Retrieval:{" "}
+                Twitter Search Parameters:
               </label>
-              <div className="createActivation__input">
-                <span>Search</span>
-                <label class="switch createActivation__switch">
+              <form
+                onSubmit={e => {
+                  this.handleSearchSubmit(e);
+                }}
+                className="createActivation__search-form createActivation__search-form--search"
+              >
+                <div className="createActivation__input-wrapper">
                   <input
-                    checked={this.state.streamEnabled ? true : false}
-                    onChange={() => this.setState({ streamEnabled: !this.state.streamEnabled })}
-                    type="checkbox"
+                    ref={node => (this.searchInput = node)}
+                    className="createActivation__input createActivation__input--search-form"
+                    type="text"
+                    placeholder="Keywords, phrases, hashtags"
                   />
-                  <span class="slider round" />
-                </label>
-                <span>Stream</span>
-              </div>
-            </div>
-
-            <div className="createActivation__label-input-parent">
-              <label
-                data-tip="Search terms for search/stream data collection. <br> Press enter after typing to add to list. Commas between words are equivalent to AND operator <br>
-              Search: Up to 500 characters allowed. <br>
-              Stream: Up to 400 keywords and 5,000 user ids. User ids are numerical."
-                className="createActivation__label"
-              >
-                Data Parameters:{" "}
-              </label>
-              {searchParamsForm}
+                </div>
+              </form>{" "}
             </div>
 
             <div
               className={`createActivation__search-params-totals ${
-                this.state.searchParams.searchTerms.length > 0 ||
-                this.state.streamParams.searchTerms.length > 0 ||
-                this.state.streamParams.users.length > 0
-                  ? null
-                  : "hidden"
+                this.state.searchParams.length > 0 ? null : "hidden"
               }`}
             >
-              {searchResults}
+              <div>
+                <div>
+                  <h2>Search Terms</h2>
+                  <div className="createActivation__search-item-category">
+                    {searchTermList}
+                  </div>
+                </div>
+              </div>
             </div>
+            {/* <div className="createActivation__label-input-parent">
+              <label
+                data-tip="Should data analysis be turned on for this activation. Limited to one dashboard at a time."
+                className="createActivation__label"
+              >
+                Data Analysis:
+              </label>
+              <div className="social-feed__feed-toggle">
+                <div className="social-feed__label">Off</div>
+                <label className="switch">
+                  {this.state.entitiesTracking ? (
+                    <input
+                    checked
+                      onChange={() =>
+                        this.setState({
+                          entitiesTracking: !this.state.entitiesTracking
+                        })
+                      }
+                      type="checkbox"
+                    />
+                  ) : (
+                    <input
+                      onChange={() =>
+                        this.setState({
+                          entitiesTracking: !this.state.entitiesTracking
+                        })
+                      }
+                      type="checkbox"
+                    />
+                  )}
+
+                  <span className="slider round" />
+                </label>
+                <div className="social-feed__label">On</div>
+              </div>
+            </div> */}
             <div className="createActivation__error-list">
               {this.state.errorsList.map((error, index) => {
                 return <div key={index}>{error}</div>;

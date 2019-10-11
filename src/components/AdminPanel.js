@@ -24,6 +24,8 @@ export default class AdminPanel extends React.Component {
       return res
         .json()
         .then(result => {
+          console.log(result)
+
           this.setState({
             results: result
           });
@@ -116,23 +118,14 @@ export default class AdminPanel extends React.Component {
         disasterType: "",
         level: "",
         states: [],
+        entitiesTracking: false,
         stateNames: [],
-        updateInterval: 600000,
-        analysisInterval: 600000,
-        streamEnabled: false,
-        streamParams: {
-          users: [],
-          searchTerms: []
+        searchParams: [],
+        earthquakeData: {
+          data: {},
+          params: { id: null, title: null, radius: 150 }
         },
-        searchParams: {
-          searchTerms: [],
-          geocode: {}
-        },
-        earthquakeParams: {
-          id: null,
-          title: null,
-          radius: 0
-        },
+
         mapLayers: []
       };
       formModal = (
@@ -148,12 +141,12 @@ export default class AdminPanel extends React.Component {
       let curActivation = this.state.results[this.state.editIndex];
       let statesArray = [];
       let stateNames = [];
-      for (let i = 0; i < curActivation.states.length; i++) {
+      for (let i = 0; i < curActivation.eventData.length; i++) {
         statesArray.push({
-          value: curActivation.states[i],
-          label: curActivation.states[i]
+          value: curActivation.eventData[i].name,
+          label: curActivation.eventData[i].name
         });
-        stateNames.push(curActivation.states[i]);
+        stateNames.push(curActivation.eventData[i].name);
       }
 
       defaultVals = {
@@ -161,15 +154,13 @@ export default class AdminPanel extends React.Component {
         disasterType: curActivation.disasterType,
         level: curActivation.level,
         states: statesArray,
+        entitiesTracking: curActivation.entitiesTracking,
         stateNames: stateNames,
-        updateInterval: curActivation.updateInterval,
-        analysisInterval: curActivation.analysisInterval,
-        streamEnabled: curActivation.streamEnabled,
-        streamParams: curActivation.streamParams,
         searchParams: curActivation.searchParams,
-        earthquakeParams: curActivation.earthquakeParams,
+        earthquakeData: curActivation.earthquakeData,
         mapLayers: curActivation.mapLayers
       };
+
       formModal = (
         <CreateActivation
           reqType="PUT"
@@ -183,15 +174,9 @@ export default class AdminPanel extends React.Component {
 
     let activationsArray = [];
     for (let i = 0; i < this.state.results.length; i++) {
-      let enabledIndicator = (
-        <div className="activationList__stream-indicator activationList__stream-indicator--enabled" />
-      );
-      let disabledIndicator = (
-        <div className="activationList__stream-indicator activationList__stream-indicator--disabled" />
-      );
       let activationStatus;
       let activationBtn;
-      if (this.state.results[i].status) {
+      if (this.state.results[i].isActive) {
         activationBtn = (
           <td className="activationList__td activationList__td--deactivate">
             <button
@@ -245,9 +230,11 @@ export default class AdminPanel extends React.Component {
       );
 
       let statesArray = [];
-      for (let b = 0; b < this.state.results[i].states.length; b++) {
+      for (let b = 0; b < this.state.results[i].eventData.length; b++) {
         statesArray.push(
-          <span key={`state-${b}`}>{this.state.results[i].states[b]} </span>
+          <span key={`state-${b}`}>
+            {this.state.results[i].eventData[b].name}{" "}
+          </span>
         );
       }
       activationsArray.push(
@@ -256,17 +243,12 @@ export default class AdminPanel extends React.Component {
             {this.state.results[i].activationName}
           </td>
           <td className={`activationList__td ${activationStatus}`}>
-            {this.state.results[i].status ? "Active" : "Inactive"}
+            {this.state.results[i].isActive ? "Active" : "Inactive"}
           </td>
           <td className="activationList__td">
             {this.state.results[i].disasterType}
           </td>
           <td className="activationList__td">{statesArray}</td>
-          <td className="activationList__td">
-            {this.state.results[i].streamEnabled && this.state.results[i].status
-              ? enabledIndicator
-              : disabledIndicator}
-          </td>
           <td className={`activationList__td activationList__level`}>
             {levelIndicator}
           </td>
@@ -283,7 +265,6 @@ export default class AdminPanel extends React.Component {
         </tr>
       );
     }
-
     return (
       <div className="adminPanel">
         {formModal}
@@ -314,7 +295,6 @@ export default class AdminPanel extends React.Component {
                 <th className="activationList__th">Status</th>
                 <th className="activationList__th">Type</th>
                 <th className="activationList__th">States</th>
-                <th className="activationList__th">Stream</th>
                 <th className="activationList__th">Level</th>
                 <th className="activationList__th activationList__th--hidden">
                   Edit
