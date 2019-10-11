@@ -3,22 +3,27 @@ const initialState = {
   activationName: null,
   activeState: 0,
   cities: [],
-  disasterType: 'Flooding',
-  eventData: [{
-    name: '',
-    data: ['loading']
-  }],
+  disasterType: "Flooding",
+  eventData: [
+    {
+      name: "",
+      data: ["loading"]
+    }
+  ],
   socialAnalysis: {
     entities: {
-      placeholderKey: [{
-        type: 'placeholder'
-      }]
+      placeholderKey: [
+        {
+          type: "placeholder"
+        }
+      ]
     }
   },
   level: 1,
   // State spreadsheet data + timezone + lat/long + twitter list
-  regionalData: [{
-      name: 'alaska',
+  regionalData: [
+    {
+      name: "alaska",
       stateGovt: [],
       cities: [],
       counties: [],
@@ -36,10 +41,12 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-
+  console.log(state)
   if (action.type === "SET_STATE") {
-    return Object.assign({},
-      state, {
+    return Object.assign(
+      {},
+      state,
+      {
         activationChosen: true
       },
       action.state
@@ -47,52 +54,23 @@ export const reducer = (state = initialState, action) => {
   }
 
   if (action.type === "RETURN_TO_LIST") {
-    return Object.assign({},
-      state, {
-        activationChosen: false
-      }
-    );
+    return Object.assign({}, state, {
+      activationChosen: false
+    });
   }
 
   if (action.type === "SELECT_STATE") {
-    return Object.assign({},
-      state, {
-        activeState: action.stateIndex
-      }
-    );
+    return Object.assign({}, state, {
+      activeState: action.stateIndex
+    });
   }
 
-  if (action.type === "UPDATE_CITIES") {
-    return Object.assign({},
-      state, {
-        cities: action.data
-      }
-    );
+  if (action.type === "UPDATE_STATE") {
+    return Object.assign({}, state, {
+      ...action.update
+    });
   }
 
-  if (action.type === "UPDATE_EVENT_DATA") {
-    return Object.assign({},
-      state, {
-        eventData: action.data
-      }
-    );
-  }
-
-  if (action.type === "UPDATE_ANALYSIS") {
-    return Object.assign({},
-      state, {
-        socialAnalysis: action.data
-      }
-    );
-  }
-
-  if (action.type === "UPDATE_EARTHQUAKE_DATA") {
-    return Object.assign({},
-      state, {
-        earthquakeData: action.data
-      }
-    );
-  }
-
+  console.log(state)
   return state;
 };

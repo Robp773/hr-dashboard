@@ -7,18 +7,12 @@ import RegionInfo from "./RegionInfo";
 import { connect } from "react-redux";
 import SocialFeed from "./SocialFeed";
 import { API_BASE_URL } from "../config";
-import {
-  selectState,
-  updateCities,
-  updateEventData,
-  updateAnalysis,
-  updateEarthquakeData,
-  returnToList
-} from "../actions";
-
+import { selectState, updateState, returnToList } from "../actions";
 import io from "socket.io-client";
 import Alert from "react-s-alert";
 import states from "us-state-codes";
+
+import { FiArrowLeft } from "react-icons/fi";
 
 class ActivationMain extends Component {
   constructor(props) {
@@ -28,65 +22,41 @@ class ActivationMain extends Component {
       `${API_BASE_URL}/${this.props.activationName.replace(/\s+/g, "")}`
     );
     this.dataStream.on("connect", () => {
-      Alert.success(`Connected to ${this.props.activationName} Data Stream`, {
-        position: "top-right",
-        effect: "slide",
-        timeout: 3000,
-        offset: 100
-      });
-    });
-
-    this.dataStream.on("disconnect", e => {
-      Alert.error(
-        `Disconnected from ${this.props.activationName} Data Stream`,
+      Alert.success(
+        `<h3>Connected to ${this.props.activationName} Data Stream</h3>`,
         {
+          html: true,
           position: "top-right",
           effect: "slide",
           timeout: 3000,
-          offset: 100
+          offset: 25
         }
       );
     });
 
-    this.dataStream.on("newCityData", msg => {
-      console.log("new city data");
-      Alert.success("Updating city weather data...", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 3000,
-        offset: 100
-      });
-      this.props.dispatch(updateCities(msg));
+    this.dataStream.on("disconnect", e => {
+      Alert.error(
+        `<h3>Disconnected from ${this.props.activationName} Data Stream</h3>`,
+        {
+          html: true,
+          position: "top-right",
+          effect: "slide",
+          timeout: 3000,
+          offset: 25
+        }
+      );
     });
 
-    this.dataStream.on("newEventData", msg => {
-      Alert.success(`Updating weather alerts...`, {
+    this.dataStream.on("test", msg => {
+      console.log("new data");
+      Alert.success(`<h3>Data Updated</h3>`, {
+        html: true,
         position: "top-right",
         effect: "slide",
         timeout: 3000,
         offset: 100
       });
-      this.props.dispatch(updateEventData(msg));
-    });
-
-    this.dataStream.on("tweetAnalysis", msg => {
-      Alert.success("New Tweet Analysis", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 3000,
-        offset: 100
-      });
-      this.props.dispatch(updateAnalysis(msg));
-    });
-
-    this.dataStream.on("newEarthquakeData", msg => {
-      Alert.success("New Earthquake Data", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 3000,
-        offset: 100
-      });
-      this.props.dispatch(updateEarthquakeData(msg));
+      this.props.dispatch(updateState(msg));
     });
 
     this.disconnectSocket = this.disconnectSocket.bind(this);
@@ -140,13 +110,12 @@ class ActivationMain extends Component {
             onClick={() => this.returnToList()}
             className="clock__back-btn"
           >
-            Back
+            <FiArrowLeft size={"2.5rem"} />
           </button>
         </div>
 
         <div className="infoBar">
           <SocialFeed
-            streamEnabled={this.props.streamEnabled}
             socialAnalysis={this.props.socialAnalysis}
             activationName={this.props.activationName}
             twitterList={this.props.statesData[
@@ -185,7 +154,6 @@ const mapStateToProps = state => ({
   activeState: state.activeState,
   statesData: state.regionalData,
   cities: state.cities[state.activeState],
-  streamEnabled: state.streamEnabled,
   socialAnalysis: state.socialAnalysis,
   earthquakeData: state.earthquakeData,
   mapLayers: state.mapLayers
