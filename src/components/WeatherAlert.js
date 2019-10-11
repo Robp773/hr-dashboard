@@ -49,11 +49,15 @@ export default class WeatherAlert extends React.Component {
           </div>
 
           <div className="weather-alert__locations-parent">
-            <div className="weather-alert__alerts-div">{this.props.alertsObj.areaDesc}</div>
+            <div className="weather-alert__alerts-div">
+              {this.props.alertsObj.areaDesc}
+            </div>
           </div>
         </div>
 
-        <div className="weather-alert__desc">{this.props.alertsObj.description}</div>
+        <div className="weather-alert__desc">
+          {this.props.alertsObj.description}
+        </div>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from "react";
-// import WordCloudComponent from './WordCloudComponent';
 import { Pie } from "react-chartjs-2";
+import Toggle from "react-toggle";
 
 export default class Hashtags extends React.Component {
   constructor(props) {
@@ -103,21 +103,17 @@ export default class Hashtags extends React.Component {
 
     return (
       <div className="standard__data-parent hashtags">
-        <div className="hashtags__toggle-btn-parent">
-          <div className="hashtags__label"> Table </div>
-          <label class="switch">
-            <input onChange={() => this.onCheck()} type="checkbox" />
-            <span
-              class={`slider round ${
-                this.state.tableActive ? "sliderSecondary" : "sliderPrimary"
-              }`}
-            >
-              {" "}
-            </span>
+        <div className="hashtags__toggle-btn-parent hashtags__toggle-btn-parent--table-chart">
+          <div className="hashtags__label">Table</div>
+          <label>
+            <Toggle
+              defaultChecked={this.state.tofuIsReady}
+              icons={false}
+              onChange={() => this.onCheck()}
+            />
           </label>
           <div className="hashtags__label">Chart</div>
         </div>
-
         {activeTab}
       </div>
     );

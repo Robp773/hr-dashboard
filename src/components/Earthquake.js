@@ -10,8 +10,8 @@ export default class Earthquake extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.earthquakeData.eventList[0]) {
-      let earthquakeList = this.props.earthquakeData.eventList.map(
+    if (this.props.earthquakeData.data.eventList[0]) {
+      let earthquakeList = this.props.earthquakeData.data.eventList.map(
         (item, index) => {
           if (item) {
             return (
@@ -68,19 +68,19 @@ export default class Earthquake extends React.Component {
             <div className="earthquake__type-box earthquake__type-box--title">
               <h3>Title</h3>
               <div className="earthquake__data-box">
-                {this.props.earthquakeData.originalEventData.title}
+                {this.props.earthquakeData.params.title}
               </div>
             </div>
             <div className="earthquake__type-box">
               <h3>Time</h3>
               <div className="earthquake__data-box">
-                {this.props.earthquakeData.originalEventData.time}
+                {this.props.earthquakeData.data.originalEventData.time}
               </div>
             </div>
             <div className="earthquake__type-box earthquake__type-box--25">
               <h3>Magnitude</h3>
               <div className="earthquake__data-box">
-                {this.props.earthquakeData.originalEventData.magnitude}
+                {this.props.earthquakeData.data.originalEventData.magnitude}
               </div>
             </div>
             <div className="earthquake__type-box earthquake__type-box--25">
@@ -88,7 +88,9 @@ export default class Earthquake extends React.Component {
               <div className="earthquake__data-box">
                 <a
                   target="#"
-                  href={this.props.earthquakeData.originalEventData.customPage}
+                  href={
+                    this.props.earthquakeData.data.originalEventData.customPage
+                  }
                 >
                   Visit
                 </a>
@@ -97,30 +99,32 @@ export default class Earthquake extends React.Component {
             <div className="earthquake__type-box earthquake__type-box--25">
               <h3>Felt</h3>
               <div className="earthquake__data-box">
-                {this.props.earthquakeData.originalEventData.felt}
+                {this.props.earthquakeData.data.originalEventData.felt}
               </div>
             </div>
             <div
               className={`earthquake__type-box earthquake__type-box--25 ${
-                this.props.earthquakeData.originalEventData.alert
-                  ? this.props.earthquakeData.originalEventData.alert
+                this.props.earthquakeData.data.originalEventData.alert
+                  ? this.props.earthquakeData.data.originalEventData.alert
                   : ""
               }`}
             >
               <h3>Alert</h3>
               <div className={`earthquake__data-box`}>
-                {this.props.earthquakeData.originalEventData.alert
-                  ? this.props.earthquakeData.originalEventData.alert.toUpperCase()
+                {this.props.earthquakeData.data.originalEventData.alert
+                  ? this.props.earthquakeData.data.originalEventData.alert.toUpperCase()
                   : " No alert"}
               </div>
             </div>
             <div className="earthquake__type-box">
               <h3>Tsunami Info</h3>
               <div className="earthquake__data-box">
-                {this.props.earthquakeData.originalEventData.tsunami ? (
+                {this.props.earthquakeData.data.originalEventData.tsunami ? (
                   <a
                     target="#"
-                    href={this.props.earthquakeData.originalEventData.tsunami}
+                    href={
+                      this.props.earthquakeData.data.originalEventData.tsunami
+                    }
                   >
                     Visit
                   </a>
@@ -133,12 +137,12 @@ export default class Earthquake extends React.Component {
               <h3>Coordinates</h3>
               <div className="earthquake__data-box">
                 {
-                  this.props.earthquakeData.originalEventData.geometry
+                  this.props.earthquakeData.data.originalEventData.geometry
                     .coordinates[1]
                 }
                 ,{" "}
                 {
-                  this.props.earthquakeData.originalEventData.geometry
+                  this.props.earthquakeData.data.originalEventData.geometry
                     .coordinates[0]
                 }
               </div>
@@ -146,7 +150,7 @@ export default class Earthquake extends React.Component {
             <div className="earthquake__type-box">
               <h3>Last Update</h3>
               <div className="earthquake__data-box">
-                {this.props.earthquakeData.originalEventData.updated}
+                {this.props.earthquakeData.data.originalEventData.updated}
               </div>
             </div>
           </div>

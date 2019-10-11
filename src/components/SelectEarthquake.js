@@ -9,7 +9,7 @@ export default class SelectEarthquake extends React.Component {
       loading: true,
       earthquakesList: [],
       selectedEvent: null,
-      earthquakeRadius: this.props.earthquakeParams.radius
+      earthquakeRadius: this.props.earthquakeParams.radius || 150
     };
   }
 
@@ -41,7 +41,7 @@ export default class SelectEarthquake extends React.Component {
             </tr>
           );
         });
-          this.setState({ loading: false, earthquakesList: resultlist });
+        this.setState({ loading: false, earthquakesList: resultlist });
         return;
       });
     });
@@ -84,7 +84,7 @@ export default class SelectEarthquake extends React.Component {
                   max={300}
                 />
                 <div className="createActivation__interval-count">
-                  {this.props.earthquakeParams.radius} km
+                  {this.state.earthquakeRadius} km
                 </div>
               </div>
             </div>
