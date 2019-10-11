@@ -5,7 +5,7 @@
     text-align: center;
     padding: 1rem;
     position: relative;
-    width: 75%;
+    max-width: 75%;
 
     @include respond(tab-land) {
       width: 100%;
@@ -34,20 +34,20 @@
     color: $color-white;
     border: 0;
     box-shadow: 0 0.5rem 2rem black;
+    transition: 0.25s;
+    cursor: pointer;
 
     &:active {
       box-shadow: none;
     }
 
     &:hover {
-      background: $color-white;
-      color: black;
+      box-shadow: none;
     }
   }
 
   &__back-btn {
     font-size: 2rem;
-
     margin: 2rem 1rem;
     padding: 1rem 1.5rem;
     background: $color-secondary;
@@ -55,10 +55,9 @@
     border: 0;
     box-shadow: 0 0.5rem 2rem black;
     cursor: pointer;
-
+    transition: 0.25s;
     &:hover {
-      background: $color-white;
-      color: black;
+      box-shadow: none;
     }
   }
 }

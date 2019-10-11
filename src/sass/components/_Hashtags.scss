@@ -1,19 +1,24 @@
 .hashtags {
-    height: 100%;
+  height: 100%;
 
-    &__toggle-btn-parent {
-        display: flex;
-        width: 100%;
-        background: white;
-        padding-bottom: .5rem;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.75rem;
-        border-bottom: 2px solid black;
+  &__toggle-btn-parent {
+    display: flex;
+    width: 100%;
+    padding: 0.5rem 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.75rem;
+    border-bottom: 1px solid black;
+
+    &--table-chart {
+      font-size: 1.5rem;
+      @include respond(big-desktop) {
+        font-size: 2rem;
+      }
     }
+  }
 
-    &__label {
-        margin: auto .5rem;
-    }
-
+  &__label {
+    margin: auto 0.5rem;
+  }
 }

@@ -24,7 +24,7 @@
 
   &__tr {
     &:hover {
-      background: rgba(243, 142, 32, 0.75);
+      background: rgba(243, 142, 32, 0.25);
       & a {
         text-decoration: underline;
         text-decoration-color: black;
@@ -38,7 +38,6 @@
     & > a {
       color: black;
       &:hover {
-        color: $color-white;
         text-decoration-color: $color-white;
       }
     }

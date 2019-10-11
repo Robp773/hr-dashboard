@@ -17,9 +17,9 @@
 
   &__time-locations-parent {
     display: flex;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     @include respond(big-desktop) {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
   }
 
@@ -41,6 +41,7 @@
     align-items: center;
     padding: 0 0.75rem;
     width: 100%;
+    font-size: 1.5rem;
   }
 
   &__desc {
@@ -51,7 +52,7 @@
     justify-content: center;
     padding: 0.75rem;
     @include respond(big-desktop) {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
     }
   }
 }

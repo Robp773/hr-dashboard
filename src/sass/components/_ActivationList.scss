@@ -9,9 +9,26 @@
       rgba(21, 67, 96, 0.95) 0%,
       rgba(21, 67, 96, 0.95) 100%
     ),
-    url("/images/hr-logo.jpg");
+    url("https://humanityroad.com/apps/us/images/hr-logo.jpg");
   background-size: cover;
   background-position: center;
+
+  &__spinner-parent,
+  &__no-data {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+  }
+
+  &__no-data {
+    // align-items: baseline;
+    font-size: 3rem;
+    color: white;
+  }
 
   &__admin-btn {
     position: absolute;
@@ -57,25 +74,11 @@
     &--admin-panel {
       width: 100%;
     }
-  }
 
-  &__stream-indicator {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 100px;
-    margin: auto;
-    @include respond(tab-land) {
-      width: 4.5rem;
-      height: 4.5rem;
-    }
-
-    &--enabled {
-      background: #228b22;
-      animation: fade-in 0.5s alternate infinite;
-    }
-
-    &--disabled {
-      background: gray;
+    & > caption {
+      color: white;
+      font-size: 4rem;
+      margin: 1rem auto;
     }
   }
 
@@ -90,10 +93,16 @@
   }
 
   &__tr {
+    cursor: pointer;
     border: 1px solid black;
+    transition: 0.25s;
+
+    &:hover {
+      transform: scale(1.025);
+    }
 
     &:hover > .activationList__td--open {
-      transform: scale(1.25);
+      transition: 0.5s;
     }
   }
 
@@ -144,13 +153,14 @@
         outline: none;
         box-shadow: 0 0.5rem 1rem black;
         cursor: pointer;
+        transition: .25s;
+
         @include respond(tab-land) {
           font-size: 2rem;
         }
 
         &:hover {
-          background: $color-white;
-          color: black;
+          box-shadow: none;
         }
       }
     }
@@ -165,13 +175,14 @@
         outline: none;
         box-shadow: 0 0.5rem 1rem black;
         cursor: pointer;
+
+        transition: .25s;
         @include respond(tab-land) {
           font-size: 2rem;
         }
 
         &:hover {
-          background: $color-white;
-          color: black;
+          box-shadow: none;
         }
       }
     }
@@ -206,6 +217,7 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    color: white;
     @include respond(tab-land) {
       width: 4.5rem;
       height: 4.5rem;
@@ -215,6 +227,7 @@
     }
 
     &--yellow {
+      color: black;
       background: yellow;
     }
 

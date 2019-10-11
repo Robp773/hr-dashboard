@@ -1,3 +1,22 @@
-.socialAnalysis{
-    height: 100%;
+.socialAnalysis {
+  height: 100%;
+
+  &__no-data {
+    background: $color-primary;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    padding: 1rem 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    color: white;
+    align-items: center;
+    font-size: 2rem;
+    justify-content: center;
+
+    @include respond(big-desktop) {
+      font-size: 2.5rem;
+    }
+  }
 }

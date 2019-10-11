@@ -21,11 +21,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-align: center;
   position: relative;
   overflow-y: scroll;
-  border-bottom: 2px solid black;
-  border-left: 2px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
   width: 50vw;
-  background: white;
-  border-top: 2px solid black; }
+  background: white; }
   .weather__region-container {
     top: 0;
     position: absolute;
@@ -37,7 +37,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(21, 67, 96, 0.75); }
+    background: #154360;
+    transition: 0.25s all;
+    border-bottom: 1px solid black; }
+    .weather__heading--map-overlay {
+      background: rgba(21, 67, 96, 0.55); }
     @media only screen and (min-width: 106.5em) {
       .weather__heading {
         height: 7vh; } }
@@ -54,8 +58,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     align-items: center;
     color: white;
     font-size: 2.5rem;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black; }
+    border-right: 1px solid black; }
     @media only screen and (min-width: 106.5em) {
       .weather__event-heading {
         font-size: 2.75rem; } }
@@ -67,14 +70,15 @@ ORDER: Base + typography > general layout + grid > page layout > components
     justify-content: center;
     align-items: center; }
   .weather__btn {
-    border: 0;
     padding: 0.5rem 2rem;
     font-size: 1.75rem;
     background: #f38e20;
     color: white;
     box-shadow: 0 0.25rem 1.25rem black;
     margin: auto 0.25rem;
-    outline: none; }
+    outline: none;
+    border: 0;
+    cursor: pointer; }
     @media only screen and (min-width: 106.5em) {
       .weather__btn {
         font-size: 2rem; } }
@@ -108,11 +112,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
     justify-content: flex-start;
     width: 25%;
     height: fit-content;
-    border-bottom: 2px solid black; }
+    border-right: 1px solid black; }
   .weather-event__alerts-container {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: hidden;
     width: 75%;
     height: 100%;
     margin-left: auto; }
@@ -123,10 +127,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     display: block;
     outline: none;
     border: 0;
-    border-right: 2px solid black;
+    border-bottom: 1px solid black;
     color: white;
-    background: #154360;
-    font-weight: bold; }
+    background: #154360; }
     @media only screen and (min-width: 106.5em) {
       .weather-event__alerts-h2 {
         font-size: 2rem; } }
@@ -146,15 +149,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
   justify-content: center;
   align-items: center; }
   .status__alert {
+    color: black;
     font-size: 5rem;
-    animation: pulse-alert 2s ease-in-out alternate infinite;
     border-radius: 100%;
     width: 8rem;
     height: 8rem;
     display: flex;
     justify-content: center;
-    align-items: center;
-    border: 2px solid #f38e20; }
+    align-items: center; }
     @media only screen and (min-width: 106.5em) {
       .status__alert {
         width: 9rem;
@@ -181,16 +183,22 @@ ORDER: Base + typography > general layout + grid > page layout > components
         font-size: 2rem; } }
   .clock__back-btn {
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
-    margin: 0.25rem;
+    margin-left: 1rem;
     background: #f38e20;
     color: white;
     border: 0;
     outline: 0;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
-    box-shadow: 0 0.5rem 1.5rem black; }
+    box-shadow: 0 0.5rem 1.5rem black;
+    cursor: pointer; }
     @media only screen and (min-width: 106.5em) {
       .clock__back-btn {
         font-size: 1.75rem; } }
@@ -254,7 +262,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   margin-right: auto;
   background: #154360;
   position: relative;
-  border-top: 2px solid black; }
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
 
 .infoBar {
   height: 80vh; }
@@ -268,7 +277,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   flex-direction: column;
   width: 50vw;
   height: 40vh;
-  border-left: 2px solid black;
+  border-left: 1px solid black;
   position: relative;
   background: white; }
   .regionInfo__container {
@@ -276,18 +285,17 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .regionInfo__btn-container {
     text-align: center;
     height: fit-content;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     flex-direction: column;
     justify-content: flex-start;
     width: 25%;
-    border-right: 2px solid black;
+    border-right: 1px solid black;
     overflow-y: scroll;
     height: 40vh; }
     .regionInfo__btn-container > div {
       font-size: 2.5rem;
       width: 100%;
       background: #f38e20;
-      border-bottom: 2px solid black;
       color: white;
       height: 8vh;
       display: flex;
@@ -303,10 +311,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     font-size: 1.75rem;
     background: #154360;
     color: white;
-    font-weight: bold;
     padding: 0.75rem 0;
-    border-bottom: 1px solid black;
-    width: 100%; }
+    border-top: 1px solid black;
+    width: 100%;
+    outline: none; }
     @media only screen and (min-width: 106.5em) {
       .regionInfo__btn {
         font-size: 2rem; } }
@@ -318,7 +326,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     height: 40vh;
     display: flex;
     justify-content: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     font-size: 1.5rem;
     margin-left: auto; }
     @media only screen and (min-width: 106.5em) {
@@ -351,7 +359,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   width: 50vw;
   position: relative;
   overflow-y: scroll;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%), url("/images/hr-logo.jpg");
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%), url("https://humanityroad.com/apps/us/images/hr-logo.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
@@ -364,43 +372,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (min-width: 106.5em) {
       .social-feed__heading-parent {
         height: 7vh; } }
-  .social-feed__speed-btn-parent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer; }
   .social-feed__tab-h2 {
     font-size: 2.5rem;
     padding: 0;
     margin: 0 auto;
-    border-bottom: 2px solid #f38e20; }
+    border-bottom: 1px solid #f38e20; }
     @media only screen and (min-width: 106.5em) {
       .social-feed__tab-h2 {
         font-size: 3rem; } }
-  .social-feed__speed-btn {
-    text-align: center;
-    font-size: 1.25rem; }
-    @media only screen and (min-width: 106.5em) {
-      .social-feed__speed-btn {
-        font-size: 1.75rem; } }
-    .social-feed__speed-btn > * input {
-      width: 1.5rem;
-      height: 1.5rem;
-      cursor: pointer;
-      margin-left: 0.25rem; }
-      @media only screen and (min-width: 106.5em) {
-        .social-feed__speed-btn > * input {
-          width: 2rem;
-          height: 2rem; } }
-  .social-feed__stream-disabled {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    margin-top: 10rem;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    text-decoration: underline #f38e20; }
   .social-feed__heading {
     background: #f38e20;
     height: 100%;
@@ -410,9 +389,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
     align-items: center;
     font-size: 2.5rem;
     color: white;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-    border-top: 2px solid black; }
+    border-right: 1px solid black;
+    border-bottom: 1px solid black; }
     @media only screen and (min-width: 106.5em) {
       .social-feed__heading {
         font-size: 2.75rem; } }
@@ -424,12 +402,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     align-items: center;
     margin-left: auto;
     background: white;
-    padding: 0 0.25rem;
-    border-top: 2px solid black; }
+    padding: 0 0.25rem; }
   .social-feed__feed-toggle {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 7vh;
     font-size: 1.75rem; }
     @media only screen and (min-width: 106.5em) {
       .social-feed__feed-toggle {
@@ -474,8 +452,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
       background: white; }
     .social-feed__back-btn:active {
       box-shadow: none; }
-  .social-feed__tweet {
-    font-size: 1.75rem; }
 
 .weather-alert__alerts-parent {
   flex-direction: column;
@@ -490,10 +466,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .weather-alert__time-locations-parent {
   display: flex;
-  font-size: 1.75rem; }
+  font-size: 1.5rem; }
   @media only screen and (min-width: 106.5em) {
     .weather-alert__time-locations-parent {
-      font-size: 2rem; } }
+      font-size: 1.75rem; } }
 
 .weather-alert__time-parent {
   display: flex;
@@ -510,7 +486,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   justify-content: center;
   align-items: center;
   padding: 0 0.75rem;
-  width: 100%; }
+  width: 100%;
+  font-size: 1.5rem; }
 
 .weather-alert__desc {
   font-size: 1.5rem;
@@ -521,7 +498,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   padding: 0.75rem; }
   @media only screen and (min-width: 106.5em) {
     .weather-alert__desc {
-      font-size: 1.75rem; } }
+      font-size: 1.5rem; } }
 
 .open {
   border-top: 0; }
@@ -592,9 +569,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
   justify-content: flex-start;
   align-content: center;
   height: 100vh;
-  background: linear-gradient(to bottom, rgba(21, 67, 96, 0.95) 0%, rgba(21, 67, 96, 0.95) 100%), url("/images/hr-logo.jpg");
+  background: linear-gradient(to bottom, rgba(21, 67, 96, 0.95) 0%, rgba(21, 67, 96, 0.95) 100%), url("https://humanityroad.com/apps/us/images/hr-logo.jpg");
   background-size: cover;
   background-position: center; }
+  .activationList__spinner-parent, .activationList__no-data {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white; }
+  .activationList__no-data {
+    font-size: 3rem;
+    color: white; }
   .activationList__admin-btn {
     position: absolute;
     top: 0;
@@ -629,20 +617,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
         padding: 1rem; } }
     .activationList__table--admin-panel {
       width: 100%; }
-  .activationList__stream-indicator {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 100px;
-    margin: auto; }
-    @media only screen and (max-width: 75em) {
-      .activationList__stream-indicator {
-        width: 4.5rem;
-        height: 4.5rem; } }
-    .activationList__stream-indicator--enabled {
-      background: #228b22;
-      animation: fade-in 0.5s alternate infinite; }
-    .activationList__stream-indicator--disabled {
-      background: gray; }
+    .activationList__table > caption {
+      color: white;
+      font-size: 4rem;
+      margin: 1rem auto; }
   .activationList__th {
     font-size: 3rem; }
     .activationList__th--hidden {
@@ -651,9 +629,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .activationList__th {
         font-size: 2.5rem; } }
   .activationList__tr {
-    border: 1px solid black; }
+    cursor: pointer;
+    border: 1px solid black;
+    transition: 0.25s; }
+    .activationList__tr:hover {
+      transform: scale(1.025); }
     .activationList__tr:hover > .activationList__td--open {
-      transform: scale(1.25); }
+      transition: 0.5s; }
   .activationList__td {
     text-align: center;
     font-size: 2.5rem;
@@ -688,13 +670,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
       border: 0;
       outline: none;
       box-shadow: 0 0.5rem 1rem black;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: .25s; }
       @media only screen and (max-width: 75em) {
         .activationList__td--edit > button {
           font-size: 2rem; } }
       .activationList__td--edit > button:hover {
-        background: white;
-        color: black; }
+        box-shadow: none; }
     .activationList__td--activate > button {
       font-size: 2.5rem;
       padding: 0.5rem 1.5rem;
@@ -703,13 +685,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
       border: 0;
       outline: none;
       box-shadow: 0 0.5rem 1rem black;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: .25s; }
       @media only screen and (max-width: 75em) {
         .activationList__td--activate > button {
           font-size: 2rem; } }
       .activationList__td--activate > button:hover {
-        background: white;
-        color: black; }
+        box-shadow: none; }
     .activationList__td--deactivate > button {
       font-size: 2.5rem;
       padding: 0.5rem 1.5rem;
@@ -732,7 +714,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold; }
+    font-weight: bold;
+    color: white; }
     @media only screen and (max-width: 75em) {
       .activationList__level-indicator {
         width: 4.5rem;
@@ -740,6 +723,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     .activationList__level-indicator--green {
       background: #228b22; }
     .activationList__level-indicator--yellow {
+      color: black;
       background: yellow; }
     .activationList__level-indicator--red {
       background: #dc143c; }
@@ -808,7 +792,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-align: center;
   padding: 1rem;
   position: relative;
-  width: 75%; }
+  max-width: 75%; }
   @media only screen and (max-width: 75em) {
     .admin-panel__parent {
       width: 100%; } }
@@ -832,12 +816,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
   background: #f38e20;
   color: white;
   border: 0;
-  box-shadow: 0 0.5rem 2rem black; }
+  box-shadow: 0 0.5rem 2rem black;
+  transition: 0.25s;
+  cursor: pointer; }
   .admin-panel__create-btn:active {
     box-shadow: none; }
   .admin-panel__create-btn:hover {
-    background: white;
-    color: black; }
+    box-shadow: none; }
 
 .admin-panel__back-btn {
   font-size: 2rem;
@@ -847,10 +832,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
   color: white;
   border: 0;
   box-shadow: 0 0.5rem 2rem black;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: 0.25s; }
   .admin-panel__back-btn:hover {
-    background: white;
-    color: black; }
+    box-shadow: none; }
 
 .createActivation {
   margin: 1rem auto; }
@@ -873,7 +858,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     top: 0;
     right: 0;
     margin: 1rem;
-    padding: .75rem;
+    padding: 0.75rem;
     background: #f38e20;
     color: white;
     font-weight: bold;
@@ -882,9 +867,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     cursor: pointer;
     box-shadow: 0 0.5rem 2.5rem black; }
     .createActivation__exit-btn:hover {
-      background: white;
-      color: black;
-      border: 1px solid black; }
+      box-shadow: none; }
   .createActivation__label-input-parent {
     width: 85%;
     margin: auto;
@@ -967,10 +950,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     outline: 0;
     font-size: 2.5rem;
     box-shadow: 0 0.5rem 2.5rem black;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: 0.25s; }
     .createActivation__submit-btn:hover {
-      background: white;
-      color: black; }
+      box-shadow: none; }
   .createActivation__delete-btn {
     background: #f38e20;
     color: white;
@@ -982,8 +965,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     cursor: pointer;
     margin: auto 1rem; }
     .createActivation__delete-btn:hover {
-      background: white;
-      color: black; }
+      box-shadow: none; }
   .createActivation__layer-parent {
     display: flex;
     flex-direction: column;
@@ -1160,6 +1142,22 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .socialAnalysis {
   height: 100%; }
+  .socialAnalysis__no-data {
+    background: #154360;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    padding: 1rem 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    color: white;
+    align-items: center;
+    font-size: 2rem;
+    justify-content: center; }
+    @media only screen and (min-width: 106.5em) {
+      .socialAnalysis__no-data {
+        font-size: 2.5rem; } }
 
 .entities__btns-parent {
   display: flex;
@@ -1220,7 +1218,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     height: fit-content;
     position: absolute;
     left: 0;
-    border-bottom: 2px solid black; }
+    border-right: 1px solid black; }
   .trends__btn {
     font-size: 1.75rem;
     padding: 0.5rem 0;
@@ -1228,12 +1226,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
     display: block;
     outline: none;
     border: 0;
-    border-right: 3px solid black;
     border-bottom: 1px solid black;
     color: white;
     background: #154360;
-    font-weight: bold;
     cursor: pointer; }
+    @media only screen and (min-width: 106.5em) {
+      .trends__btn {
+        font-size: 2rem; } }
     .trends__btn:hover {
       background: white;
       color: black; }
@@ -1243,14 +1242,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .hashtags__toggle-btn-parent {
     display: flex;
     width: 100%;
-    background: white;
-    padding-bottom: .5rem;
+    padding: 0.5rem 0;
     justify-content: center;
     align-items: center;
     font-size: 1.75rem;
-    border-bottom: 2px solid black; }
+    border-bottom: 1px solid black; }
+    .hashtags__toggle-btn-parent--table-chart {
+      font-size: 1.5rem; }
+      @media only screen and (min-width: 106.5em) {
+        .hashtags__toggle-btn-parent--table-chart {
+          font-size: 2rem; } }
   .hashtags__label {
-    margin: auto .5rem; }
+    margin: auto 0.5rem; }
 
 .wordcloud__parent {
   margin-top: 1rem;
@@ -1274,7 +1277,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     .followerCount__th--name {
       width: 60%; }
   .followerCount__tr:hover {
-    background: rgba(243, 142, 32, 0.75); }
+    background: rgba(243, 142, 32, 0.25); }
     .followerCount__tr:hover a {
       text-decoration: underline;
       text-decoration-color: black; }
@@ -1284,12 +1287,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
     .followerCount__td > a {
       color: black; }
       .followerCount__td > a:hover {
-        color: white;
         text-decoration-color: white; }
 
 @keyframes pulse-alert {
   0% {
-    color: rgba(255, 255, 255, 0.05); } }
+    opacity: .65; } }
 
 @keyframes fade-in {
   0% {
@@ -1316,13 +1318,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
   padding: 0;
   box-sizing: inherit; }
 
-::-webkit-scrollbar {
-  display: none; }
-
 html {
   font-size: 62.5%;
   background: #154360;
   font-family: "Noto Serif", serif; }
+
+::-webkit-scrollbar {
+  display: none; }
 
 body {
   box-sizing: border-box; }
@@ -1339,13 +1341,14 @@ body {
   opacity: 0;
   position: absolute; }
 
-.component__h1 {
-  font-size: 4.5rem; }
-
-.component__h2 {
-  font-size: 3.5rem;
-  padding: 0.5rem;
-  text-align: center; }
+.component {
+  overflow-y: auto; }
+  .component__h1 {
+    font-size: 4.5rem; }
+  .component__h2 {
+    font-size: 3.5rem;
+    padding: 0.5rem;
+    text-align: center; }
 
 .active {
   background: white !important;
@@ -1367,6 +1370,15 @@ body {
   .switch--speed-btn {
     height: 24px;
     width: 50px; }
+  .switch--table-chart {
+    width: 34.17px;
+    height: 16.75px;
+    background: #154360; }
+    .switch--table-chart > .slider:before {
+      height: 11.39px;
+      width: 11.39px;
+      bottom: 2.5px;
+      left: 2px; }
 
 /* Hide default HTML checkbox */
 .switch input {
@@ -1405,7 +1417,7 @@ body {
   background: #154360 !important; }
 
 input:checked + .slider {
-  background-color: #f38e20; }
+  background-color: #f38e20 !important; }
 
 input:focus + .slider {
   box-shadow: 0 0 1px #2196f3; }
@@ -1419,15 +1431,13 @@ input:checked + .slider:before {
 .slider.round {
   border-radius: 34px; }
 
-.slider.round--speed-btn {
-  background: #154360 !important; }
-
 .slider.round:before {
   border-radius: 50%; }
 
-.slider.round--speed-btn:before {
-  height: 18px;
-  width: 18px; }
+.slider--white {
+  background: rgba(21, 67, 96, 0.75) !important; }
+  .slider--white:before {
+    background: white; }
 
 #myMap {
   position: static !important; }
@@ -1458,6 +1468,115 @@ input:checked + .slider:before {
   height: 100%;
   z-index: 999; }
 
+.react-toggle {
+  touch-action: pan-x;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent; }
+
+.react-toggle-screenreader-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+.react-toggle--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s; }
+
+.react-toggle-track {
+  width: 50px;
+  height: 24px;
+  padding: 0;
+  border-radius: 30px;
+  background-color: #154360;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+
+.react-toggle--checked .react-toggle-track {
+  background-color: #f38e20; }
+
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: #f38e20; }
+
+.react-toggle-track-check {
+  position: absolute;
+  width: 10px;
+  height: 7px;
+  top: 0px;
+  bottom: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+  left: 8px;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease;
+  -moz-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease; }
+
+.react-toggle--checked .react-toggle-track-check {
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease;
+  -moz-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease; }
+
+.react-toggle-track-x {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  top: 0px;
+  bottom: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 0;
+  right: 10px;
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease;
+  -moz-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease; }
+
+.react-toggle--checked .react-toggle-track-x {
+  opacity: 0; }
+
+.react-toggle-thumb {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #4d4d4d;
+  border-radius: 50%;
+  background-color: #fafafa;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  transition: all 0.25s ease; }
+
+.react-toggle--checked .react-toggle-thumb {
+  left: 27px;
+  border-color: #f38e20; }
+
 .standard__data-parent {
   width: 75%;
   margin-left: auto; }
@@ -1480,8 +1599,7 @@ input:checked + .slider:before {
   text-align: center;
   background: rgba(21, 67, 96, 0.75);
   color: white;
-  padding: 0.5rem 0;
-  border-bottom: 2px solid black; }
+  padding: 0.5rem 0; }
   .standard__th--name {
     width: 75%; }
   .standard__th--earthquake {

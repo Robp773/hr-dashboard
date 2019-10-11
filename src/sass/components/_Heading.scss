@@ -6,6 +6,7 @@
   justify-content: center;
 
   &__name {
+    // color: red;
     font-size: 3rem;
     @include respond(big-desktop){
       font-size: 3.5rem;

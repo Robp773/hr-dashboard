@@ -6,15 +6,15 @@
   align-items: center;
 
   &__alert {
+    // animation: pulse-alert 2s ease-in-out alternate infinite;
+    color: black;
     font-size: 5rem;
-    animation: pulse-alert 2s ease-in-out alternate infinite;
     border-radius: 100%;
     width: 8rem;
     height: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid $color-secondary;
     @include respond(big-desktop) {
       width: 9rem;
       height: 9rem;

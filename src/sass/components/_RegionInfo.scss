@@ -4,7 +4,7 @@
   flex-direction: column;
   width: 50vw;
   height: 40vh;
-  border-left: 2px solid black;
+  border-left: 1px solid black;
   position: relative;
   background: $color-white;
 
@@ -15,11 +15,11 @@
   &__btn-container {
     text-align: center;
     height: fit-content;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     flex-direction: column;
     justify-content: flex-start;
     width: 25%;
-    border-right: 2px solid black;
+    border-right: 1px solid black;
     overflow-y: scroll;
     height: 40vh;
 
@@ -27,7 +27,6 @@
       font-size: 2.5rem;
       width: 100%;
       background: $color-secondary;
-      border-bottom: 2px solid black;
       color: $color-white;
       height: 8vh;
       display: flex;
@@ -47,10 +46,10 @@
     font-size: 1.75rem;
     background: $color-primary;
     color: $color-white;
-    font-weight: bold;
     padding: 0.75rem 0;
-    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     width: 100%;
+    outline: none;
     @include respond(big-desktop) {
       font-size: 2rem;
     }
@@ -66,7 +65,7 @@
     height: 40vh;
     display: flex;
     justify-content: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     font-size: 1.5rem;
     margin-left: auto;
     @include respond(big-desktop) {
