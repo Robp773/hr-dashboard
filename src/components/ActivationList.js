@@ -2,14 +2,16 @@ import React from "react";
 import { API_BASE_URL } from "../config";
 import AdminLogin from "./AdminLogin";
 import AdminPanel from "./AdminPanel";
+import Spinner from "./Spinner";
 
 export default class ActivationList extends React.Component {
   constructor() {
     super();
     this.state = {
+      loading: true,
       results: [],
       modalOpen: false,
-      adminOpen: false
+      adminOpen: true
     };
     this.toggleAdmin = this.toggleAdmin.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -21,7 +23,8 @@ export default class ActivationList extends React.Component {
         .json()
         .then(result => {
           this.setState({
-            results: result
+            results: result,
+            loading: false
           });
         })
         .catch(error => {
@@ -56,7 +59,6 @@ export default class ActivationList extends React.Component {
   render() {
     let modal;
     let activeComponent;
-
     if (this.state.adminOpen) {
       activeComponent = <AdminPanel toggleAdmin={this.toggleAdmin} />;
     } else {
@@ -70,12 +72,6 @@ export default class ActivationList extends React.Component {
       }
 
       let activationsArray = [];
-      let enabledIndicator = (
-        <div className="activationList__stream-indicator activationList__stream-indicator--enabled" />
-      );
-      let disabledIndicator = (
-        <div className="activationList__stream-indicator activationList__stream-indicator--disabled" />
-      );
 
       for (let i = 0; i < this.state.results.length; i++) {
         let levelClass;
@@ -90,13 +86,16 @@ export default class ActivationList extends React.Component {
         let levelIndicator = (
           <div
             className={`activationList__level-indicator activationList__level-indicator--${levelClass}`}
-          />
+          >
+            {" "}
+            {this.state.results[i].level}
+          </div>
         );
 
         let statesArray = [];
-        for (let b = 0; b < this.state.results[i].states.length; b++) {
+        for (let b = 0; b < this.state.results[i].eventData.length; b++) {
           statesArray.push(
-            <span key={b}>{this.state.results[i].states[b]} </span>
+            <span key={b}>{this.state.results[i].eventData[b].name} </span>
           );
         }
         activationsArray.push(
@@ -114,16 +113,9 @@ export default class ActivationList extends React.Component {
             <td className="activationList__td">
               {this.state.results[i].disasterType}
             </td>
-            <td className="activationList__td">
-              {this.state.results[i].streamEnabled
-                ? enabledIndicator
-                : disabledIndicator}
-            </td>
+
             <td className={`activationList__td activationList__level`}>
               {levelIndicator}
-            </td>
-            <td className="activationList__td activationList__td--open">
-              <img alt="open activation" src="./images/login.png" />
             </td>
           </tr>
         );
@@ -140,24 +132,39 @@ export default class ActivationList extends React.Component {
           >
             Admin Login
           </button>
-
           <img
             className="activationList__banner"
             alt="Humanity Road logo"
-            src="../images/hr-logo-horizontal.png"
+            src="images/hr-logo-horizontal.png"
           />
-          <table className="activationList__table">
-            <tbody>
-              <tr className="activationList__top-row">
-                <th className="activationList__th">Activation</th>
-                <th className="activationList__th">States</th>
-                <th className="activationList__th">Type</th>
-                <th className="activationList__th">Stream</th>
-                <th className="activationList__th">Level</th>
-              </tr>
-              {activationsArray}
-            </tbody>
-          </table>
+
+          {!this.state.loading ? (
+            activationsArray.length > 0 ? (
+              <div>
+                <table className="activationList__table">
+                <caption>Select a Dashboard</caption>
+                  <thead>
+                    <tr className="activationList__top-row">
+                      <th className="activationList__th">Activation</th>
+                      <th className="activationList__th">States</th>
+                      <th className="activationList__th">Type</th>
+                      <th className="activationList__th">Level</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>{activationsArray}</tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="activationList__no-data">
+                <h2>No Active Dashboards</h2>
+              </div>
+            )
+          ) : (
+            <div className="activationList__spinner-parent">
+              <Spinner height={100} width={100} />
+            </div>
+          )}
         </div>
       );
     }
