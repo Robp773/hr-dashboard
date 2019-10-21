@@ -18,8 +18,6 @@ export default class Trends extends React.Component {
   }
 
   render() {
-    console.log(this.props.trends);
-
     if (this.props.trends) {
       let activeComponent;
       if (this.state.activeTab === "hashtags") {
@@ -74,7 +72,11 @@ export default class Trends extends React.Component {
         </div>
       );
     } else {
-      return <div className='socialAnalysis__no-data'>Data Collection has not Been Enabled on this Dashboard</div>;
+      return (
+        <div className="socialAnalysis__no-data">
+          Data Collection has not Been Enabled on this Dashboard
+        </div>
+      );
     }
   }
 }

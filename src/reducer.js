@@ -41,7 +41,6 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-  console.log(state)
   if (action.type === "SET_STATE") {
     return Object.assign(
       {},
@@ -71,6 +70,5 @@ export const reducer = (state = initialState, action) => {
     });
   }
 
-  console.log(state)
   return state;
 };
