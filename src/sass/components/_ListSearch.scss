@@ -1,0 +1,62 @@
+.listSearch {
+  text-align: center;
+  &__h3 {
+    font-size: 2rem;
+  }
+
+  &__results-parent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__single-list {
+    font-size: 1.75rem;
+    width: 25%;
+    color: white;
+    margin: 1rem;
+    background: $color-primary;
+    padding: 1rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: .25s;
+
+    &:hover{
+        background: white;
+        color: black;
+        border: 1px solid black;
+        & > * a {
+            color: black;
+        }
+    }
+
+    & > * a{
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px solid $color-secondary;
+    }
+
+    & > div{
+        margin-top: .5rem;
+    }
+  }
+
+  &__list-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__searchOpen {
+    padding: 1rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    &:hover {
+      background: white;
+      border: 1px solid black;
+    }
+  }
+}
