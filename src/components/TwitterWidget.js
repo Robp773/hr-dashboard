@@ -21,7 +21,7 @@ export default class twitterWidget extends React.Component {
           id="twitterWidget"
           className="twitter-timeline"
           data-chrome="noscrollbar noheader transparent"
-          href={`https://twitter.com/DAFNReady/lists/${this.props.twitterList}`}
+          href={`https://twitter.com${this.props.twitterList}`}
         />
       </div>
     );
