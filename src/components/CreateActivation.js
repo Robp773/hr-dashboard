@@ -2,6 +2,7 @@ import React from "react";
 import { API_BASE_URL, STATES_DB } from "../config";
 import Select from "react-select";
 import SelectEarthquake from "./SelectEarthquake";
+import ListSearch from "./ListSearch";
 import Spinner from "./Spinner";
 import ReactTooltip from "react-tooltip";
 
@@ -20,11 +21,13 @@ export default class CreateActivation extends React.Component {
       searchParams: this.props.defaultVals.searchParams,
       earthquakeData: this.props.defaultVals.earthquakeData,
       mapLayers: this.props.defaultVals.mapLayers,
-      entitiesTracking: this.props.defaultVals.entitiesTracking
+      entitiesTracking: this.props.defaultVals.entitiesTracking,
+      twitterList: this.props.defaultVals.twitterList
     };
 
     this.setEarthquake = this.setEarthquake.bind(this);
     this.setEarthquakeRadius = this.setEarthquakeRadius.bind(this);
+    this.setTwitterList = this.setTwitterList.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +61,10 @@ export default class CreateActivation extends React.Component {
     if (this.state.level === "") {
       errorsList.push("Please choose an activation level");
     }
+
+    if (this.state.twitterList.trim() === "") {
+      errorsList.push("Please select a Twitter list");
+    }
     if (errorsList.length > 0) {
       this.setState({ errorsList });
       return false;
@@ -89,7 +96,8 @@ export default class CreateActivation extends React.Component {
         searchParams: this.state.searchParams,
         earthquakeData: this.state.earthquakeData,
         mapLayers: this.state.mapLayers,
-        entitiesTracking: this.state.entitiesTracking
+        entitiesTracking: this.state.entitiesTracking,
+        twitterList: this.state.twitterList
       })
     }).then(() => {
       this.props.checkActivations().then(() => {
@@ -204,11 +212,17 @@ export default class CreateActivation extends React.Component {
     }
   }
 
+  setTwitterList(twitterList) {
+    console.log("setting", twitterList);
+    this.setState({ twitterList });
+  }
+
   render() {
     let searchTermList = [];
     for (let i = 0; i < this.state.searchParams.length; i++) {
       searchTermList.push(
         <button
+          key={i}
           onClick={e => {
             this.handleItemDelete(e, "search-params", i);
           }}
@@ -464,6 +478,11 @@ export default class CreateActivation extends React.Component {
                 </div>
               </div>
             </div>
+
+            <ListSearch
+              setTwitterList={this.setTwitterList}
+              twitterList={this.state.twitterList}
+            />
             {/* <div className="createActivation__label-input-parent">
               <label
                 data-tip="Should data analysis be turned on for this activation. Limited to one dashboard at a time."

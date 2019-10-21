@@ -48,7 +48,6 @@ class ActivationMain extends Component {
     });
 
     this.dataStream.on("test", msg => {
-      console.log("new data");
       Alert.success(`<h3>Data Updated</h3>`, {
         html: true,
         position: "top-right",
@@ -118,9 +117,7 @@ class ActivationMain extends Component {
           <SocialFeed
             socialAnalysis={this.props.socialAnalysis}
             activationName={this.props.activationName}
-            twitterList={this.props.statesData[
-              this.props.activeState
-            ].name.replace(/\s/g, "")}
+            twitterList={this.props.twitterList}
           />
 
           <div className="weather__region-container">
@@ -156,7 +153,8 @@ const mapStateToProps = state => ({
   cities: state.cities[state.activeState],
   socialAnalysis: state.socialAnalysis,
   earthquakeData: state.earthquakeData,
-  mapLayers: state.mapLayers
+  mapLayers: state.mapLayers,
+  twitterList: state.twitterList
 });
 
 export default connect(mapStateToProps)(ActivationMain);

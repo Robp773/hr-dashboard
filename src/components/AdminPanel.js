@@ -24,7 +24,6 @@ export default class AdminPanel extends React.Component {
       return res
         .json()
         .then(result => {
-          console.log(result)
 
           this.setState({
             results: result
@@ -125,7 +124,7 @@ export default class AdminPanel extends React.Component {
           data: {},
           params: { id: null, title: null, radius: 150 }
         },
-
+        twitterList: "",
         mapLayers: []
       };
       formModal = (
@@ -158,7 +157,8 @@ export default class AdminPanel extends React.Component {
         stateNames: stateNames,
         searchParams: curActivation.searchParams,
         earthquakeData: curActivation.earthquakeData,
-        mapLayers: curActivation.mapLayers
+        mapLayers: curActivation.mapLayers,
+        twitterList: curActivation.twitterList
       };
 
       formModal = (
