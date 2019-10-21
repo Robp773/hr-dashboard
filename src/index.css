@@ -1289,6 +1289,51 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .followerCount__td > a:hover {
         text-decoration-color: white; }
 
+.listSearch {
+  text-align: center; }
+  .listSearch__h3 {
+    font-size: 2rem; }
+  .listSearch__results-parent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; }
+  .listSearch__single-list {
+    font-size: 1.75rem;
+    width: 25%;
+    color: white;
+    margin: 1rem;
+    background: #154360;
+    padding: 1rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: .25s; }
+    .listSearch__single-list:hover {
+      background: white;
+      color: black;
+      border: 1px solid black; }
+      .listSearch__single-list:hover > * a {
+        color: black; }
+    .listSearch__single-list > * a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #f38e20; }
+    .listSearch__single-list > div {
+      margin-top: .5rem; }
+  .listSearch__list-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .listSearch__searchOpen {
+    padding: 1rem;
+    border: 1px solid transparent;
+    cursor: pointer; }
+    .listSearch__searchOpen:hover {
+      background: white;
+      border: 1px solid black; }
+
 @keyframes pulse-alert {
   0% {
     opacity: .65; } }
