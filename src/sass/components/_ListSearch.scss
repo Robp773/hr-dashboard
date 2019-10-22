@@ -4,6 +4,38 @@
     font-size: 2rem;
   }
 
+  &__search-wrapper{
+    
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__input, .createActivation__input {
+    width: 25%;
+  }
+  &__openBtn {
+    padding: 1rem;
+    font-size: 1.75rem;
+    color: white;
+    margin: 1rem;
+    background: $color-primary;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.25s;
+
+    &:hover {
+      background: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+  &__input {
+    width: 100%;
+    text-align: center;
+  }
+
   &__results-parent {
     width: 100%;
     display: flex;
@@ -13,33 +45,33 @@
   }
 
   &__single-list {
-    font-size: 1.75rem;
-    width: 25%;
+    font-size: 1.5rem;
+    width: 33%;
     color: white;
-    margin: 1rem;
+    margin: .5rem;
     background: $color-primary;
-    padding: 1rem;
+    padding: .5rem;
     cursor: pointer;
     border: 1px solid transparent;
-    transition: .25s;
+    transition: 0.25s;
 
-    &:hover{
-        background: white;
+    &:hover {
+      background: white;
+      color: black;
+      border: 1px solid black;
+      & > * a {
         color: black;
-        border: 1px solid black;
-        & > * a {
-            color: black;
-        }
+      }
     }
 
-    & > * a{
-        color: white;
-        text-decoration: none;
-        border-bottom: 1px solid $color-secondary;
+    & > * a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid $color-secondary;
     }
 
-    & > div{
-        margin-top: .5rem;
+    & > div {
+      margin-top: 0.5rem;
     }
   }
 
@@ -48,6 +80,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: whitesmoke;
+    padding: 1rem;
+
   }
 
   &__searchOpen {

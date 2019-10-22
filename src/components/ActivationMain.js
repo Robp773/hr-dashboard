@@ -117,7 +117,7 @@ class ActivationMain extends Component {
           <SocialFeed
             socialAnalysis={this.props.socialAnalysis}
             activationName={this.props.activationName}
-            twitterList={this.props.twitterList}
+            twitterList={this.props.twitterList[states.getStateCodeByStateName(this.props.stateNames[this.props.activeState])].list}
           />
 
           <div className="weather__region-container">
@@ -150,6 +150,9 @@ const mapStateToProps = state => ({
   disasterType: state.disasterType,
   activeState: state.activeState,
   statesData: state.regionalData,
+  stateNames: state.regionalData.map(state => {
+    return state.name;
+  }),
   cities: state.cities[state.activeState],
   socialAnalysis: state.socialAnalysis,
   earthquakeData: state.earthquakeData,

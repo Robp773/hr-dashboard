@@ -13,7 +13,6 @@ export default class CreateActivation extends React.Component {
       errorsList: [],
       loading: false,
       results: [],
-      statesIncluded: this.props.defaultVals.states,
       activationName: this.props.defaultVals.activationName,
       disasterType: this.props.defaultVals.disasterType,
       level: this.props.defaultVals.level,
@@ -52,7 +51,7 @@ export default class CreateActivation extends React.Component {
     if (this.state.activationName === "") {
       errorsList.push("Please choose an activation name");
     }
-    if (this.state.statesIncluded.length < 1) {
+    if (this.state.states.length < 1) {
       errorsList.push("Please pick at least one state for this activation");
     }
     if (this.state.disasterType === "") {
@@ -60,10 +59,6 @@ export default class CreateActivation extends React.Component {
     }
     if (this.state.level === "") {
       errorsList.push("Please choose an activation level");
-    }
-
-    if (this.state.twitterList.trim() === "") {
-      errorsList.push("Please select a Twitter list");
     }
     if (errorsList.length > 0) {
       this.setState({ errorsList });
@@ -92,7 +87,7 @@ export default class CreateActivation extends React.Component {
         activationName: this.state.activationName,
         disasterType: this.state.disasterType,
         level: this.state.level,
-        states: this.state.statesIncluded || this.props.defaultVals.stateNames,
+        states: this.state.states || this.props.defaultVals.stateNames,
         searchParams: this.state.searchParams,
         earthquakeData: this.state.earthquakeData,
         mapLayers: this.state.mapLayers,
@@ -107,12 +102,12 @@ export default class CreateActivation extends React.Component {
   }
 
   handleSelectChange(e) {
-    let statesIncluded = [];
+    let states = [];
     for (let i = 0; i < e.length; i++) {
-      statesIncluded.push(e[i].value);
+      states.push(e[i].value);
     }
     this.setState({
-      statesIncluded: statesIncluded
+      states: states
     });
   }
 
@@ -480,6 +475,7 @@ export default class CreateActivation extends React.Component {
             </div>
 
             <ListSearch
+              states={this.state.states}
               setTwitterList={this.setTwitterList}
               twitterList={this.state.twitterList}
             />

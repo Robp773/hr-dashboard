@@ -124,7 +124,7 @@ export default class AdminPanel extends React.Component {
           data: {},
           params: { id: null, title: null, radius: 150 }
         },
-        twitterList: "",
+        twitterList: {},
         mapLayers: []
       };
       formModal = (
