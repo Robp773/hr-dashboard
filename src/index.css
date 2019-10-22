@@ -1293,6 +1293,29 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-align: center; }
   .listSearch__h3 {
     font-size: 2rem; }
+  .listSearch__search-wrapper {
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    align-items: center; }
+  .listSearch__input, .listSearch .createActivation__input {
+    width: 25%; }
+  .listSearch__openBtn {
+    padding: 1rem;
+    font-size: 1.75rem;
+    color: white;
+    margin: 1rem;
+    background: #154360;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.25s; }
+    .listSearch__openBtn:hover {
+      background: white;
+      color: black;
+      border: 1px solid black; }
+  .listSearch__input {
+    width: 100%;
+    text-align: center; }
   .listSearch__results-parent {
     width: 100%;
     display: flex;
@@ -1300,15 +1323,15 @@ ORDER: Base + typography > general layout + grid > page layout > components
     align-items: center;
     flex-wrap: wrap; }
   .listSearch__single-list {
-    font-size: 1.75rem;
-    width: 25%;
+    font-size: 1.5rem;
+    width: 33%;
     color: white;
-    margin: 1rem;
+    margin: .5rem;
     background: #154360;
-    padding: 1rem;
+    padding: .5rem;
     cursor: pointer;
     border: 1px solid transparent;
-    transition: .25s; }
+    transition: 0.25s; }
     .listSearch__single-list:hover {
       background: white;
       color: black;
@@ -1320,12 +1343,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
       text-decoration: none;
       border-bottom: 1px solid #f38e20; }
     .listSearch__single-list > div {
-      margin-top: .5rem; }
+      margin-top: 0.5rem; }
   .listSearch__list-parent {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    background: whitesmoke;
+    padding: 1rem; }
   .listSearch__searchOpen {
     padding: 1rem;
     border: 1px solid transparent;
@@ -1333,6 +1358,59 @@ ORDER: Base + typography > general layout + grid > page layout > components
     .listSearch__searchOpen:hover {
       background: white;
       border: 1px solid black; }
+
+.listModal {
+  background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .listModal__form {
+    background: white;
+    padding: 1rem; }
+  .listModal > * h3 {
+    font-size: 2.5rem; }
+  .listModal > * h4 {
+    font-size: 1.75rem; }
+  .listModal__exitBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    padding: 1rem;
+    background: #f38e20;
+    color: white;
+    border: 1px solid transparent;
+    cursor: pointer; }
+    .listModal__exitBtn:hover {
+      background: white;
+      color: black;
+      border: 1px solid black; }
+  .listModal__selectedURI {
+    font-size: 2rem;
+    margin: 1rem; }
+  .listModal__state {
+    width: fit-content;
+    font-size: 2rem;
+    background: #f38e20;
+    padding: 1rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.25s;
+    color: white;
+    margin: 0.25rem;
+    display: inline-block; }
+    .listModal__state:hover {
+      background: white;
+      color: black;
+      border: 1px solid black; }
+      .listModal__state:hover > * a {
+        color: black; }
 
 @keyframes pulse-alert {
   0% {
@@ -1510,7 +1588,7 @@ input:checked + .slider:before {
   position: absolute;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   z-index: 999; }
 
 .react-toggle {
