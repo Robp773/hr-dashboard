@@ -86,7 +86,9 @@ class ActivationMain extends Component {
           }}
           key={i}
         >
-          {states.getStateCodeByStateName(this.props.statesData[i].name)}
+          {this.props.statesData[i].name !== "Mariana Islands"
+            ? states.getStateCodeByStateName(this.props.statesData[i].name)
+            : this.props.statesData[i].name}
         </button>
       );
     }
@@ -117,7 +119,11 @@ class ActivationMain extends Component {
           <SocialFeed
             socialAnalysis={this.props.socialAnalysis}
             activationName={this.props.activationName}
-            twitterList={this.props.twitterList[states.getStateCodeByStateName(this.props.stateNames[this.props.activeState])].list}
+            twitterList={
+              this.props.twitterList[
+                Object.keys(this.props.twitterList)[this.props.activeState]
+              ].list
+            }
           />
 
           <div className="weather__region-container">
