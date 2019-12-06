@@ -2,22 +2,32 @@
   &__data-parent {
     width: 75%;
     margin-left: auto;
+    @include respond(tab-land) {
+      // height: 100vh;
+    }
+  }
+
+  &__top-row {
+    // border-bottom: 1px solid black;
+    padding: 1rem;
+    background: $color-primary;
+    color: white;
   }
 
   &__table {
     width: 100%;
     max-height: 100%;
     overflow-y: scroll;
-    border-spacing: 0;
+    // border-spacing: 0;
 
     &--earthquake {
       max-height: 50% !important;
     }
 
     &--earthquake-feed {
-      font-size: 1.75rem;
-      @include respond(big-desktop) {
-        font-size: 2rem;
+      font-size: 2rem;
+      @include respond(tab-land) {
+        font-size: 1.5rem;
       }
     }
   }
@@ -25,9 +35,12 @@
   &__th {
     font-size: 2rem;
     text-align: center;
-    background: rgba(21, 67, 96, 0.75);
-    color: $color-white;
-    padding: 0.5rem 0;
+    padding: 0.25rem;
+    background: $color-primary;
+    color: white;
+    @include respond(tab-land) {
+      font-size: 1.75rem;
+    }
 
     &--name {
       width: 75%;
@@ -40,5 +53,8 @@
   &__td {
     font-size: 1.75rem;
     text-align: center;
+    @include respond(tab-land) {
+      font-size: 1.5rem;
+    }
   }
 }

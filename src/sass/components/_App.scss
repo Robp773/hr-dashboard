@@ -3,21 +3,20 @@
   width: 50%;
   justify-content: space-around;
   align-content: center;
-  font-size: 2rem;
   color: whitesmoke;
-  max-height: 20vh;
+  height: 17vh;
   margin-right: auto;
   background: $color-primary;
   position: relative;
   border-top: 1px solid black;
-
   border-bottom: 1px solid black;
-
 }
 
 .infoBar {
-  height: 80vh;
-  @include respond(big-desktop){
-      height: 86vh;
-  }
+  display: flex;
+  flex-direction: column;
+  // height: 80vh;
+  // @include respond(big-desktop) {
+  //   height: 86vh;
+  // }
 }

@@ -1,23 +1,28 @@
 .weather-alert {
   &__alerts-parent {
-    flex-direction: column;
     cursor: pointer;
     width: 100%;
-    margin-bottom: 0.25rem;
+    margin-bottom: 3px;
     background: whitesmoke;
+    transition: 0.25s all;
 
     &:hover {
-      background: white !important;
-    }
-
-    &:hover > * .weather-alert__time-parent {
-      background: rgba(243, 142, 32, 0.5);
+      background: white;
+      box-shadow: 0px 1px 3px black;
     }
   }
 
   &__time-locations-parent {
     display: flex;
     font-size: 1.5rem;
+
+    @include respond(tab-port) {
+      font-size: 1.25rem;
+    }
+
+    @include respond(tab-land) {
+      font-size: 1.5rem;
+    }
     @include respond(big-desktop) {
       font-size: 1.75rem;
     }
@@ -28,7 +33,9 @@
     flex-direction: column;
     justify-content: center;
     width: 55%;
-    background: rgba(243, 142, 32, 0.75);
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    padding: 0.25rem;
   }
 
   &__clock-item {

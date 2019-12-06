@@ -8,17 +8,19 @@
   &__alert {
     // animation: pulse-alert 2s ease-in-out alternate infinite;
     color: black;
-    font-size: 5rem;
     border-radius: 100%;
     width: 8rem;
     height: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 7rem;
+    height: 7rem;
+    font-size: 4.5rem;
     @include respond(big-desktop) {
       width: 9rem;
       height: 9rem;
-      font-size: 5.5rem;
+      font-size: 6rem;
     }
   }
 }

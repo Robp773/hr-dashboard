@@ -82,7 +82,7 @@ export default class Hashtags extends React.Component {
         <table className="standard__table">
           <tbody>
             <tr className="standard__top-row">
-              <th className="standard__th standard">Rank</th>
+              <th className="standard__th">Rank</th>
               <th className="standard__th standard__th--name">Hashtag</th>
               <th className="standard__th">Count</th>
             </tr>
@@ -98,7 +98,7 @@ export default class Hashtags extends React.Component {
           }
         }
       };
-      activeTab = <Pie width={200} data={data} options={options} />;
+      activeTab = <Pie width={100} height={75} data={data} options={options} />;
     }
 
     return (

@@ -33,18 +33,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
     right: 0;
     height: 100%; }
   .weather__heading {
-    height: 8vh;
+    height: 7vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #154360;
     transition: 0.25s all;
     border-bottom: 1px solid black; }
+    @media only screen and (max-width: 75em) {
+      .weather__heading {
+        height: 6vh; } }
     .weather__heading--map-overlay {
       background: rgba(21, 67, 96, 0.55); }
-    @media only screen and (min-width: 106.5em) {
-      .weather__heading {
-        height: 7vh; } }
     .weather__heading--absolute {
       position: absolute;
       width: 100%;
@@ -59,6 +59,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     color: white;
     font-size: 2.5rem;
     border-right: 1px solid black; }
+    @media only screen and (max-width: 75em) {
+      .weather__event-heading {
+        font-size: 2rem; } }
     @media only screen and (min-width: 106.5em) {
       .weather__event-heading {
         font-size: 2.75rem; } }
@@ -79,6 +82,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     outline: none;
     border: 0;
     cursor: pointer; }
+    @media only screen and (max-width: 75em) {
+      .weather__btn {
+        padding: .25rem 1.25rem; } }
     @media only screen and (min-width: 106.5em) {
       .weather__btn {
         font-size: 2rem; } }
@@ -121,7 +127,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     height: 100%;
     margin-left: auto; }
   .weather-event__alerts-h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
     padding: 0.5rem 0;
     text-align: center;
     display: block;
@@ -130,9 +136,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     border-bottom: 1px solid black;
     color: white;
     background: #154360; }
-    @media only screen and (min-width: 106.5em) {
+    @media only screen and (max-width: 75em) {
       .weather-event__alerts-h2 {
-        font-size: 2rem; } }
+        font-size: 1.75rem; } }
     .weather-event__alerts-h2:hover {
       cursor: pointer;
       background: white;
@@ -150,18 +156,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
   align-items: center; }
   .status__alert {
     color: black;
-    font-size: 5rem;
     border-radius: 100%;
     width: 8rem;
     height: 8rem;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    width: 7rem;
+    height: 7rem;
+    font-size: 4.5rem; }
     @media only screen and (min-width: 106.5em) {
       .status__alert {
         width: 9rem;
         height: 9rem;
-        font-size: 5.5rem; } }
+        font-size: 6rem; } }
 
 .clock {
   width: 33.33%;
@@ -170,9 +178,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 1rem;
   position: relative; }
+  @media only screen and (min-width: 106.5em) {
+    .clock {
+      font-size: 1.75rem; } }
   .clock > h4 {
     padding: 0;
     margin: 0;
@@ -199,6 +210,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     font-size: 1.5rem;
     box-shadow: 0 0.5rem 1.5rem black;
     cursor: pointer; }
+    @media only screen and (max-width: 75em) {
+      .clock__back-btn {
+        transform: translateY(0%);
+        top: 0;
+        padding: 0.5rem;
+        margin: 0.5rem; } }
     @media only screen and (min-width: 106.5em) {
       .clock__back-btn {
         font-size: 1.75rem; } }
@@ -216,6 +233,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   justify-content: center; }
   .heading__name {
     font-size: 3rem; }
+    @media only screen and (max-width: 75em) {
+      .heading__name {
+        font-size: 3rem; } }
     @media only screen and (min-width: 106.5em) {
       .heading__name {
         font-size: 3.5rem; } }
@@ -232,8 +252,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
     font-size: 3rem;
     font-weight: bold; }
   .heading__state-select-btn {
-    padding: .5rem 1rem;
-    margin: .25rem;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
     text-align: center;
     font-size: 1.75rem;
     background: #f38e20;
@@ -242,6 +262,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     color: white;
     font-weight: bold;
     cursor: pointer; }
+    @media only screen and (max-width: 75em) {
+      .heading__state-select-btn {
+        font-size: 1.75rem; } }
     @media only screen and (min-width: 106.5em) {
       .heading__state-select-btn {
         font-size: 2rem; } }
@@ -256,9 +279,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   width: 50%;
   justify-content: space-around;
   align-content: center;
-  font-size: 2rem;
   color: whitesmoke;
-  max-height: 20vh;
+  height: 17vh;
   margin-right: auto;
   background: #154360;
   position: relative;
@@ -266,10 +288,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   border-bottom: 1px solid black; }
 
 .infoBar {
-  height: 80vh; }
-  @media only screen and (min-width: 106.5em) {
-    .infoBar {
-      height: 86vh; } }
+  display: flex;
+  flex-direction: column; }
 
 .regionInfo {
   display: flex;
@@ -297,27 +317,30 @@ ORDER: Base + typography > general layout + grid > page layout > components
       width: 100%;
       background: #f38e20;
       color: white;
-      height: 8vh;
+      height: 7vh;
       display: flex;
       justify-content: center;
       align-items: center; }
+      @media only screen and (max-width: 75em) {
+        .regionInfo__btn-container > div {
+          font-size: 2rem;
+          height: 6vh; } }
       @media only screen and (min-width: 106.5em) {
         .regionInfo__btn-container > div {
-          height: 7vh;
           font-size: 2.75rem; } }
   .regionInfo__btn {
     cursor: pointer;
     border: 0;
-    font-size: 1.75rem;
+    font-size: 2rem;
     background: #154360;
     color: white;
-    padding: 0.75rem 0;
+    padding: 0.75rem .25rem;
     border-top: 1px solid black;
     width: 100%;
     outline: none; }
-    @media only screen and (min-width: 106.5em) {
+    @media only screen and (max-width: 75em) {
       .regionInfo__btn {
-        font-size: 2rem; } }
+        font-size: 1.5rem; } }
     .regionInfo__btn:hover {
       background: white;
       color: black; }
@@ -327,11 +350,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
     display: flex;
     justify-content: center;
     overflow-y: auto;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin-left: auto; }
-    @media only screen and (min-width: 106.5em) {
+    @media only screen and (max-width: 75em) {
       .regionInfo__table {
-        font-size: 1.75rem; } }
+        font-size: 1.25rem; } }
   .regionInfo__name-th {
     display: none; }
   .regionInfo__social-media-th {
@@ -362,16 +385,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%), url("https://humanityroad.com/apps/us/images/hr-logo.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
+  height: 83vh;
   margin-right: auto; }
   .social-feed__heading-parent {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 8vh; }
-    @media only screen and (min-width: 106.5em) {
+    height: 7vh; }
+    @media only screen and (max-width: 75em) {
       .social-feed__heading-parent {
-        height: 7vh; } }
+        height: 6vh; } }
   .social-feed__tab-h2 {
     font-size: 2.5rem;
     padding: 0;
@@ -391,6 +414,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     color: white;
     border-right: 1px solid black;
     border-bottom: 1px solid black; }
+    @media only screen and (max-width: 75em) {
+      .social-feed__heading {
+        font-size: 2rem; } }
     @media only screen and (min-width: 106.5em) {
       .social-feed__heading {
         font-size: 2.75rem; } }
@@ -403,15 +429,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
     margin-left: auto;
     background: white;
     padding: 0 0.25rem; }
+    @media only screen and (max-width: 75em) {
+      .social-feed__btn-container {
+        padding: 0; } }
   .social-feed__feed-toggle {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 7vh;
-    font-size: 1.75rem; }
-    @media only screen and (min-width: 106.5em) {
+    font-size: 2rem; }
+    @media only screen and (max-width: 75em) {
       .social-feed__feed-toggle {
-        font-size: 2rem; } }
+        font-size: 1.5rem; } }
   .social-feed__label {
     margin: auto 0.5rem; }
   .social-feed__chart-btn {
@@ -454,19 +483,24 @@ ORDER: Base + typography > general layout + grid > page layout > components
       box-shadow: none; }
 
 .weather-alert__alerts-parent {
-  flex-direction: column;
   cursor: pointer;
   width: 100%;
-  margin-bottom: 0.25rem;
-  background: whitesmoke; }
+  margin-bottom: 3px;
+  background: whitesmoke;
+  transition: 0.25s all; }
   .weather-alert__alerts-parent:hover {
-    background: white !important; }
-  .weather-alert__alerts-parent:hover > * .weather-alert__time-parent {
-    background: rgba(243, 142, 32, 0.5); }
+    background: white;
+    box-shadow: 0px 1px 3px black; }
 
 .weather-alert__time-locations-parent {
   display: flex;
   font-size: 1.5rem; }
+  @media only screen and (max-width: 56.25em) {
+    .weather-alert__time-locations-parent {
+      font-size: 1.25rem; } }
+  @media only screen and (max-width: 75em) {
+    .weather-alert__time-locations-parent {
+      font-size: 1.5rem; } }
   @media only screen and (min-width: 106.5em) {
     .weather-alert__time-locations-parent {
       font-size: 1.75rem; } }
@@ -476,7 +510,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   flex-direction: column;
   justify-content: center;
   width: 55%;
-  background: rgba(243, 142, 32, 0.75); }
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  padding: 0.25rem; }
 
 .weather-alert__clock-item {
   white-space: nowrap; }
@@ -538,20 +574,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
   width: 100%; }
 
 .cities__th {
-  font-size: 2rem;
+  font-size: 2.25rem;
   text-decoration: underline black; }
-  @media only screen and (min-width: 106.5em) {
+  @media only screen and (max-width: 75em) {
     .cities__th {
-      font-size: 2.25rem; } }
+      font-size: 1.75rem; } }
 
 .cities__td {
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding: 0.25rem 0;
   align-content: center;
   align-items: center; }
-  @media only screen and (min-width: 106.5em) {
+  @media only screen and (max-width: 75em) {
     .cities__td {
-      font-size: 2rem; } }
+      font-size: 1.5rem; } }
 
 .cities__city {
   align-content: center;
@@ -1065,20 +1101,23 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .earthquake__feed-toggle {
     z-index: 1;
     display: flex;
-    font-size: 1.75rem;
+    font-size: 2rem;
     padding: 0.5rem;
     font-weight: bold;
     margin: 0.5rem auto;
     justify-content: center;
     align-items: center; }
-    @media only screen and (min-width: 106.5em) {
+    @media only screen and (max-width: 75em) {
       .earthquake__feed-toggle {
-        font-size: 2rem; } }
+        font-size: 1.75rem; } }
   .earthquake__feed-h2 {
     font-size: 2.5rem;
     display: flex;
     margin-right: 1rem;
     border-bottom: 2px solid #f38e20; }
+    @media only screen and (max-width: 75em) {
+      .earthquake__feed-h2 {
+        font-size: 2.25rem; } }
   .earthquake__type-box {
     text-align: center;
     font-size: 1.5rem;
@@ -1220,7 +1259,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
     left: 0;
     border-right: 1px solid black; }
   .trends__btn {
-    font-size: 1.75rem;
     padding: 0.5rem 0;
     text-align: center;
     display: block;
@@ -1229,10 +1267,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
     border-bottom: 1px solid black;
     color: white;
     background: #154360;
-    cursor: pointer; }
-    @media only screen and (min-width: 106.5em) {
+    cursor: pointer;
+    font-size: 2rem; }
+    @media only screen and (max-width: 75em) {
       .trends__btn {
-        font-size: 2rem; } }
+        font-size: 1.5rem; } }
     .trends__btn:hover {
       background: white;
       color: black; }
@@ -1245,8 +1284,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     padding: 0.5rem 0;
     justify-content: center;
     align-items: center;
-    font-size: 1.75rem;
-    border-bottom: 1px solid black; }
+    font-size: 1.75rem; }
     .hashtags__toggle-btn-parent--table-chart {
       font-size: 1.5rem; }
       @media only screen and (min-width: 106.5em) {
@@ -1264,30 +1302,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .followerCount {
   width: 75%;
   margin-left: auto; }
-  .followerCount__label {
-    margin: auto 0.5rem; }
-  .followerCount__table {
-    width: 100%;
-    max-height: 100%;
-    overflow-y: scroll; }
-  .followerCount__th {
-    font-size: 2rem;
-    text-align: center;
-    width: 20%; }
-    .followerCount__th--name {
-      width: 60%; }
-  .followerCount__tr:hover {
-    background: rgba(243, 142, 32, 0.25); }
-    .followerCount__tr:hover a {
-      text-decoration: underline;
-      text-decoration-color: black; }
-  .followerCount__td {
-    font-size: 1.75rem;
-    text-align: center; }
-    .followerCount__td > a {
-      color: black; }
-      .followerCount__td > a:hover {
-        text-decoration-color: white; }
 
 .listSearch {
   text-align: center; }
@@ -1704,25 +1718,32 @@ input:checked + .slider:before {
   width: 75%;
   margin-left: auto; }
 
+.standard__top-row {
+  padding: 1rem;
+  background: #154360;
+  color: white; }
+
 .standard__table {
   width: 100%;
   max-height: 100%;
-  overflow-y: scroll;
-  border-spacing: 0; }
+  overflow-y: scroll; }
   .standard__table--earthquake {
     max-height: 50% !important; }
   .standard__table--earthquake-feed {
-    font-size: 1.75rem; }
-    @media only screen and (min-width: 106.5em) {
+    font-size: 2rem; }
+    @media only screen and (max-width: 75em) {
       .standard__table--earthquake-feed {
-        font-size: 2rem; } }
+        font-size: 1.5rem; } }
 
 .standard__th {
   font-size: 2rem;
   text-align: center;
-  background: rgba(21, 67, 96, 0.75);
-  color: white;
-  padding: 0.5rem 0; }
+  padding: 0.25rem;
+  background: #154360;
+  color: white; }
+  @media only screen and (max-width: 75em) {
+    .standard__th {
+      font-size: 1.75rem; } }
   .standard__th--name {
     width: 75%; }
   .standard__th--earthquake {
@@ -1731,3 +1752,6 @@ input:checked + .slider:before {
 .standard__td {
   font-size: 1.75rem;
   text-align: center; }
+  @media only screen and (max-width: 75em) {
+    .standard__td {
+      font-size: 1.5rem; } }

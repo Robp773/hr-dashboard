@@ -17,7 +17,6 @@
   }
 
   &__btn {
-    font-size: 1.75rem;
     padding: 0.5rem 0;
     text-align: center;
     display: block;
@@ -27,9 +26,9 @@
     color: $color-white;
     background: $color-primary;
     cursor: pointer;
-
-    @include respond(big-desktop) {
-      font-size: 2rem;
+    font-size: 2rem;
+    @include respond(tab-land) {
+     font-size: 1.5rem;
     }
 
     &:hover {

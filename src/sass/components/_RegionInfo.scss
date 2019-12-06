@@ -28,30 +28,35 @@
       width: 100%;
       background: $color-secondary;
       color: $color-white;
-      height: 8vh;
+      height: 7vh;
       display: flex;
       justify-content: center;
       align-items: center;
 
+      @include respond(tab-land) {
+        font-size: 2rem;
+        height: 6vh;
+      }
+
       @include respond(big-desktop) {
-        height: 7vh;
         font-size: 2.75rem;
       }
+      
     }
   }
 
   &__btn {
     cursor: pointer;
     border: 0;
-    font-size: 1.75rem;
+    font-size: 2rem;
     background: $color-primary;
     color: $color-white;
-    padding: 0.75rem 0;
+    padding: 0.75rem .25rem;
     border-top: 1px solid black;
     width: 100%;
     outline: none;
-    @include respond(big-desktop) {
-      font-size: 2rem;
+    @include respond(tab-land) {
+      font-size: 1.5rem;
     }
 
     &:hover {
@@ -66,10 +71,10 @@
     display: flex;
     justify-content: center;
     overflow-y: auto;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin-left: auto;
-    @include respond(big-desktop) {
-      font-size: 1.75rem;
+    @include respond(tab-land) {
+      font-size: 1.25rem;
     }
   }
 
