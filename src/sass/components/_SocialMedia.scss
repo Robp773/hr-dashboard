@@ -13,13 +13,17 @@
   height: 83vh;
   margin-right: auto;
   @include respond(tab-land) {
-    // width: 100vw;
+    background-image: none;
   }
   &__heading-parent {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 7vh;
+
+    @include respond(tab-port) {
+      width: 100vw;
+    }
 
     @include respond(tab-land) {
       height: 6vh;
@@ -31,6 +35,7 @@
     padding: 0;
     margin: 0 auto;
     border-bottom: 1px solid $color-secondary;
+
     @include respond(big-desktop) {
       font-size: 3rem;
     }
@@ -52,6 +57,14 @@
       font-size: 2rem;
     }
 
+    @include respond(tab-port) {
+      border-bottom: none;
+    }
+
+    @include respond(phone) {
+      display: none;
+    }
+
     @include respond(big-desktop) {
       font-size: 2.75rem;
     }
@@ -70,6 +83,10 @@
     @include respond(tab-land) {
       padding: 0;
     }
+
+    @include respond(phone) {
+      width: 100%;
+    }
   }
 
   &__feed-toggle {
@@ -85,6 +102,9 @@
 
   &__label {
     margin: auto 0.5rem;
+    @include respond(tab-port) {
+      font-size: 1.5rem;
+    }
   }
 
   &__chart-btn {

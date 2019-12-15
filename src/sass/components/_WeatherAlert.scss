@@ -2,27 +2,30 @@
   &__alerts-parent {
     cursor: pointer;
     width: 100%;
-    margin-bottom: 3px;
-    background: whitesmoke;
+    background: white;
     transition: 0.25s all;
 
     &:hover {
-      background: white;
-      box-shadow: 0px 1px 3px black;
+      // box-shadow: 0px 1px 3px black;
+      & > * .weather-alert__time-parent {
+        background: rgba(243, 142, 32, 0.85);
+      }
     }
   }
 
   &__time-locations-parent {
     display: flex;
     font-size: 1.5rem;
-
-    @include respond(tab-port) {
-      font-size: 1.25rem;
-    }
+    flex-direction: column;
 
     @include respond(tab-land) {
       font-size: 1.5rem;
     }
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
+
     @include respond(big-desktop) {
       font-size: 1.75rem;
     }
@@ -31,11 +34,13 @@
   &__time-parent {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 55%;
-    background: rgba(0, 0, 0, 0.65);
-    color: white;
+    background: rgba(243, 142, 32, 0.5);
+    // color: white;
     padding: 0.25rem;
+    @include respond(phone) {
+      font-size: 1.25rem;
+      width: 100%;
+    }
   }
 
   &__clock-item {
@@ -46,9 +51,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0.75rem;
     width: 100%;
     font-size: 1.5rem;
+    background: whitesmoke;
+    padding: 0.5rem;
+
+    @include respond(phone) {
+      font-size: 1rem;
+    }
   }
 
   &__desc {
@@ -58,8 +68,9 @@
     align-items: center;
     justify-content: center;
     padding: 0.75rem;
-    @include respond(big-desktop) {
-      font-size: 1.5rem;
+    background: white;
+    @include respond(phone) {
+      font-size: 1.25rem;
     }
   }
 }

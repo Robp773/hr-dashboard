@@ -342,12 +342,7 @@ export default class MapTab extends React.Component {
     }
 
     return (
-      <div
-        id={`parent .mapTab__parent ${
-          !this.state.layerWidgetVis ? "mapTab__widgetHidden" : ""
-        }`}
-        style={styles.container}
-      >
+      <div id={`parent`} className="mapTab" style={styles.container}>
         <div id={`viewDiv`} style={styles.mapDiv} />
       </div>
     );

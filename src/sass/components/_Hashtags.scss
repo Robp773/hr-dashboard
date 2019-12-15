@@ -9,6 +9,10 @@
     align-items: center;
     font-size: 1.75rem;
 
+    @include respond(tab-port) {
+      display: none;
+    }
+
     &--table-chart {
       font-size: 1.5rem;
       @include respond(big-desktop) {

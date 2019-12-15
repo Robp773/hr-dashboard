@@ -44,21 +44,25 @@
     }
   }
 
-  &__feed-h2 {
-    font-size: 2.5rem;
-    display: flex;
-    margin-right: 1rem;
-    border-bottom: 2px solid $color-secondary;
-    @include respond(tab-land) {
-      font-size: 2.25rem;
-    }
-  }
+  // &__feed-h2 {
+  //   font-size: 2.5rem;
+  //   display: flex;
+  //   margin-right: 1rem;
+  //   border-bottom: 2px solid $color-secondary;
+  //   @include respond(tab-land) {
+  //     font-size: 2.25rem;
+  //   }
+  //   @include respond(tab-port) {
+  //     font-size: 1.5rem;
+  //   }
+  // }
 
   &__type-box {
     text-align: center;
     font-size: 1.5rem;
     width: 33.33%;
     padding: 0.25rem;
+
     @include respond(big-desktop) {
       font-size: 2rem;
     }
@@ -68,6 +72,10 @@
       font-size: 2rem;
       border-bottom: 2px solid $color-secondary;
       width: fit-content;
+
+      @include respond(tab-land) {
+        font-size: 1.75rem;
+      }
       @include respond(big-desktop) {
         font-size: 2.25rem;
       }

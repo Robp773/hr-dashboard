@@ -18,7 +18,7 @@ export default class SocialFeed extends React.Component {
     return (
       <div className="component social-feed">
         <div className="social-feed__heading-parent">
-          <div className="social-feed__heading">Social Data</div>
+          <div className="social-feed__heading">Social</div>
           <div className="social-feed__btn-container">
             <div className="social-feed__feed-toggle">
               <div className="social-feed__label">Tweets</div>

@@ -1,4 +1,9 @@
-#twitterWidgets-parent{
-    width: 100%;
-    height: fit-content;
+#twitterWidgets-parent {
+  width: 100%;
+  height: fit-content;
+  background: white;
+
+  // @include respond(tab-port) {
+  //   margin-top: 6vh;
+  // }
 }

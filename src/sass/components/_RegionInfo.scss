@@ -8,6 +8,10 @@
   position: relative;
   background: $color-white;
 
+  @include respond(tab-land) {
+    height: 100%;
+  }
+
   &__container {
     display: flex;
   }
@@ -22,6 +26,10 @@
     border-right: 1px solid black;
     overflow-y: scroll;
     height: 40vh;
+
+    @include respond(tab-land) {
+      height: fit-content;
+    }
 
     & > div {
       font-size: 2.5rem;
@@ -38,10 +46,13 @@
         height: 6vh;
       }
 
+      @include respond(tab-port) {
+        display: none;
+      }
+
       @include respond(big-desktop) {
         font-size: 2.75rem;
       }
-      
     }
   }
 
@@ -51,8 +62,8 @@
     font-size: 2rem;
     background: $color-primary;
     color: $color-white;
-    padding: 0.75rem .25rem;
-    border-top: 1px solid black;
+    padding: 0.75rem 0.25rem;
+    border-bottom: 1px solid black;
     width: 100%;
     outline: none;
     @include respond(tab-land) {
@@ -60,8 +71,7 @@
     }
 
     &:hover {
-      background: $color-white;
-      color: black;
+      background: #5e849c;
     }
   }
 
@@ -73,6 +83,9 @@
     overflow-y: auto;
     font-size: 1.75rem;
     margin-left: auto;
+    @include respond(tab-port) {
+      height: 79vh;
+    }
     @include respond(tab-land) {
       font-size: 1.25rem;
     }

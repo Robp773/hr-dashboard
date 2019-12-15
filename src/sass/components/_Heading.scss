@@ -6,34 +6,15 @@
   justify-content: center;
 
   &__name {
-    // color: red;
-    font-size: 3rem;
-
     @include respond(tab-land) {
       font-size: 3rem;
     }
-    @include respond(big-desktop) {
-      font-size: 3.5rem;
+
+    @include respond(phone) {
+      font-size: 2rem;
     }
-  }
 
-  &__headings-array {
-    display: flex;
-    margin: 0.5rem auto;
-    color: $color-secondary;
-  }
-
-  &__type-val-parent {
-    padding: 0 1rem;
-  }
-
-  &__h3 {
-    font-size: 3rem;
-    color: $color-white;
-  }
-  &__value {
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 3.5rem;
   }
 
   &__state-select-btn {
@@ -47,20 +28,25 @@
     color: $color-white;
     font-weight: bold;
     cursor: pointer;
-    
+
     @include respond(tab-land) {
       font-size: 1.75rem;
     }
+
+    @include respond(phone) {
+      font-size: 1.25rem;
+    }
+
     @include respond(big-desktop) {
       font-size: 2rem;
     }
     &:hover {
-      background: $color-white;
-      color: black;
+      background: white;
     }
 
     &:active {
       box-shadow: none;
+      color: white;
     }
   }
 }

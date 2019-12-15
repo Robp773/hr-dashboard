@@ -49,17 +49,17 @@ export default class Earthquake extends React.Component {
     return (
       <div className="earthquake">
         <div className="earthquake__feed-toggle">
-          <h2 className="earthquake__feed-h2">Area Seismic Events</h2>
+          {/* <h2 className="earthquake__feed-h2">Area Seismic Events</h2> */}
 
           <div className="social-feed__label">Event</div>
-          <label class="switch">
+          <label className="switch">
             <input
               onChange={() => {
                 this.onCheck();
               }}
               type="checkbox"
             />
-            <span class="slider round" />
+            <span className="slider round" />
           </label>
           <div className="social-feed__label">Feed</div>
         </div>

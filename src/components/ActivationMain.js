@@ -13,10 +13,17 @@ import Alert from "react-s-alert";
 import states from "us-state-codes";
 
 import { FiArrowLeft } from "react-icons/fi";
+import MobileMenu from "./MobileMenu";
 
 class ActivationMain extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      mobileTab: "Event"
+    };
+
+    this.changeMobileTab = this.changeMobileTab.bind(this);
 
     this.dataStream = io(
       `${API_BASE_URL}/${this.props.activationName.replace(/\s+/g, "")}`
@@ -71,6 +78,11 @@ class ActivationMain extends Component {
     window.clearInterval("tweetInterval");
   }
 
+  changeMobileTab(mobileTab) {
+    console.log("setting tab", mobileTab);
+    this.setState({ mobileTab });
+  }
+
   render() {
     let impactedStates = [];
     for (let i = 0; i < this.props.statesData.length; i++) {
@@ -114,29 +126,55 @@ class ActivationMain extends Component {
             <FiArrowLeft size={"2.5rem"} />
           </button>
         </div>
-
+        <MobileMenu
+          activeTab={this.state.mobileTab}
+          changeMobileTab={this.changeMobileTab}
+        />
         <div className="infoBar">
-          <SocialFeed
-            socialAnalysis={this.props.socialAnalysis}
-            activationName={this.props.activationName}
-            twitterList={
-              this.props.twitterList[
-                Object.keys(this.props.twitterList)[this.props.activeState]
-              ].list
-            }
-          />
-
-          <div className="weather__region-container">
-            <Event
-              mapLayers={this.props.mapLayers}
-              earthquakeData={this.props.earthquakeData}
-              cities={this.props.cities}
-              activeState={this.props.activeState}
-              eventData={this.props.eventData}
-              disasterType={this.props.disasterType}
-              latLng={this.props.regionalData.latLng}
+          <span
+            className={`mobileWrapper ${
+              this.state.mobileTab === "Social"
+                ? "mobileWrapper--active"
+                : "mobileWrapper--inactive"
+            }`}
+          >
+            <SocialFeed
+              socialAnalysis={this.props.socialAnalysis}
+              activationName={this.props.activationName}
+              twitterList={
+                this.props.twitterList[
+                  Object.keys(this.props.twitterList)[this.props.activeState]
+                ].list
+              }
             />
-            <RegionInfo regionalData={this.props.regionalData} />
+          </span>
+          <div className="weather__region-container">
+            <span
+              className={`mobileWrapper ${
+                this.state.mobileTab === "Event"
+                  ? "mobileWrapper--active"
+                  : "mobileWrapper--inactive"
+              }`}
+            >
+              <Event
+                mapLayers={this.props.mapLayers}
+                earthquakeData={this.props.earthquakeData}
+                cities={this.props.cities}
+                activeState={this.props.activeState}
+                eventData={this.props.eventData}
+                disasterType={this.props.disasterType}
+                latLng={this.props.regionalData.latLng}
+              />
+            </span>
+            <span
+              className={`mobileWrapper ${
+                this.state.mobileTab === "State"
+                  ? "mobileWrapper--active"
+                  : "mobileWrapper--inactive"
+              }`}
+            >
+              <RegionInfo regionalData={this.props.regionalData} />
+            </span>
           </div>
         </div>
       </div>

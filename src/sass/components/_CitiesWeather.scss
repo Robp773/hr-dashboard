@@ -10,6 +10,9 @@
     @include respond(tab-land) {
       font-size: 1.75rem;
     }
+    @include respond(tab-port) {
+      font-size: 1.5rem;
+    }
   }
 
   &__td {
@@ -19,6 +22,9 @@
     align-items: center;
     @include respond(tab-land) {
       font-size: 1.5rem;
+    }
+    @include respond(tab-land) {
+      font-size: 1.25rem;
     }
   }
 

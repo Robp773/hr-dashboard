@@ -10,6 +10,11 @@
   position: relative;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+
+  @include respond(tab-port) {
+    width: 100vw;
+    z-index: 999;
+  }
 }
 
 .infoBar {
@@ -19,4 +24,15 @@
   // @include respond(big-desktop) {
   //   height: 86vh;
   // }
+}
+
+@include respond(tab-port) {
+  .mobileWrapper {
+    &--active {
+      display: block;
+    }
+    &--inactive {
+      display: none;
+    }
+  }
 }

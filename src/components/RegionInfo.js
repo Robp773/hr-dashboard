@@ -134,7 +134,7 @@ export default class RegionInfo extends React.Component {
       <div className="regionInfo component facts">
         <div className="regionInfo__container component__container">
           <div className="regionInfo__btn-container">
-            <div>State Data</div>
+            <div>State</div>
             {this.props.regionalData.stateGovt.length > 0 ? (
               <button
                 onClick={() => {

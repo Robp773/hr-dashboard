@@ -6,9 +6,8 @@
   box-sizing: inherit;
 }
 
-html {
+html {  
   font-size: 62.5%;
-  background: $color-primary;
   font-family: "Noto Serif", serif;
 }
 ::-webkit-scrollbar {
@@ -16,6 +15,10 @@ html {
 }
 body {
   box-sizing: border-box;
+  @include respond(phone) {
+    min-height: 100vh;
+    background: $color-primary;
+  }
 }
 
 .label {
@@ -35,6 +38,18 @@ body {
 
 .component {
   overflow-y: auto;
+border-top: 1px solid black;
+  @include respond(tab-port) {
+    width: 100vw;
+    // height: 100%;
+    &--hidden {
+      display: none;
+    }
+    &--visibile {
+      display: block;
+    }
+  }
+
   &__h1 {
     font-size: 4.5rem;
   }
@@ -47,8 +62,8 @@ body {
 }
 
 .active {
-  background: $color-white !important;
-  color: black !important;
+  background: rgb(94, 132, 156) !important;
+  // color: black !important;
   box-shadow: none;
   // border: 0;
 }
@@ -166,6 +181,13 @@ input:checked + .slider:before {
   position: static !important;
 }
 
+.mapTab {
+  @include respond(tab-port) {
+    height: 100vh !important;
+    width: 100vw !important;
+  }
+}
+
 #MicrosoftNav {
   display: none;
 }
@@ -195,7 +217,7 @@ input:checked + .slider:before {
   position: absolute;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  min-height: 100%;;
+  min-height: 100%;
   z-index: 999;
 }
 

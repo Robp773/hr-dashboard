@@ -42,6 +42,10 @@
       font-size: 1.75rem;
     }
 
+    @include respond(tab-land) {
+      font-size: 1.5rem;
+    }
+
     &--name {
       width: 75%;
     }
@@ -55,6 +59,9 @@
     text-align: center;
     @include respond(tab-land) {
       font-size: 1.5rem;
+    }
+    @include respond(tab-land) {
+      font-size: 1.25rem;
     }
   }
 }

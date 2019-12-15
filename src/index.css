@@ -21,9 +21,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-align: center;
   position: relative;
   overflow-y: scroll;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  border-top: 1px solid black;
   width: 50vw;
   background: white; }
   .weather__region-container {
@@ -32,6 +29,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     width: fit-content;
     right: 0;
     height: 100%; }
+    @media only screen and (max-width: 56.25em) {
+      .weather__region-container {
+        position: static; } }
   .weather__heading {
     height: 7vh;
     display: flex;
@@ -45,10 +45,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
         height: 6vh; } }
     .weather__heading--map-overlay {
       background: rgba(21, 67, 96, 0.55); }
+      @media only screen and (max-width: 37.5em) {
+        .weather__heading--map-overlay {
+          background: #154360; } }
     .weather__heading--absolute {
       position: absolute;
       width: 100%;
       z-index: 999; }
+      @media only screen and (max-width: 56.25em) {
+        .weather__heading--absolute {
+          position: static; } }
   .weather__event-heading {
     background: #f38e20;
     width: 25%;
@@ -62,6 +68,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .weather__event-heading {
         font-size: 2rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .weather__event-heading {
+        display: none; } }
     @media only screen and (min-width: 106.5em) {
       .weather__event-heading {
         font-size: 2.75rem; } }
@@ -82,15 +91,15 @@ ORDER: Base + typography > general layout + grid > page layout > components
     outline: none;
     border: 0;
     cursor: pointer; }
-    @media only screen and (max-width: 75em) {
+    @media only screen and (max-width: 37.5em) {
       .weather__btn {
-        padding: .25rem 1.25rem; } }
+        font-size: 1.25rem;
+        box-shadow: none; } }
     @media only screen and (min-width: 106.5em) {
       .weather__btn {
         font-size: 2rem; } }
     .weather__btn:hover {
-      background: white;
-      color: black; }
+      background: #5e849c; }
     .weather__btn:active {
       box-shadow: none; }
 
@@ -139,10 +148,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .weather-event__alerts-h2 {
         font-size: 1.75rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .weather-event__alerts-h2 {
+        font-size: 1.25rem; } }
     .weather-event__alerts-h2:hover {
       cursor: pointer;
-      background: white;
-      color: black; }
+      background: rgba(21, 67, 96, 0.66); }
 
 .esri-view {
   height: 100%;
@@ -165,6 +176,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
     width: 7rem;
     height: 7rem;
     font-size: 4.5rem; }
+    @media only screen and (max-width: 37.5em) {
+      .status__alert {
+        font-size: 3rem;
+        width: 5rem;
+        height: 5rem; } }
     @media only screen and (min-width: 106.5em) {
       .status__alert {
         width: 9rem;
@@ -181,6 +197,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-size: 1.5rem;
   padding: 1rem;
   position: relative; }
+  @media only screen and (max-width: 37.5em) {
+    .clock {
+      font-size: 1.25rem; } }
   @media only screen and (min-width: 106.5em) {
     .clock {
       font-size: 1.75rem; } }
@@ -189,6 +208,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     margin: 0;
     font-size: 1.75rem;
     border-bottom: 2px solid #f38e20; }
+    @media only screen and (max-width: 37.5em) {
+      .clock > h4 {
+        font-size: 1.5rem; } }
     @media only screen and (min-width: 106.5em) {
       .clock > h4 {
         font-size: 2rem; } }
@@ -216,6 +238,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
         top: 0;
         padding: 0.5rem;
         margin: 0.5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .clock__back-btn {
+        padding: .25rem;
+        margin: .25rem; } }
     @media only screen and (min-width: 106.5em) {
       .clock__back-btn {
         font-size: 1.75rem; } }
@@ -232,25 +258,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
   align-items: center;
   justify-content: center; }
   .heading__name {
-    font-size: 3rem; }
+    font-size: 3.5rem; }
     @media only screen and (max-width: 75em) {
       .heading__name {
         font-size: 3rem; } }
-    @media only screen and (min-width: 106.5em) {
+    @media only screen and (max-width: 37.5em) {
       .heading__name {
-        font-size: 3.5rem; } }
-  .heading__headings-array {
-    display: flex;
-    margin: 0.5rem auto;
-    color: #f38e20; }
-  .heading__type-val-parent {
-    padding: 0 1rem; }
-  .heading__h3 {
-    font-size: 3rem;
-    color: white; }
-  .heading__value {
-    font-size: 3rem;
-    font-weight: bold; }
+        font-size: 2rem; } }
   .heading__state-select-btn {
     padding: 0.5rem 1rem;
     margin: 0.25rem;
@@ -265,14 +279,17 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .heading__state-select-btn {
         font-size: 1.75rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .heading__state-select-btn {
+        font-size: 1.25rem; } }
     @media only screen and (min-width: 106.5em) {
       .heading__state-select-btn {
         font-size: 2rem; } }
     .heading__state-select-btn:hover {
-      background: white;
-      color: black; }
+      background: white; }
     .heading__state-select-btn:active {
-      box-shadow: none; }
+      box-shadow: none;
+      color: white; }
 
 .headerBar {
   display: flex;
@@ -286,10 +303,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
   position: relative;
   border-top: 1px solid black;
   border-bottom: 1px solid black; }
+  @media only screen and (max-width: 56.25em) {
+    .headerBar {
+      width: 100vw;
+      z-index: 999; } }
 
 .infoBar {
   display: flex;
   flex-direction: column; }
+
+@media only screen and (max-width: 56.25em) {
+  .mobileWrapper--active {
+    display: block; }
+  .mobileWrapper--inactive {
+    display: none; } }
 
 .regionInfo {
   display: flex;
@@ -300,6 +327,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   border-left: 1px solid black;
   position: relative;
   background: white; }
+  @media only screen and (max-width: 75em) {
+    .regionInfo {
+      height: 100%; } }
   .regionInfo__container {
     display: flex; }
   .regionInfo__btn-container {
@@ -312,6 +342,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     border-right: 1px solid black;
     overflow-y: scroll;
     height: 40vh; }
+    @media only screen and (max-width: 75em) {
+      .regionInfo__btn-container {
+        height: fit-content; } }
     .regionInfo__btn-container > div {
       font-size: 2.5rem;
       width: 100%;
@@ -325,6 +358,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
         .regionInfo__btn-container > div {
           font-size: 2rem;
           height: 6vh; } }
+      @media only screen and (max-width: 56.25em) {
+        .regionInfo__btn-container > div {
+          display: none; } }
       @media only screen and (min-width: 106.5em) {
         .regionInfo__btn-container > div {
           font-size: 2.75rem; } }
@@ -334,16 +370,15 @@ ORDER: Base + typography > general layout + grid > page layout > components
     font-size: 2rem;
     background: #154360;
     color: white;
-    padding: 0.75rem .25rem;
-    border-top: 1px solid black;
+    padding: 0.75rem 0.25rem;
+    border-bottom: 1px solid black;
     width: 100%;
     outline: none; }
     @media only screen and (max-width: 75em) {
       .regionInfo__btn {
         font-size: 1.5rem; } }
     .regionInfo__btn:hover {
-      background: white;
-      color: black; }
+      background: #5e849c; }
   .regionInfo__table {
     width: 75%;
     height: 40vh;
@@ -352,6 +387,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     overflow-y: auto;
     font-size: 1.75rem;
     margin-left: auto; }
+    @media only screen and (max-width: 56.25em) {
+      .regionInfo__table {
+        height: 79vh; } }
     @media only screen and (max-width: 75em) {
       .regionInfo__table {
         font-size: 1.25rem; } }
@@ -387,11 +425,17 @@ ORDER: Base + typography > general layout + grid > page layout > components
   background-repeat: no-repeat;
   height: 83vh;
   margin-right: auto; }
+  @media only screen and (max-width: 75em) {
+    .social-feed {
+      background-image: none; } }
   .social-feed__heading-parent {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 7vh; }
+    @media only screen and (max-width: 56.25em) {
+      .social-feed__heading-parent {
+        width: 100vw; } }
     @media only screen and (max-width: 75em) {
       .social-feed__heading-parent {
         height: 6vh; } }
@@ -417,6 +461,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .social-feed__heading {
         font-size: 2rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .social-feed__heading {
+        border-bottom: none; } }
+    @media only screen and (max-width: 37.5em) {
+      .social-feed__heading {
+        display: none; } }
     @media only screen and (min-width: 106.5em) {
       .social-feed__heading {
         font-size: 2.75rem; } }
@@ -432,6 +482,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .social-feed__btn-container {
         padding: 0; } }
+    @media only screen and (max-width: 37.5em) {
+      .social-feed__btn-container {
+        width: 100%; } }
   .social-feed__feed-toggle {
     display: flex;
     justify-content: center;
@@ -443,6 +496,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
         font-size: 1.5rem; } }
   .social-feed__label {
     margin: auto 0.5rem; }
+    @media only screen and (max-width: 56.25em) {
+      .social-feed__label {
+        font-size: 1.5rem; } }
   .social-feed__chart-btn {
     cursor: pointer;
     border: 0;
@@ -485,22 +541,21 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .weather-alert__alerts-parent {
   cursor: pointer;
   width: 100%;
-  margin-bottom: 3px;
-  background: whitesmoke;
+  background: white;
   transition: 0.25s all; }
-  .weather-alert__alerts-parent:hover {
-    background: white;
-    box-shadow: 0px 1px 3px black; }
+  .weather-alert__alerts-parent:hover > * .weather-alert__time-parent {
+    background: rgba(243, 142, 32, 0.85); }
 
 .weather-alert__time-locations-parent {
   display: flex;
-  font-size: 1.5rem; }
-  @media only screen and (max-width: 56.25em) {
-    .weather-alert__time-locations-parent {
-      font-size: 1.25rem; } }
+  font-size: 1.5rem;
+  flex-direction: column; }
   @media only screen and (max-width: 75em) {
     .weather-alert__time-locations-parent {
       font-size: 1.5rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .weather-alert__time-locations-parent {
+      flex-direction: column; } }
   @media only screen and (min-width: 106.5em) {
     .weather-alert__time-locations-parent {
       font-size: 1.75rem; } }
@@ -508,11 +563,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .weather-alert__time-parent {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 55%;
-  background: rgba(0, 0, 0, 0.65);
-  color: white;
+  background: rgba(243, 142, 32, 0.5);
   padding: 0.25rem; }
+  @media only screen and (max-width: 37.5em) {
+    .weather-alert__time-parent {
+      font-size: 1.25rem;
+      width: 100%; } }
 
 .weather-alert__clock-item {
   white-space: nowrap; }
@@ -521,9 +577,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 0.75rem;
   width: 100%;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  background: whitesmoke;
+  padding: 0.5rem; }
+  @media only screen and (max-width: 37.5em) {
+    .weather-alert__locations-parent {
+      font-size: 1rem; } }
 
 .weather-alert__desc {
   font-size: 1.5rem;
@@ -531,10 +591,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem; }
-  @media only screen and (min-width: 106.5em) {
+  padding: 0.75rem;
+  background: white; }
+  @media only screen and (max-width: 37.5em) {
     .weather-alert__desc {
-      font-size: 1.5rem; } }
+      font-size: 1.25rem; } }
 
 .open {
   border-top: 0; }
@@ -579,6 +640,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @media only screen and (max-width: 75em) {
     .cities__th {
       font-size: 1.75rem; } }
+  @media only screen and (max-width: 56.25em) {
+    .cities__th {
+      font-size: 1.5rem; } }
 
 .cities__td {
   font-size: 2rem;
@@ -588,6 +652,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @media only screen and (max-width: 75em) {
     .cities__td {
       font-size: 1.5rem; } }
+  @media only screen and (max-width: 75em) {
+    .cities__td {
+      font-size: 1.25rem; } }
 
 .cities__city {
   align-content: center;
@@ -597,7 +664,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 #twitterWidgets-parent {
   width: 100%;
-  height: fit-content; }
+  height: fit-content;
+  background: white; }
 
 .activationList {
   display: flex;
@@ -795,7 +863,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     border: 0;
     outline: none;
     font-size: 2rem;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     position: absolute;
     top: 0;
     right: 0;
@@ -809,7 +877,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     width: 50%;
     margin: 3rem auto;
     border: 1px solid black;
-    padding: .5rem 1.5rem; }
+    padding: 0.5rem 1.5rem; }
   .adminLogin__submit-btn {
     background: #f38e20;
     color: white;
@@ -817,7 +885,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     outline: none;
     font-size: 3rem;
     margin: auto 1rem;
-    padding: .5rem 1.5rem; }
+    padding: 0.5rem 1.5rem; }
     .adminLogin__submit-btn:hover {
       background: white;
       color: black; }
@@ -1040,7 +1108,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     border: 1px solid transparent;
     outline: none;
     cursor: pointer;
-    box-shadow: 0 .5rem 2.5rem black; }
+    box-shadow: 0 0.5rem 2.5rem black; }
     .state-form__exit-btn:hover {
       background: white;
       color: black;
@@ -1061,7 +1129,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .state-form__input {
     width: 35%;
     font-size: 3rem;
-    padding: .5rem 1rem; }
+    padding: 0.5rem 1rem; }
     .state-form__input--select {
       text-align-last: center; }
     .state-form__input--search-form {
@@ -1070,11 +1138,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
     width: fit-content;
     background: #f38e20;
     color: white;
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     border: 0;
     outline: 0;
     font-size: 3.5rem;
-    box-shadow: 0 .5rem 2.5rem black;
+    box-shadow: 0 0.5rem 2.5rem black;
     cursor: pointer;
     margin: auto; }
     .state-form__submit-btn:hover {
@@ -1110,14 +1178,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .earthquake__feed-toggle {
         font-size: 1.75rem; } }
-  .earthquake__feed-h2 {
-    font-size: 2.5rem;
-    display: flex;
-    margin-right: 1rem;
-    border-bottom: 2px solid #f38e20; }
-    @media only screen and (max-width: 75em) {
-      .earthquake__feed-h2 {
-        font-size: 2.25rem; } }
   .earthquake__type-box {
     text-align: center;
     font-size: 1.5rem;
@@ -1131,6 +1191,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
       font-size: 2rem;
       border-bottom: 2px solid #f38e20;
       width: fit-content; }
+      @media only screen and (max-width: 75em) {
+        .earthquake__type-box > h3 {
+          font-size: 1.75rem; } }
       @media only screen and (min-width: 106.5em) {
         .earthquake__type-box > h3 {
           font-size: 2.25rem; } }
@@ -1180,7 +1243,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
       border: 1px solid black; }
 
 .socialAnalysis {
-  height: 100%; }
+  height: 100%;
+  background: white; }
   .socialAnalysis__no-data {
     background: #154360;
     width: 100%;
@@ -1273,8 +1337,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .trends__btn {
         font-size: 1.5rem; } }
     .trends__btn:hover {
-      background: white;
-      color: black; }
+      background: #5e849c; }
 
 .hashtags {
   height: 100%; }
@@ -1285,6 +1348,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     justify-content: center;
     align-items: center;
     font-size: 1.75rem; }
+    @media only screen and (max-width: 56.25em) {
+      .hashtags__toggle-btn-parent {
+        display: none; } }
     .hashtags__toggle-btn-parent--table-chart {
       font-size: 1.5rem; }
       @media only screen and (min-width: 106.5em) {
@@ -1426,6 +1492,37 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .listModal__state:hover > * a {
         color: black; }
 
+.mobileMenu {
+  display: none;
+  text-align: center;
+  height: 4vh; }
+  @media only screen and (max-width: 56.25em) {
+    .mobileMenu {
+      display: block; } }
+  .mobileMenu__btn {
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    font-size: 2rem;
+    width: 33.33%;
+    height: 100%;
+    transition: 0.25s;
+    background: whitesmoke; }
+    .mobileMenu__btn:hover {
+      background: #5e849c !important;
+      color: white; }
+    .mobileMenu__btn--middle {
+      border-left: 1px solid black;
+      border-right: 1px solid black; }
+    .mobileMenu__btn--active {
+      background: #5e849c !important;
+      color: white; }
+    @media only screen and (max-width: 37.5em) {
+      .mobileMenu__btn {
+        font-size: 1.5rem; } }
+
 @keyframes pulse-alert {
   0% {
     opacity: .65; } }
@@ -1457,7 +1554,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 html {
   font-size: 62.5%;
-  background: #154360;
   font-family: "Noto Serif", serif; }
 
 ::-webkit-scrollbar {
@@ -1465,6 +1561,10 @@ html {
 
 body {
   box-sizing: border-box; }
+  @media only screen and (max-width: 37.5em) {
+    body {
+      min-height: 100vh;
+      background: #154360; } }
 
 .label {
   font-size: 3.5rem; }
@@ -1479,7 +1579,15 @@ body {
   position: absolute; }
 
 .component {
-  overflow-y: auto; }
+  overflow-y: auto;
+  border-top: 1px solid black; }
+  @media only screen and (max-width: 56.25em) {
+    .component {
+      width: 100vw; }
+      .component--hidden {
+        display: none; }
+      .component--visibile {
+        display: block; } }
   .component__h1 {
     font-size: 4.5rem; }
   .component__h2 {
@@ -1488,8 +1596,7 @@ body {
     text-align: center; }
 
 .active {
-  background: white !important;
-  color: black !important;
+  background: #5e849c !important;
   box-shadow: none; }
 
 .td-even {
@@ -1578,6 +1685,11 @@ input:checked + .slider:before {
 
 #myMap {
   position: static !important; }
+
+@media only screen and (max-width: 56.25em) {
+  .mapTab {
+    height: 100vh !important;
+    width: 100vw !important; } }
 
 #MicrosoftNav {
   display: none; }
@@ -1744,6 +1856,9 @@ input:checked + .slider:before {
   @media only screen and (max-width: 75em) {
     .standard__th {
       font-size: 1.75rem; } }
+  @media only screen and (max-width: 75em) {
+    .standard__th {
+      font-size: 1.5rem; } }
   .standard__th--name {
     width: 75%; }
   .standard__th--earthquake {
@@ -1755,3 +1870,6 @@ input:checked + .slider:before {
   @media only screen and (max-width: 75em) {
     .standard__td {
       font-size: 1.5rem; } }
+  @media only screen and (max-width: 75em) {
+    .standard__td {
+      font-size: 1.25rem; } }
