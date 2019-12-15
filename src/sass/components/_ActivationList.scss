@@ -44,6 +44,7 @@
     outline: none;
     box-shadow: 0 1rem 2rem black;
     cursor: pointer;
+
     &:hover {
       background: $color-white;
       color: black;
@@ -52,6 +53,10 @@
     &:active {
       box-shadow: none;
     }
+    @include respond(tab-port) {
+      padding: .75rem;
+    }
+    
   }
 
   &__banner {
@@ -79,6 +84,9 @@
       color: white;
       font-size: 4rem;
       margin: 1rem auto;
+      @include respond(tab-port) {
+        font-size: 3rem;
+      }
     }
   }
 
@@ -89,6 +97,10 @@
     }
     @include respond(tab-land) {
       font-size: 2.5rem;
+    }
+
+    @include respond(tab-port) {
+      font-size: 2rem;
     }
   }
 
@@ -115,6 +127,9 @@
     border: 0 !important;
     @include respond(tab-land) {
       font-size: 2rem;
+    }
+    @include respond(tab-port) {
+      font-size: 1.5rem;
     }
     & > button {
       margin: auto;
@@ -153,7 +168,7 @@
         outline: none;
         box-shadow: 0 0.5rem 1rem black;
         cursor: pointer;
-        transition: .25s;
+        transition: 0.25s;
 
         @include respond(tab-land) {
           font-size: 2rem;
@@ -176,7 +191,7 @@
         box-shadow: 0 0.5rem 1rem black;
         cursor: pointer;
 
-        transition: .25s;
+        transition: 0.25s;
         @include respond(tab-land) {
           font-size: 2rem;
         }
@@ -221,6 +236,11 @@
     @include respond(tab-land) {
       width: 4.5rem;
       height: 4.5rem;
+    }
+
+    @include respond(tab-port) {
+      width: 3.5rem;
+      height: 3.5rem;
     }
     &--green {
       background: #228b22;

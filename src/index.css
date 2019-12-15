@@ -105,18 +105,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .weather-event {
   display: flex;
-  justify-content: flex-start; }
+  justify-content: flex-start;
+  position: relative; }
   .weather-event__no-alerts {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
-    color: #228b22;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
+    font-size: 3rem; }
   .weather-event__container {
     display: flex;
     width: 100%; }
@@ -706,6 +698,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
       color: black; }
     .activationList__admin-btn:active {
       box-shadow: none; }
+    @media only screen and (max-width: 56.25em) {
+      .activationList__admin-btn {
+        padding: .75rem; } }
   .activationList__banner {
     margin: 5rem auto;
     height: 7vh; }
@@ -725,6 +720,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
       color: white;
       font-size: 4rem;
       margin: 1rem auto; }
+      @media only screen and (max-width: 56.25em) {
+        .activationList__table > caption {
+          font-size: 3rem; } }
   .activationList__th {
     font-size: 3rem; }
     .activationList__th--hidden {
@@ -732,6 +730,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .activationList__th {
         font-size: 2.5rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .activationList__th {
+        font-size: 2rem; } }
   .activationList__tr {
     cursor: pointer;
     border: 1px solid black;
@@ -749,6 +750,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .activationList__td {
         font-size: 2rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .activationList__td {
+        font-size: 1.5rem; } }
     .activationList__td > button {
       margin: auto; }
     .activationList__td--open {
@@ -775,7 +779,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       outline: none;
       box-shadow: 0 0.5rem 1rem black;
       cursor: pointer;
-      transition: .25s; }
+      transition: 0.25s; }
       @media only screen and (max-width: 75em) {
         .activationList__td--edit > button {
           font-size: 2rem; } }
@@ -790,7 +794,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       outline: none;
       box-shadow: 0 0.5rem 1rem black;
       cursor: pointer;
-      transition: .25s; }
+      transition: 0.25s; }
       @media only screen and (max-width: 75em) {
         .activationList__td--activate > button {
           font-size: 2rem; } }
@@ -824,6 +828,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .activationList__level-indicator {
         width: 4.5rem;
         height: 4.5rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .activationList__level-indicator {
+        width: 3.5rem;
+        height: 3.5rem; } }
     .activationList__level-indicator--green {
       background: #228b22; }
     .activationList__level-indicator--yellow {

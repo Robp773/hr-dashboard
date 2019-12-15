@@ -115,18 +115,10 @@
 .weather-event {
   display: flex;
   justify-content: flex-start;
+  position: relative;
 
   &__no-alerts {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
-    color: #228b22;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    font-size: 3rem;
   }
 
   &__container {

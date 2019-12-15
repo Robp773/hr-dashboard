@@ -59,7 +59,7 @@ export default class Weather extends React.Component {
               : null
           }`}
         >
-          <div className="weather__event-heading">Event Data</div>
+          <div className="weather__event-heading">Event</div>
           <div className="weather__btn-parent">
             <button
               onClick={() => {
