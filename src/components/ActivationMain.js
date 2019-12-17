@@ -20,7 +20,7 @@ class ActivationMain extends Component {
     super(props);
 
     this.state = {
-      mobileTab: "Event"
+      mobileTab: "Social"
     };
 
     this.changeMobileTab = this.changeMobileTab.bind(this);
