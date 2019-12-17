@@ -73,9 +73,7 @@ export default class Trends extends React.Component {
       );
     } else {
       return (
-        <div className="socialAnalysis__no-data">
-          Data Collection has not Been Enabled on this Dashboard
-        </div>
+        <div className="socialAnalysis__no-data">Data collection is disabled</div>
       );
     }
   }

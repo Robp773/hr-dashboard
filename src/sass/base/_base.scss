@@ -6,7 +6,7 @@
   box-sizing: inherit;
 }
 
-html {  
+html {
   font-size: 62.5%;
   font-family: "Noto Serif", serif;
 }
@@ -38,7 +38,7 @@ body {
 
 .component {
   overflow-y: auto;
-border-top: 1px solid black;
+  border-top: 1px solid black;
   @include respond(tab-port) {
     width: 100vw;
     // height: 100%;
@@ -183,7 +183,7 @@ input:checked + .slider:before {
 
 .mapTab {
   @include respond(tab-port) {
-    height: 100vh !important;
+    height: 73vh !important;
     width: 100vw !important;
   }
 }

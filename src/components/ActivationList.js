@@ -142,10 +142,10 @@ export default class ActivationList extends React.Component {
             activationsArray.length > 0 ? (
               <div>
                 <table className="activationList__table">
-                <caption>Select a Dashboard</caption>
+                  <caption>Select a Dashboard</caption>
                   <thead>
                     <tr className="activationList__top-row">
-                      <th className="activationList__th">Activation</th>
+                      <th className="activationList__th">Name</th>
                       <th className="activationList__th">States</th>
                       <th className="activationList__th">Type</th>
                       <th className="activationList__th">Level</th>

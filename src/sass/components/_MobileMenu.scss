@@ -18,10 +18,11 @@
     width: 33.33%;
     height: 100%;
     transition: 0.25s;
-    background: whitesmoke;
+    background: #777777;
+    color: white;
+
     &:hover {
       background: #5e849c !important;
-      color: white;
     }
     &--middle {
       border-left: 1px solid black;
@@ -31,7 +32,6 @@
       background: #5e849c !important;
       color: white;
     }
-
     @include respond(phone) {
       font-size: 1.5rem;
     }

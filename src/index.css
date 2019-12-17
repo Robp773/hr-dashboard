@@ -202,7 +202,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
     border-bottom: 2px solid #f38e20; }
     @media only screen and (max-width: 37.5em) {
       .clock > h4 {
-        font-size: 1.5rem; } }
+        font-size: 1.5rem;
+        border-bottom: 1px solid #f38e20; } }
     @media only screen and (min-width: 106.5em) {
       .clock > h4 {
         font-size: 2rem; } }
@@ -232,8 +233,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
         margin: 0.5rem; } }
     @media only screen and (max-width: 37.5em) {
       .clock__back-btn {
-        padding: .25rem;
-        margin: .25rem; } }
+        padding: 0.25rem;
+        margin: 0.25rem; } }
     @media only screen and (min-width: 106.5em) {
       .clock__back-btn {
         font-size: 1.75rem; } }
@@ -359,7 +360,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .regionInfo__btn {
     cursor: pointer;
     border: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background: #154360;
     color: white;
     padding: 0.75rem 0.25rem;
@@ -369,6 +370,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .regionInfo__btn {
         font-size: 1.5rem; } }
+    @media only screen and (min-width: 106.5em) {
+      .regionInfo__btn {
+        font-size: 1.75rem; } }
     .regionInfo__btn:hover {
       background: #5e849c; }
   .regionInfo__table {
@@ -377,14 +381,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
     display: flex;
     justify-content: center;
     overflow-y: auto;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     margin-left: auto; }
     @media only screen and (max-width: 56.25em) {
       .regionInfo__table {
         height: 79vh; } }
-    @media only screen and (max-width: 75em) {
+    @media only screen and (min-width: 106.5em) {
       .regionInfo__table {
-        font-size: 1.25rem; } }
+        font-size: 1.5rem; } }
   .regionInfo__name-th {
     display: none; }
   .regionInfo__social-media-th {
@@ -627,7 +631,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   width: 100%; }
 
 .cities__th {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   text-decoration: underline black; }
   @media only screen and (max-width: 75em) {
     .cities__th {
@@ -635,18 +639,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @media only screen and (max-width: 56.25em) {
     .cities__th {
       font-size: 1.5rem; } }
+  @media only screen and (min-width: 106.5em) {
+    .cities__th {
+      font-size: 1.75rem; } }
 
 .cities__td {
-  font-size: 2rem;
+  font-size: 1.25rem;
   padding: 0.25rem 0;
   align-content: center;
   align-items: center; }
-  @media only screen and (max-width: 75em) {
+  @media only screen and (min-width: 106.5em) {
     .cities__td {
       font-size: 1.5rem; } }
-  @media only screen and (max-width: 75em) {
-    .cities__td {
-      font-size: 1.25rem; } }
 
 .cities__city {
   align-content: center;
@@ -700,10 +704,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
       box-shadow: none; }
     @media only screen and (max-width: 56.25em) {
       .activationList__admin-btn {
-        padding: .75rem; } }
+        padding: 0.75rem; } }
   .activationList__banner {
-    margin: 5rem auto;
-    height: 7vh; }
+    margin: 7rem auto 0 auto;
+    max-height: 7vh;
+    max-width: 75vw; }
   .activationList__table {
     background: white;
     border-radius: 25px;
@@ -714,6 +719,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 56.25em) {
       .activationList__table {
         padding: 1rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .activationList__table {
+        border-radius: 0;
+        width: 100vw; } }
     .activationList__table--admin-panel {
       width: 100%; }
     .activationList__table > caption {
@@ -736,7 +745,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .activationList__tr {
     cursor: pointer;
     border: 1px solid black;
-    transition: 0.25s; }
+    transition: 0.25s;
+    padding: 1rem; }
     .activationList__tr:hover {
       transform: scale(1.025); }
     .activationList__tr:hover > .activationList__td--open {
@@ -853,16 +863,19 @@ ORDER: Base + typography > general layout + grid > page layout > components
   justify-content: center;
   z-index: 999; }
   .adminLogin__heading {
-    border-bottom: 3px solid #f38e20;
+    border-bottom: 2px solid #f38e20;
     width: fit-content;
     margin: auto;
     font-size: 3rem; }
+    @media only screen and (max-width: 56.25em) {
+      .adminLogin__heading {
+        font-size: 2.5rem; } }
   .adminLogin__form {
     text-align: center;
     padding: 2rem;
     position: relative;
     background: white;
-    width: 50%; }
+    width: fit-content; }
     .adminLogin__form > h2 {
       text-align: center; }
   .adminLogin__back-btn {
@@ -879,6 +892,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     .adminLogin__back-btn:hover {
       background: white;
       color: black; }
+    @media only screen and (max-width: 56.25em) {
+      .adminLogin__back-btn {
+        font-size: 1.5rem; } }
   .adminLogin__code-input {
     text-align: center;
     font-size: 3rem;
@@ -886,6 +902,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     margin: 3rem auto;
     border: 1px solid black;
     padding: 0.5rem 1.5rem; }
+    @media only screen and (max-width: 56.25em) {
+      .adminLogin__code-input {
+        font-size: 2rem; } }
   .adminLogin__submit-btn {
     background: #f38e20;
     color: white;
@@ -894,6 +913,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     font-size: 3rem;
     margin: auto 1rem;
     padding: 0.5rem 1.5rem; }
+    @media only screen and (max-width: 56.25em) {
+      .adminLogin__submit-btn {
+        font-size: 2rem; } }
     .adminLogin__submit-btn:hover {
       background: white;
       color: black; }
@@ -1517,10 +1539,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     width: 33.33%;
     height: 100%;
     transition: 0.25s;
-    background: whitesmoke; }
+    background: #777777;
+    color: white; }
     .mobileMenu__btn:hover {
-      background: #5e849c !important;
-      color: white; }
+      background: #5e849c !important; }
     .mobileMenu__btn--middle {
       border-left: 1px solid black;
       border-right: 1px solid black; }
@@ -1696,7 +1718,7 @@ input:checked + .slider:before {
 
 @media only screen and (max-width: 56.25em) {
   .mapTab {
-    height: 100vh !important;
+    height: 73vh !important;
     width: 100vw !important; } }
 
 #MicrosoftNav {
@@ -1856,7 +1878,7 @@ input:checked + .slider:before {
         font-size: 1.5rem; } }
 
 .standard__th {
-  font-size: 2rem;
+  font-size: 1.75rem;
   text-align: center;
   padding: 0.25rem;
   background: #154360;
@@ -1873,7 +1895,7 @@ input:checked + .slider:before {
     height: 5vh; }
 
 .standard__td {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   text-align: center; }
   @media only screen and (max-width: 75em) {
     .standard__td {

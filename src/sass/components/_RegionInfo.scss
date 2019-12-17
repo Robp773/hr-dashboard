@@ -59,7 +59,7 @@
   &__btn {
     cursor: pointer;
     border: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background: $color-primary;
     color: $color-white;
     padding: 0.75rem 0.25rem;
@@ -68,6 +68,10 @@
     outline: none;
     @include respond(tab-land) {
       font-size: 1.5rem;
+    }
+
+    @include respond(big-desktop) {
+      font-size: 1.75rem;
     }
 
     &:hover {
@@ -81,14 +85,15 @@
     display: flex;
     justify-content: center;
     overflow-y: auto;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     margin-left: auto;
     @include respond(tab-port) {
       height: 79vh;
     }
-    @include respond(tab-land) {
-      font-size: 1.25rem;
+    @include respond(big-desktop) {
+      font-size: 1.5rem;
     }
+
   }
 
   &__name-th {

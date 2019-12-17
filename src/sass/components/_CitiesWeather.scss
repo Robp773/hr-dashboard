@@ -5,7 +5,7 @@
   }
 
   &__th {
-    font-size: 2.25rem;
+    font-size: 1.5rem;
     text-decoration: underline black;
     @include respond(tab-land) {
       font-size: 1.75rem;
@@ -13,18 +13,19 @@
     @include respond(tab-port) {
       font-size: 1.5rem;
     }
+
+    @include respond(big-desktop) {
+      font-size: 1.75rem;
+    }
   }
 
   &__td {
-    font-size: 2rem;
+    font-size: 1.25rem;
     padding: 0.25rem 0;
     align-content: center;
     align-items: center;
-    @include respond(tab-land) {
+    @include respond(big-desktop) {
       font-size: 1.5rem;
-    }
-    @include respond(tab-land) {
-      font-size: 1.25rem;
     }
   }
 
